@@ -2,7 +2,20 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    theme: {
+      debugScreens: {
+        position: ['bottom', 'left'],
+      },
+    },
     extend: {
+      screens:{
+        '3xl': '1792px',
+        '4xl': '2048px',
+      },
+      backgroundImage: theme => ({
+        'test': "url('/img/Koala.jpg')",
+        'qwally': "url('/img/qwally.png')"
+       }),
       fontFamily:{
         'sans': ['Roboto', 'sans-serif'],
         'header': ['Poppins', 'sans-serif']
@@ -32,11 +45,15 @@ module.exports = {
           800: '#4E0404',
           900: '#270202',
         },
+        gitHub: '#333',
+        linkedIn: '#2867b2'
         },
       },
     },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-debug-screens'),
+  ],
 }

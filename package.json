@@ -10,7 +10,8 @@
     "tailwindcss": "^2.2.9"
   },
   "devDependencies": {
-    "tailwind-watch": "0.0.6"
+    "tailwind-watch": "0.0.6",
+    "tailwindcss-debug-screens": "^2.1.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
