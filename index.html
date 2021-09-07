@@ -13,6 +13,9 @@
     <title>Document</title>
 </head>
 <body class="w-screen overflow-x-hidden bg-brandRed-200 debug-screens">
+    <div class="fixed left-0 z-50 w-48 bg-white border-2 shadow-xl border-brandBlue-500 top-96 h-96 rounded-r-2xl">
+        <div class="absolute right-0 w-20 h-20 bg-white border-2 rounded-full border-brandBlue-500"></div>
+    </div>
     <header class="bg-brandBlue-500 slanted ">
         <div class="gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24">
                 <img class="w-56 h-56 mx-auto mb-2 rounded-full lg:w-64 lg:h-64 xl:mb-0" src="img/profile.jpg" alt="">  
@@ -21,7 +24,7 @@
         </div>
     </header>
     <section class="w-full py-32 bg-white" name="about-me">
-        <div class="px-10 mx-auto md:px-16 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 md:flex">
+        <div class="px-10 mx-auto md:px-16 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex">
             <div class="mb-16">
                 <h2 class="mx-auto mb-4 text-brandBlue-500 w-max md:mx-0">About Me</h2>
                 <p class="w-full mb-3 md:w-3/4 2xl:w-1/2">I am a Senior at University of Massachusetts Lowell majoring in Computer Science. I have a passion for front-end development and GUI design and believe that software should be made to accomodate the user, not vice-versa.</p>
@@ -87,14 +90,16 @@
         </div>
     </section>
     <section class="py-32 bg-white" name="experience">
-        <div class="container flex px-32 mx-auto">
+        <div class="container flex px-12 mx-auto sm:px-16 md:px-24 lg:px-32">
             <div>
-                <h2 class="mb-4 text-brandBlue-500 w-max">Experience</h2>
+                <h2 class="mx-auto mb-4 w-max text-brandBlue-500 lg:mx-0">Experience</h2>
                 <div>
                     <div class="py-4">
-                        <div class="flex items-center justify-center w-full rounded-l-lg shadow-xl">
-                            <div class="flex pl-2">
-                                <div class="px-4 py-6 bg-white rounded-l-lg fd-cl">
+                        <div class="flex items-center justify-center w-full rounded-b-lg shadow-xl xl:rounded-b-none xl:rounded-l-lg">
+                            <div class="xl:pl-2 xl:flex">
+                                <div class="w-full bg-center bg-cover rounded-t-lg h-52 sm:h-56 md:h-64 lg:h-80 xl:hidden bg-qwally" >
+                                </div>
+                                <div class="px-4 py-6 bg-white rounded-b-lg xl:rounded-b-none xl:rounded-l-lg fd-cl">
                                     <div class="flex items-center justify-between w-full">
                                         <h3 class="mr-2">Qwally</h3>
                                         <p class="block text-lg font-header ">Jan 2021 - Sep 2021</p>
@@ -102,23 +107,23 @@
                                     <p class="block mb-2 text-lg font-header">Software Engineering Intern</p>
                                     <ul class="space-y-4 text-gray-700">
                                         <li>
-                                            <p>• Streamlined content updates by building a headless content management system (CMS) to alleviate issue of software engineering team spending a significant portion of development time updating content</p>
+                                            <p class="text-lg md:text-xl">• Streamlined content updates by building a headless content management system (CMS) to alleviate issue of software engineering team spending a significant portion of development time updating content</p>
                                         </li>
                                         <li>
-                                            <p>• Built knowledge of company’s development platforms that includes C#, ASP.NET Core, TailwindCSS, AlpineJS, OrchardCore, GraphQL, Azure DevOps</p>
+                                            <p class="text-lg md:text-xl">• Built knowledge of company’s development platforms that includes C#, ASP.NET Core, TailwindCSS, AlpineJS, OrchardCore, GraphQL, Azure DevOps</p>
                                         </li>
                                         <li>
-                                            <p>• Worked with development team to identify key user interface elements for their web applications and created a hierarchy for the components in the CMS</p>
+                                            <p class="text-lg md:text-xl">• Worked with development team to identify key user interface elements for their web applications and created a hierarchy for the components in the CMS</p>
                                         </li>
                                         <li>
-                                            <p>• Implemented component hierarchy in the CMS and created a library to easily theme each component based on the application</p>
+                                            <p class="text-lg md:text-xl">• Implemented component hierarchy in the CMS and created a library to easily theme each component based on the application</p>
                                         </li>
                                         <li>
-                                            <p>• Integrated CMS across 60% of company’s web applications, resulting in a 30% time savings for software engineers</p>
+                                            <p class="text-lg md:text-xl">• Integrated CMS across 60% of company’s web applications, resulting in a 30% time savings for software engineers</p>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="w-full bg-cover rounded-r-lg lg:bg-right xl:bg-center bg-qwally" >
+                                <div class="hidden w-full bg-cover rounded-r-lg xl:block lg:bg-right xl:bg-center bg-qwally" >
                                 </div>
                             </div>
                         </div>
@@ -130,8 +135,8 @@
     </section>
     <section class="py-32 bg-gray-100" name="portfolio">
         <div class="container px-12 mx-auto xl:px-20">
-            <h2 class="mx-auto mb-4 lg:mx-0 text-brandBlue-500 w-max xl:ml-14 2xl:ml-24 3xl:ml-40 4xl:ml-56 justify-self-start">Skills</h2>
-            <div class="w-full gap-16 space-y-16 xl:gap-0 lg:space-y-0 lg:flex">
+            <h2 class="mx-auto mb-4 lg:mx-0 text-brandBlue-500 w-max xl:ml-14 2xl:ml-24 3xl:ml-40 4xl:ml-56 5xl:ml-96 justify-self-start">Skills</h2>
+            <div class="w-full gap-16 space-y-16 xl:gap-0 lg:space-y-0 lg:flex 5xl:px-64">
                     <div class="container items-start justify-center max-w-md py-6 mx-auto bg-white rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl md:flex">
                         <div>
                             <h3 class="max-w-md mx-auto mb-3 text-center">Languages & Frameworks</h3>
