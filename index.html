@@ -13,8 +13,23 @@
     <title>Document</title>
 </head>
 <body class="w-screen overflow-x-hidden bg-brandRed-200 debug-screens">
-    <div class="fixed left-0 z-50 w-48 bg-white border-2 shadow-xl border-brandBlue-500 top-96 h-96 rounded-r-2xl">
-        <div class="absolute right-0 w-20 h-20 bg-white border-2 rounded-full border-brandBlue-500"></div>
+    <div x-data="{open: false}" x-bind:class="open ? 'left-0' : '-left-48'" class="fixed z-50 transition-all duration-300 top-1/3 rounded-r-2xl">
+        <div class="z-50 flex items-center w-48 h-56 bg-white border-2 shadow-xl border-brandBlue-500 rounded-r-2xl">
+            <ul class="px-4 py-4 space-y-4 text-2xl text-brandBlue-500 font-header">
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+            
+            
+            
+            
+        </div>
+        <button x-on:click="open = ! open" x-bind:class="open ? 'rounded-full -right-10' : 'rounded-r-full -right-16'" class="absolute z-30 flex justify-center w-20 h-20 transition-all duration-300 bg-brandRed-300 place-items-center top-16">
+            <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="z-40 text-4xl text-white"></i>
+        </button>
+        
     </div>
     <header class="bg-brandBlue-500 slanted ">
         <div class="gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24">
@@ -23,7 +38,7 @@
                 <h1 class="text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden">Thomas<br> Surette</h1>
         </div>
     </header>
-    <section class="w-full py-32 bg-white" name="about-me">
+    <section class="w-full py-32 bg-white" id="about-me">
         <div class="px-10 mx-auto md:px-16 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex">
             <div class="mb-16">
                 <h2 class="mx-auto mb-4 text-brandBlue-500 w-max md:mx-0">About Me</h2>
@@ -50,7 +65,7 @@
 
         </div>
     </section>
-    <section class="py-32 bg-gray-100" name="portfolio">
+    <section class="py-32 bg-gray-100" id="portfolio">
         <div class="container px-16 mx-auto sm:px-32">
             <h2 class="mx-auto mb-4 text-brandBlue-500 w-max lg:mx-0">Portfolio</h2>
             <div class="lg:flex lg:gap-16">
@@ -89,7 +104,7 @@
             </div>
         </div>
     </section>
-    <section class="py-32 bg-white" name="experience">
+    <section class="py-32 bg-white" id="experience">
         <div class="container flex px-12 mx-auto sm:px-16 md:px-24 lg:px-32">
             <div>
                 <h2 class="mx-auto mb-4 w-max text-brandBlue-500 lg:mx-0">Experience</h2>
@@ -133,7 +148,7 @@
 
         </div>
     </section>
-    <section class="py-32 bg-gray-100" name="portfolio">
+    <section class="py-32 bg-gray-100" id="skills">
         <div class="container px-12 mx-auto xl:px-20">
             <h2 class="mx-auto mb-4 lg:mx-0 text-brandBlue-500 w-max xl:ml-14 2xl:ml-24 3xl:ml-40 4xl:ml-56 5xl:ml-96 justify-self-start">Skills</h2>
             <div class="w-full gap-16 space-y-16 xl:gap-0 lg:space-y-0 lg:flex 5xl:px-64">
