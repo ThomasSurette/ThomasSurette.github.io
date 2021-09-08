@@ -7,12 +7,21 @@ module.exports = {
         position: ['bottom', 'left'],
       },
     },
+    screens:{
+      '3xs': '256px',
+      '2xs': '384px',
+      'xs': '512px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+      '3xl': '1792px',
+      '4xl': '2048px',
+      '5xl': '2304px',
+    },
     extend: {
-      screens:{
-        '3xl': '1792px',
-        '4xl': '2048px',
-        '5xl': '2304px',
-      },
+      
       backgroundImage: theme => ({
         'test': "url('/img/Koala.jpg')",
         'qwally': "url('/img/qwally.png')"

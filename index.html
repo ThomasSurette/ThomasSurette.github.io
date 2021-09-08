@@ -13,21 +13,29 @@
     <title>Document</title>
 </head>
 <body class="w-screen overflow-x-hidden bg-brandRed-200 debug-screens">
-    <div x-data="{open: false}" x-bind:class="open ? 'left-0' : '-left-48'" class="fixed z-50 transition-all duration-300 top-1/3 rounded-r-2xl">
+    <div x-data="{open: false, atElement: 0}"
+         x-on:scroll.window="atElement=(document.querySelector('#skills').getBoundingClientRect().top <= 525 ? 3 :
+         (document.querySelector('#experience').getBoundingClientRect().top <= 400 ? 2 :
+         (document.querySelector('#portfolio').getBoundingClientRect().top <= 400 ? 1 : 0)))"
+         x-bind:class="open ? 'left-0' : '-left-48'" 
+         class="fixed z-50 transition-all duration-300 top-1/3 rounded-r-2xl">
         <div class="z-50 flex items-center w-48 h-56 bg-white border-2 shadow-xl border-brandBlue-500 rounded-r-2xl">
-            <ul class="px-4 py-4 space-y-4 text-2xl text-brandBlue-500 font-header">
-                <li><a href="#about-me">About Me</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
+            <ul class="px-4 py-4 space-y-4 text-2xl">
+                <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 0}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#about-me">About Me</a></li>
+                <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 1}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#portfolio">Portfolio</a></li>
+                <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 2}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#experience">Experience</a></li>
+                <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 3}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#skills">Skills</a></li>
             </ul>
             
             
             
             
         </div>
-        <button x-on:click="open = ! open" x-bind:class="open ? 'rounded-full -right-10' : 'rounded-r-full -right-16'" class="absolute z-30 flex justify-center w-20 h-20 transition-all duration-300 bg-brandRed-300 place-items-center top-16">
+        <button x-on:click="open = ! open" x-bind:class="open ? 'rounded-full -right-10' : 'rounded-r-full -right-16'" class="absolute z-30 justify-center hidden w-20 h-20 transition-all duration-300 md:flex bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-16">
             <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="z-40 text-4xl text-white"></i>
+        </button>
+        <button x-on:click="open = ! open" x-bind:class="open ? 'rounded-full -right-7' : 'rounded-r-full -right-12'" class="absolute z-30 flex justify-center transition-all duration-300 h-14 w-14 md:hidden bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-20">
+            <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="z-40 text-3xl text-white"></i>
         </button>
         
     </div>
@@ -39,10 +47,10 @@
         </div>
     </header>
     <section class="w-full py-32 bg-white" id="about-me">
-        <div class="px-10 mx-auto md:px-16 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex">
+        <div class="px-4 mx-auto 2xs:px-10 md:px-20 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex">
             <div class="mb-16">
                 <h2 class="mx-auto mb-4 text-brandBlue-500 w-max md:mx-0">About Me</h2>
-                <p class="w-full mb-3 md:w-3/4 2xl:w-1/2">I am a Senior at University of Massachusetts Lowell majoring in Computer Science. I have a passion for front-end development and GUI design and believe that software should be made to accomodate the user, not vice-versa.</p>
+                <p class="w-3/4 mx-auto mb-3 text-lg text-center xs:text-xl md:mx-0 md:text-left md:w-3/4 2xl:w-1/2">I am a Senior at University of Massachusetts Lowell majoring in Computer Science. I have a passion for front-end development and GUI design and believe that software should be made to accomodate the user, not vice-versa.</p>
                 <a class="mx-auto button md:mx-0 hover:bg-brandRed-300">
                     <i class="mr-2 text-xl text-white fas fa-file"></i>
                     <p>My resume</p>
@@ -51,7 +59,7 @@
             <div>
                 <h2 class="hidden mb-4 text-brandBlue-500 xl:block w-max">Where to find me</h2>
                 <h2 class="mx-auto mb-4 text-brandBlue-500 xl:hidden w-max">Where to <br> find me</h2>
-                <div class="flex gap-4 mx-auto w-max">
+                <div class="flex gap-4 mx-auto mb-3 w-max">
                         <a class="button hover:bg-gitHub">
                             <i class="mr-2 text-xl text-white fab fa-github"></i>
                             <p>GitHub</p>
@@ -61,12 +69,16 @@
                             <p>LinkedIn</p>
                         </a>
                 </div>
+                <button class="mx-auto mb-3 2xs:mb-0 button hover:bg-brandRed-300">
+                    <i class="mr-2 text-xl text-white fas fa-comments"></i>
+                    <p>Contact Me</p>
+                </button>
             </div>
 
         </div>
     </section>
     <section class="py-32 bg-gray-100" id="portfolio">
-        <div class="container px-16 mx-auto sm:px-32">
+        <div class="container mx-auto 2xs:px-16 sm:px-32">
             <h2 class="mx-auto mb-4 text-brandBlue-500 w-max lg:mx-0">Portfolio</h2>
             <div class="lg:flex lg:gap-16">
                 <a href="https://github.com/ThomasSurette/ThomasSurette.github.io" target="_blank">
@@ -105,7 +117,7 @@
         </div>
     </section>
     <section class="py-32 bg-white" id="experience">
-        <div class="container flex px-12 mx-auto sm:px-16 md:px-24 lg:px-32">
+        <div class="container flex mx-auto 2xs:px-8 sm:px-16 xs:px-14 md:px-24 lg:px-32">
             <div>
                 <h2 class="mx-auto mb-4 w-max text-brandBlue-500 lg:mx-0">Experience</h2>
                 <div>
@@ -117,24 +129,24 @@
                                 <div class="px-4 py-6 bg-white rounded-b-lg xl:rounded-b-none xl:rounded-l-lg fd-cl">
                                     <div class="flex items-center justify-between w-full">
                                         <h3 class="mr-2">Qwally</h3>
-                                        <p class="block text-lg font-header ">Jan 2021 - Sep 2021</p>
+                                        <p class="block text-md xs:text-lg font-header ">Jan 2021 - Sep 2021</p>
                                     </div>
                                     <p class="block mb-2 text-lg font-header">Software Engineering Intern</p>
                                     <ul class="space-y-4 text-gray-700">
                                         <li>
-                                            <p class="text-lg md:text-xl">• Streamlined content updates by building a headless content management system (CMS) to alleviate issue of software engineering team spending a significant portion of development time updating content</p>
+                                            <p class="text-md xs:text-lg md:text-xl">• Streamlined content updates by building a headless content management system (CMS) to alleviate issue of software engineering team spending a significant portion of development time updating content</p>
                                         </li>
                                         <li>
-                                            <p class="text-lg md:text-xl">• Built knowledge of company’s development platforms that includes C#, ASP.NET Core, TailwindCSS, AlpineJS, OrchardCore, GraphQL, Azure DevOps</p>
+                                            <p class="text-md xs:text-lg md:text-xl">• Built knowledge of company’s development platforms that includes C#, ASP.NET Core, TailwindCSS, AlpineJS, OrchardCore, GraphQL, Azure DevOps</p>
                                         </li>
                                         <li>
-                                            <p class="text-lg md:text-xl">• Worked with development team to identify key user interface elements for their web applications and created a hierarchy for the components in the CMS</p>
+                                            <p class="text-md xs:text-lg md:text-xl">• Worked with development team to identify key user interface elements for their web applications and created a hierarchy for the components in the CMS</p>
                                         </li>
                                         <li>
-                                            <p class="text-lg md:text-xl">• Implemented component hierarchy in the CMS and created a library to easily theme each component based on the application</p>
+                                            <p class="text-md xs:text-lg md:text-xl">• Implemented component hierarchy in the CMS and created a library to easily theme each component based on the application</p>
                                         </li>
                                         <li>
-                                            <p class="text-lg md:text-xl">• Integrated CMS across 60% of company’s web applications, resulting in a 30% time savings for software engineers</p>
+                                            <p class="text-md xs:text-lg md:text-xl">• Integrated CMS across 60% of company’s web applications, resulting in a 30% time savings for software engineers</p>
                                         </li>
                                     </ul>
                                 </div>
@@ -149,13 +161,13 @@
         </div>
     </section>
     <section class="py-32 bg-gray-100" id="skills">
-        <div class="container px-12 mx-auto xl:px-20">
+        <div class="container mx-auto 2xs:px-12 xl:px-20">
             <h2 class="mx-auto mb-4 lg:mx-0 text-brandBlue-500 w-max xl:ml-14 2xl:ml-24 3xl:ml-40 4xl:ml-56 5xl:ml-96 justify-self-start">Skills</h2>
             <div class="w-full gap-16 space-y-16 xl:gap-0 lg:space-y-0 lg:flex 5xl:px-64">
                     <div class="container items-start justify-center max-w-md py-6 mx-auto bg-white rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl md:flex">
                         <div>
                             <h3 class="max-w-md mx-auto mb-3 text-center">Languages & Frameworks</h3>
-                            <div class="flex justify-between px-12 md:px-16 lg:gap-10 2xl:gap-32 4xl:gap-36">
+                            <div class="flex justify-between px-3 2xs:px-6 xs:px-12 md:px-16 lg:gap-10 2xl:gap-32 4xl:gap-36">
                                 <ul class="space-y-2">
                                     <li>
                                         <div class="flex items-center">
@@ -419,6 +431,15 @@
                     </div> 
             </div>
         </div>
+    <a href="#" class="flex justify-center w-20 h-20 mx-auto mt-16 -mb-24 transition-all rounded-full animate-bounce bg-brandRed-200 hover:bg-brandRed-300 place-items-center">
+        <i class="z-40 text-4xl text-white fas fa-arrow-up"></i>
+    </a>    
     </section>
+    
+    <footer class="bg-brandBlue-500 slanted-reverse">
+        <div class="gap-8 pt-16 pb-8 ml-12 md:flex md:items-center w-max"> 
+            <p class="text-white">© Thomas Surette 2021</p>
+        </div>
+    </footer>
 </body>
 </html>

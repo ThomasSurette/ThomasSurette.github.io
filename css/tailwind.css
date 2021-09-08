@@ -6,24 +6,31 @@ html{
     scroll-behavior: smooth;
 }
 h1{
-    @apply text-8xl font-header;
+    @apply text-7xl xs:text-8xl font-header;
 }
 h2{
-    @apply text-6xl font-header;
+    @apply text-5xl xs:text-6xl font-header;
 }
 h3{
-    @apply text-4xl font-header;
+    @apply text-3xl xs:text-4xl font-header;
 }
 p{
-    @apply text-xl font-sans;
+    @apply text-lg xs:text-xl font-sans;
 }
 a.button{
+    @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200;
+}
+button.button{
     @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200;
 }
 .button p{
     @apply font-header text-white;
 }
 .slanted{
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 56%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+}
+.slanted-reverse{
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 56%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
