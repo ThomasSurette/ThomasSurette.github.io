@@ -27,9 +27,6 @@
                 <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 3}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#skills">Skills</a></li>
             </ul>
             
-            
-            
-            
         </div>
         <button x-on:click="open = ! open" x-bind:class="open ? 'rounded-full -right-10' : 'rounded-r-full -right-16'" class="absolute z-30 justify-center hidden w-20 h-20 transition-all duration-300 md:flex bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-16">
             <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="z-40 text-4xl text-white"></i>
@@ -39,44 +36,67 @@
         </button>
         
     </div>
-    <header class="bg-brandBlue-500 slanted ">
-        <div class="gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24">
-                <img class="w-56 h-56 mx-auto mb-2 rounded-full lg:w-64 lg:h-64 xl:mb-0" src="img/profile.jpg" alt="">  
-                <h1 class="hidden text-white xl:block">Thomas Surette</h1>
-                <h1 class="text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden">Thomas<br> Surette</h1>
-        </div>
-    </header>
-    <section class="w-full py-32 bg-white" id="about-me">
-        <div class="px-4 mx-auto 2xs:px-10 md:px-20 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex">
-            <div class="mb-16">
-                <h2 class="mx-auto mb-4 text-brandBlue-500 w-max md:mx-0">About Me</h2>
-                <p class="w-3/4 mx-auto mb-3 text-lg text-center xs:text-xl md:mx-0 md:text-left md:w-3/4 2xl:w-1/2">I am a Senior at University of Massachusetts Lowell majoring in Computer Science. I have a passion for front-end development and GUI design and believe that software should be made to accomodate the user, not vice-versa.</p>
-                <a class="mx-auto button md:mx-0 hover:bg-brandRed-300">
-                    <i class="mr-2 text-xl text-white fas fa-file"></i>
-                    <p>My resume</p>
-                </a>
+    <div x-data="{showModal: true}">
+        <header class="bg-brandBlue-500 slanted">
+            <div class="z-40 gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24">
+                    <img class="w-56 h-56 mx-auto mb-2 rounded-full lg:w-64 lg:h-64 xl:mb-0" src="img/profile.jpg" alt="">  
+                    <h1 class="hidden text-white xl:block">Thomas Surette</h1>
+                    <h1 class="text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden">Thomas<br> Surette</h1>
             </div>
-            <div>
-                <h2 class="hidden mb-4 text-brandBlue-500 xl:block w-max">Where to find me</h2>
-                <h2 class="mx-auto mb-4 text-brandBlue-500 xl:hidden w-max">Where to <br> find me</h2>
-                <div class="flex gap-4 mx-auto mb-3 w-max">
-                        <a class="button hover:bg-gitHub">
-                            <i class="mr-2 text-xl text-white fab fa-github"></i>
-                            <p>GitHub</p>
-                        </a>
-                        <a class="button hover:bg-linkedIn">
-                            <i class="mr-2 text-xl text-white fab fa-linkedin"></i>
-                            <p>LinkedIn</p>
-                        </a>
+            <div x-show="showModal" x-transition class="fixed inset-x-0 w-screen h-screen mx-auto bg-opacity-70 z-100 bg-grey-100">
+                <form class="absolute w-full max-w-md px-8 pt-6 pb-8 bg-red-400 rounded shadow-md "
+                action="https://formspree.io/f/xeqvvdqz"
+                method="POST"
+                >
+                <label class="block mb-2 font-header text-md" for="name">
+                    Name:
+                    <input type="text" name="name">
+                </label>
+                <label class="block font-header text-md" for="email">
+                    Email:
+                    <input type="email" name="_replyto">
+                </label>
+                <label class="block font-header text-md" for="message">
+                    Message:
+                    <textarea name="message"></textarea>
+                </label>
+                <button class="button hover:bg-brandRed-300" type="submit">Send</button>
+                </form>
+            </div>
+        </header>
+        <section class="w-full py-32 bg-white" id="about-me">
+            <div class="px-4 mx-auto 2xs:px-10 md:px-20 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex">
+                <div class="mb-16">
+                    <h2 class="mx-auto mb-4 text-brandBlue-500 w-max md:mx-0">About Me</h2>
+                    <p class="w-3/4 mx-auto mb-3 text-lg text-center xs:text-xl md:mx-0 md:text-left md:w-3/4 2xl:w-1/2">I am a Senior at University of Massachusetts Lowell majoring in Computer Science. I have a passion for front-end development and GUI design and believe that software should be made to accomodate the user, not vice-versa.</p>
+                    <a class="mx-auto button md:mx-0 hover:bg-brandRed-300">
+                        <i class="mr-2 text-xl text-white fas fa-file"></i>
+                        <p>My resume</p>
+                    </a>
                 </div>
-                <button class="mx-auto mb-3 2xs:mb-0 button hover:bg-brandRed-300">
-                    <i class="mr-2 text-xl text-white fas fa-comments"></i>
-                    <p>Contact Me</p>
-                </button>
-            </div>
+                <div>
+                    <h2 class="hidden mb-4 text-brandBlue-500 xl:block w-max">Where to find me</h2>
+                    <h2 class="mx-auto mb-4 text-brandBlue-500 xl:hidden w-max">Where to <br> find me</h2>
+                    <div class="flex gap-4 mx-auto mb-3 w-max">
+                            <a class="button hover:bg-gitHub">
+                                <i class="mr-2 text-xl text-white fab fa-github"></i>
+                                <p>GitHub</p>
+                            </a>
+                            <a class="button hover:bg-linkedIn">
+                                <i class="mr-2 text-xl text-white fab fa-linkedin"></i>
+                                <p>LinkedIn</p>
+                            </a>
+                    </div>
+                    <button x-on:click="showModal = ! showModal" class="mx-auto mb-3 2xs:mb-0 button hover:bg-brandRed-300">
+                        <i class="mr-2 text-xl text-white fas fa-comments"></i>
+                        <p>Contact Me</p>
+                    </button>
+                </div>
 
-        </div>
-    </section>
+            </div>
+        </section>
+    </div>
+    
     <section class="py-32 bg-gray-100" id="portfolio">
         <div class="container mx-auto 2xs:px-16 sm:px-32">
             <h2 class="mx-auto mb-4 text-brandBlue-500 w-max lg:mx-0">Portfolio</h2>
