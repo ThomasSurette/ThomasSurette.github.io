@@ -24,7 +24,8 @@ module.exports = {
       
       backgroundImage: theme => ({
         'test': "url('/img/Koala.jpg')",
-        'qwally': "url('/img/qwally.png')"
+        'qwally': "url('/img/qwally.png')",
+        'site': "url('/img/website-pic.jpg')"
        }),
       fontFamily:{
         'sans': ['Roboto', 'sans-serif'],

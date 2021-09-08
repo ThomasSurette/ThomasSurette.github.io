@@ -12,14 +12,78 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     <title>Document</title>
 </head>
-<body class="w-screen overflow-x-hidden bg-brandRed-200 debug-screens">
+<body x-data="{showModal:false}" class="w-screen overflow-x-hidden bg-brandRed-200">
+    <div x-show="showModal"
+            class="fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-40"
+            x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0"
+            x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300"
+            x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+        
+                <div x-show="showModal" class="flex-grow max-w-xs p-6 mx-0 bg-white shadow-2xl md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl rounded-xl lg:mx-24"
+                    x-on:click.away="showModal = false" x-transition:enter="transition ease duration-100 transform"
+                    x-transition:enter-start="opacity-0 scale-90 translate-y-1"
+                    x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+                    x-transition:leave="transition ease duration-100 transform"
+                    x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 scale-90 translate-y-1">
+                    <div>
+                        <div class="flex justify-between items-top">
+                            <h3 class="mb-6 text-brandBlue-500">Contact Me</h3>
+                            <div class="-mr-2">
+                                <button type="button" x-on:click="showModal = !showModal" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <form class=""
+                        action="https://formspree.io/f/xeqvvdqz"
+                        method="POST"
+                        >
+                        <div class="mb-4">
+                            <label class="block mb-2 text-lg font-header" for="name">
+                            First Name
+                            </label>
+                            <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required type="text" name="firstName">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block mb-2 text-lg font-header" for="name">
+                            Last Name
+                            </label>
+                            <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required type="text" name="lastName">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-lg font-header" for="_replyto">
+                            Email                     
+                            </label>
+                            <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required type="email" name="_replyto">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-lg font-header" for="_replyto">
+                            Subject                       
+                            </label>
+                            <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required type="text" name="subject">
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-lg font-header" for="message">
+                            Message
+                            </label>
+                            <textarea class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required name="message"></textarea>
+                        </div>
+                        
+                        <button class="flex items-center button hover:bg-brandRed-300" type="submit"><p class="text-white">Send</p> <i class="ml-2 text-white fas fa-arrow-right"></i></button>
+                        </form>   
+                    </div>
+                </div>
+            </div>
     <div x-data="{open: false, atElement: 0}"
          x-on:scroll.window="atElement=(document.querySelector('#skills').getBoundingClientRect().top <= 525 ? 3 :
          (document.querySelector('#experience').getBoundingClientRect().top <= 400 ? 2 :
          (document.querySelector('#portfolio').getBoundingClientRect().top <= 400 ? 1 : 0)))"
          x-bind:class="open ? 'left-0' : '-left-48'" 
-         class="fixed z-50 transition-all duration-300 top-1/3 rounded-r-2xl">
-        <div class="z-50 flex items-center w-48 h-56 bg-white border-2 shadow-xl border-brandBlue-500 rounded-r-2xl">
+         class="fixed z-20 transition-all duration-300 top-1/3 rounded-r-2xl">
+        <div class="z-20 flex items-center w-48 h-56 bg-white border-2 shadow-xl border-brandBlue-500 rounded-r-2xl">
             <ul class="px-4 py-4 space-y-4 text-2xl">
                 <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 0}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#about-me">About Me</a></li>
                 <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 1}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#portfolio">Portfolio</a></li>
@@ -36,32 +100,11 @@
         </button>
         
     </div>
-    <div x-data="{showModal: true}">
         <header class="bg-brandBlue-500 slanted">
-            <div class="z-40 gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24">
+            <div class="z-30 gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24">
                     <img class="w-56 h-56 mx-auto mb-2 rounded-full lg:w-64 lg:h-64 xl:mb-0" src="img/profile.jpg" alt="">  
                     <h1 class="hidden text-white xl:block">Thomas Surette</h1>
                     <h1 class="text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden">Thomas<br> Surette</h1>
-            </div>
-            <div x-show="showModal" x-transition class="fixed inset-x-0 w-screen h-screen mx-auto bg-opacity-70 z-100 bg-grey-100">
-                <form class="absolute w-full max-w-md px-8 pt-6 pb-8 bg-red-400 rounded shadow-md "
-                action="https://formspree.io/f/xeqvvdqz"
-                method="POST"
-                >
-                <label class="block mb-2 font-header text-md" for="name">
-                    Name:
-                    <input type="text" name="name">
-                </label>
-                <label class="block font-header text-md" for="email">
-                    Email:
-                    <input type="email" name="_replyto">
-                </label>
-                <label class="block font-header text-md" for="message">
-                    Message:
-                    <textarea name="message"></textarea>
-                </label>
-                <button class="button hover:bg-brandRed-300" type="submit">Send</button>
-                </form>
             </div>
         </header>
         <section class="w-full py-32 bg-white" id="about-me">
@@ -95,7 +138,6 @@
 
             </div>
         </section>
-    </div>
     
     <section class="py-32 bg-gray-100" id="portfolio">
         <div class="container mx-auto 2xs:px-16 sm:px-32">
@@ -105,26 +147,12 @@
                     <div class="py-4 mb-10 transition-all duration-500 transform lg:mb-0 hover:-translate-y-6">
                         <div class="container flex items-center justify-center max-w-sm mx-auto bg-white rounded-md shadow-lg">
                             <div>
-                                <div class="w-full h-64 bg-cover bg-test rounded-t-md" >
+                                <div class="w-full h-64 bg-cover bg-site rounded-t-md" >
                                 </div>
                                 <div class="px-4 py-8 bg-white rounded-b-md fd-cl">
-                                    <span class="block text-lg font-header">Check out this boi</span>
-                                    <span  class="block text-gray-700 text-md">Vivamus ac ligula sit amet erat luctus laoreet ac quis ligula. Donec bibendum faucibus purus eget cursus. Proin enim ante, scelerisque vel sem sit amet, ultrices mollis risus. Praesent justo felis, ullamcorper a cursus sed, condimentum at dui. 
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </a>
-                <a href="https://github.com/ThomasSurette/ThomasSurette.github.io" target="_blank">
-                    <div class="py-4 transition-all duration-500 transform hover:-translate-y-8">
-                        <div class="container flex items-center justify-center max-w-sm mx-auto bg-white rounded-md shadow-lg">
-                            <div>
-                                <div class="w-full h-64 bg-cover bg-test rounded-t-md" >
-                                </div>
-                                <div class="px-4 py-8 bg-white rounded-b-md fd-cl">
-                                    <span class="block text-lg font-header ">Oh shit there's another</span>
-                                    <span class="block text-gray-700 text-md">Vivamus ac ligula sit amet erat luctus laoreet ac quis ligula. Donec bibendum faucibus purus eget cursus. Proin enim ante, scelerisque vel sem sit amet, ultrices mollis risus. Praesent justo felis, ullamcorper a cursus sed, condimentum at dui. 
+                                    <span class="block text-lg font-header">Personal Website</span>
+                                    <span  class="block text-gray-700 text-md">
+                                        Created the website you are browsing right now. Built to be responsive and accessible on all devices using the Tailwind CSS and AlpineJS frameworks.
                                     </span>
                                 </div>
                             </div>
@@ -147,9 +175,9 @@
                                 <div class="w-full bg-center bg-cover rounded-t-lg h-52 sm:h-56 md:h-64 lg:h-80 xl:hidden bg-qwally" >
                                 </div>
                                 <div class="px-4 py-6 bg-white rounded-b-lg xl:rounded-b-none xl:rounded-l-lg fd-cl">
-                                    <div class="flex items-center justify-between w-full">
+                                    <div class="flex items-center justify-between w-full mb-1">
                                         <h3 class="mr-2">Qwally</h3>
-                                        <p class="block text-md xs:text-lg font-header ">Jan 2021 - Sep 2021</p>
+                                        <p class="block ml-4 2xs:ml-0 text-md xs:text-lg font-header ">Jan 2021 - Sep 2021</p>
                                     </div>
                                     <p class="block mb-2 text-lg font-header">Software Engineering Intern</p>
                                     <ul class="space-y-4 text-gray-700">
