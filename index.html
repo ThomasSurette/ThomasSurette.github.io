@@ -14,12 +14,12 @@
 </head>
 <body x-data="{showModal:false}" class="w-screen overflow-x-hidden bg-brandRed-200">
     <div x-show="showModal"
-            class="fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-40"
+            class="modal-bg"
             x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0"
             x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300"
             x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
         
-                <div x-show="showModal" class="flex-grow max-w-xs p-6 mx-0 bg-white shadow-2xl md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl rounded-xl lg:mx-24"
+                <div x-show="showModal" class="modal-body"
                     x-on:click.away="showModal = false" x-transition:enter="transition ease duration-100 transform"
                     x-transition:enter-start="opacity-0 scale-90 translate-y-1"
                     x-transition:enter-end="opacity-100 scale-100 translate-y-0"
@@ -27,7 +27,7 @@
                     x-transition:leave-start="opacity-100 scale-100 translate-y-0"
                     x-transition:leave-end="opacity-0 scale-90 translate-y-1">
                     <div>
-                        <div class="flex justify-between items-top">
+                        <div class="modal-header">
                             <h3 class="mb-6 text-brandBlue-500">Contact Me</h3>
                             <div class="-mr-2">
                                 <button type="button" x-on:click="showModal = !showModal" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
@@ -42,37 +42,37 @@
                         method="POST"
                         >
                         <div class="mb-4">
-                            <label class="block mb-2 text-lg font-header" for="name">
+                            <label class="form-label" for="name">
                             First Name
                             </label>
-                            <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required type="text" name="firstName">
+                            <input class="form-input" required type="text" name="firstName">
                         </div>
                         <div class="mb-4">
-                            <label class="block mb-2 text-lg font-header" for="name">
+                            <label class="form-label" for="name">
                             Last Name
                             </label>
-                            <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required type="text" name="lastName">
+                            <input class="form-input" required type="text" name="lastName">
                         </div>
                         <div class="mb-4">
-                            <label class="block text-lg font-header" for="_replyto">
+                            <label class="form-label" for="_replyto">
                             Email                     
                             </label>
-                            <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required type="email" name="_replyto">
+                            <input class="form-input" required type="email" name="_replyto">
                         </div>
                         <div class="mb-4">
-                            <label class="block text-lg font-header" for="_replyto">
+                            <label class="form-label" for="_replyto">
                             Subject                       
                             </label>
-                            <input class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required type="text" name="subject">
+                            <input class="form-input" required type="text" name="subject">
                         </div>
                         <div class="mb-6">
-                            <label class="block text-lg font-header" for="message">
+                            <label class="form-label" for="message">
                             Message
                             </label>
-                            <textarea class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" required name="message"></textarea>
+                            <textarea class="form-input" required name="message"></textarea>
                         </div>
                         
-                        <button class="flex items-center button hover:bg-brandRed-300" type="submit"><p class="text-white">Send</p> <i class="ml-2 text-white fas fa-arrow-right"></i></button>
+                        <button class="button" type="submit"><p class="text-white">Send</p> <i class="ml-2 text-white fas fa-arrow-right"></i></button>
                         </form>   
                     </div>
                 </div>
@@ -82,56 +82,56 @@
          (document.querySelector('#experience').getBoundingClientRect().top <= 400 ? 2 :
          (document.querySelector('#portfolio').getBoundingClientRect().top <= 400 ? 1 : 0)))"
          x-bind:class="open ? 'left-0' : '-left-48'" 
-         class="fixed z-20 transition-all duration-300 top-1/3 rounded-r-2xl">
-        <div class="z-20 flex items-center w-48 h-56 bg-white border-2 shadow-xl border-brandBlue-500 rounded-r-2xl">
-            <ul class="px-4 py-4 space-y-4 text-2xl">
-                <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 0}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#about-me">About Me</a></li>
-                <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 1}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#portfolio">Portfolio</a></li>
-                <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 2}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#experience">Experience</a></li>
-                <li><a :class="{'text-brandRed-200 hover:text-brandRed-300' : atElement === 3}" class="text-brandBlue-500 hover:text-brandBlue-400 font-header" href="#skills">Skills</a></li>
+         class="nav-menu-wrapper">
+        <div class="nav-menu-body">
+            <ul class="section-list">
+                <li><a :class="{'current-section-item' : atElement === 0}" class="section-item" href="#about-me">About Me</a></li>
+                <li><a :class="{'current-section-item' : atElement === 1}" class="section-item" href="#portfolio">Portfolio</a></li>
+                <li><a :class="{'current-section-item' : atElement === 2}" class="section-item" href="#experience">Experience</a></li>
+                <li><a :class="{'current-section-item' : atElement === 3}" class="section-item" href="#skills">Skills</a></li>
             </ul>
             
         </div>
-        <button x-on:click="open = ! open" x-bind:class="open ? 'rounded-full -right-10' : 'rounded-r-full -right-16'" class="absolute z-30 justify-center hidden w-20 h-20 transition-all duration-300 md:flex bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-16">
-            <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="z-40 text-4xl text-white"></i>
+        <button x-on:click="open = ! open" x-bind:class="open ? 'button-open' : 'button-closed'" class="nav-menu-button">
+            <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="button-arrow"></i>
         </button>
-        <button x-on:click="open = ! open" x-bind:class="open ? 'rounded-full -right-7' : 'rounded-r-full -right-12'" class="absolute z-30 flex justify-center transition-all duration-300 h-14 w-14 md:hidden bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-20">
-            <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="z-40 text-3xl text-white"></i>
+        <button x-on:click="open = ! open" x-bind:class="open ? 'button-sm-open' : 'button-sm-closed'" class="nav-menu-button-sm">
+            <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="button-sm-arrow"></i>
         </button>
         
     </div>
         <header class="bg-brandBlue-500 slanted">
-            <div class="z-30 gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24">
-                    <img class="w-56 h-56 mx-auto mb-2 rounded-full lg:w-64 lg:h-64 xl:mb-0" src="img/profile.jpg" alt="">  
-                    <h1 class="hidden text-white xl:block">Thomas Surette</h1>
-                    <h1 class="text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden">Thomas<br> Surette</h1>
+            <div class="header-body">
+                    <img class="profile-img" src="img/profile.jpg" alt="">  
+                    <h1 class="title">Thomas Surette</h1>
+                    <h1 class="title-sm">Thomas<br> Surette</h1>
             </div>
         </header>
-        <section class="w-full py-32 bg-white" id="about-me">
-            <div class="px-4 mx-auto 2xs:px-10 md:px-20 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex">
+        <section class="py-32 bg-white" id="about-me">
+            <div class="about-me-body">
                 <div class="mb-16">
-                    <h2 class="mx-auto mb-4 text-brandBlue-500 w-max md:mx-0">About Me</h2>
-                    <p class="w-3/4 mx-auto mb-3 text-lg text-center xs:text-xl md:mx-0 md:text-left md:w-3/4 2xl:w-1/2">I am a Senior at University of Massachusetts Lowell majoring in Computer Science. I have a passion for front-end development and GUI design and believe that software should be made to accomodate the user, not vice-versa.</p>
-                    <a href="/documents/resume.pdf" target="_blank" class="mx-auto button md:mx-0 hover:bg-brandRed-300">
-                        <i class="mr-2 text-xl text-white fas fa-file"></i>
+                    <h2 class="mx-auto section-header md:mx-0">About Me</h2>
+                    <p class="about-me-paragraph">I am a Senior at University of Massachusetts Lowell majoring in Computer Science. I have a passion for front-end development and GUI design and believe that software should be made to accomodate the user, not vice-versa.</p>
+                    <a href="/documents/resume.pdf" target="_blank" class="mx-auto button md:mx-0">
+                        <i class="button-icon fas fa-file"></i>
                         <p>My resume</p>
                     </a>
                 </div>
                 <div>
-                    <h2 class="hidden mb-4 text-brandBlue-500 xl:block w-max">Where to find me</h2>
-                    <h2 class="mx-auto mb-4 text-brandBlue-500 xl:hidden w-max">Where to <br> find me</h2>
+                    <h2 class="hidden xl:block section-header">Where to find me</h2>
+                    <h2 class="mx-auto xl:hidden section-header">Where to <br> find me</h2>
                     <div class="flex gap-4 mx-auto mb-3 w-max">
                             <a href="https://github.com/ThomasSurette" target="_blank" class="button hover:bg-gitHub">
-                                <i class="mr-2 text-xl text-white fab fa-github"></i>
+                                <i class="button-icon fab fa-github"></i>
                                 <p>GitHub</p>
                             </a>
                             <a href="https://www.linkedin.com/in/thomas-surette-218a3a1b8/" target="_blank" class="button hover:bg-linkedIn">
-                                <i class="mr-2 text-xl text-white fab fa-linkedin"></i>
+                                <i class="button-icon fab fa-linkedin"></i>
                                 <p>LinkedIn</p>
                             </a>
                     </div>
-                    <button x-on:click="showModal = ! showModal" class="mx-auto mb-3 2xs:mb-0 button hover:bg-brandRed-300">
-                        <i class="mr-2 text-xl text-white fas fa-comments"></i>
+                    <button x-on:click="showModal = ! showModal" class="mx-auto mb-3 2xs:mb-0 button">
+                        <i class="button-icon fas fa-comments"></i>
                         <p>Contact Me</p>
                     </button>
                 </div>
@@ -140,16 +140,16 @@
         </section>
     
     <section class="py-32 bg-gray-100" id="portfolio">
-        <div class="container mx-auto 2xs:px-16 sm:px-32">
-            <h2 class="mx-auto mb-4 text-brandBlue-500 w-max lg:mx-0">Portfolio</h2>
+        <div class="portfolio-body">
+            <h2 class="mx-auto section-header lg:mx-0">Portfolio</h2>
             <div class="lg:flex lg:gap-16">
                 <a href="https://github.com/ThomasSurette/ThomasSurette.github.io" target="_blank">
-                    <div class="py-4 mb-10 transition-all duration-500 transform lg:mb-0 hover:-translate-y-6">
-                        <div class="container flex items-center justify-center max-w-sm mx-auto bg-white rounded-md shadow-lg">
+                    <div class="portfolio-card-wrapper">
+                        <div class="portfolio-card-body">
                             <div>
-                                <div class="w-full h-64 bg-cover bg-site rounded-t-md" >
+                                <div class=".site-img">
                                 </div>
-                                <div class="px-4 py-8 bg-white rounded-b-md fd-cl">
+                                <div class="portfolio-card-content">
                                     <span class="block text-lg font-header">Personal Website</span>
                                     <span  class="block text-gray-700 text-md">
                                         Created the website you are browsing right now. Built to be responsive and accessible on all devices using the Tailwind CSS and AlpineJS frameworks.
@@ -161,13 +161,12 @@
                 </a>
                    
             </div>
-            </div>
         </div>
     </section>
     <section class="py-32 bg-white" id="experience">
-        <div class="container flex mx-auto 2xs:px-8 sm:px-16 xs:px-14 md:px-24 lg:px-32">
+        <div class="experience-body">
             <div>
-                <h2 class="mx-auto mb-4 w-max text-brandBlue-500 lg:mx-0">Experience</h2>
+                <h2 class="mx-auto section-header lg:mx-0">Experience</h2>
                 <div>
                     <div class="py-4">
                         <div class="flex items-center justify-center w-full rounded-b-lg shadow-xl xl:rounded-b-none xl:rounded-l-lg">
@@ -210,7 +209,7 @@
     </section>
     <section class="py-32 bg-gray-100" id="skills">
         <div class="container mx-auto 2xs:px-12 xl:px-20">
-            <h2 class="mx-auto mb-4 lg:mx-0 text-brandBlue-500 w-max xl:ml-14 2xl:ml-24 3xl:ml-40 4xl:ml-56 5xl:ml-96 justify-self-start">Skills</h2>
+            <h2 class="mx-auto lg:mx-0 section-header xl:ml-14 2xl:ml-24 3xl:ml-40 4xl:ml-56 5xl:ml-96 justify-self-start">Skills</h2>
             <div class="w-full gap-16 space-y-16 xl:gap-0 lg:space-y-0 lg:flex 5xl:px-64">
                     <div class="container items-start justify-center max-w-md py-6 mx-auto bg-white rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl md:flex">
                         <div>
@@ -410,7 +409,6 @@
                                                 <path d="M68.891,95.6a5.976,5.976,0,0,0,3.933-.439L92.6,85.651A6,6,0,0,0,96,80.244V15.757a6,6,0,0,0-3.4-5.408L72.824.839A5.98,5.98,0,0,0,66,2L34.118,37.264,15.5,22l-1.631-1.4a4,4,0,0,0-3.61-.834,3.947,3.947,0,0,0-.531.179L2.462,22.974A4,4,0,0,0,.011,26.366c-.007.1-.011.2-.011.3V69.333c0,.1,0,.2.011.3a4,4,0,0,0,2.451,3.392l7.266,3.027a3.947,3.947,0,0,0,.531.179,4,4,0,0,0,3.61-.834L15.5,74,34.117,58.736,66,94A5.964,5.964,0,0,0,68.891,95.6ZM72,27.677,47.212,48,72,68.323Zm-60,6.6L24.411,48,12,61.727Z" fill="none" clip-rule="evenodd"/>
                                               </clipPath>
                                             </defs>
-                                            <title>BrandVisualStudioWin2019</title>
                                             <g style="isolation:isolate">
                                               <rect width="96" height="96" opacity="0" fill="url(#a)"/>
                                               <g clip-path="url(#b)">

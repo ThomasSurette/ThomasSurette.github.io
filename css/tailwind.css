@@ -17,20 +17,109 @@ h3{
 p{
     @apply text-lg xs:text-xl font-sans;
 }
-a.button{
-    @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200;
+.modal-bg{
+  @apply fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-40;
 }
-button.button{
-    @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200;
+.modal-body{
+    @apply flex-grow max-w-xs p-6 mx-0 bg-white shadow-2xl md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl rounded-xl lg:mx-24;
+}
+.modal-header{
+    @apply flex justify-between;
+}
+.form-label{
+    @apply block mb-2 text-lg font-header;
+}
+.form-input{
+    @apply w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none;
+}
+.button{
+    @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200 hover:bg-brandRed-300;
 }
 .button p{
     @apply font-header text-white;
+}
+.nav-menu-wrapper{
+    @apply fixed z-20 transition-all duration-300 top-1/3 rounded-r-2xl;
+}
+.nav-menu-body{
+    @apply z-20 flex items-center w-48 h-56 bg-white border-2 shadow-xl border-brandBlue-500 rounded-r-2xl;
+}
+.section-list{
+    @apply px-4 py-4 space-y-4 text-2xl;
+}
+.nav-menu-button{
+    @apply absolute z-30 justify-center hidden w-20 h-20 transition-all duration-300 md:flex bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-16;
+}
+.nav-menu-button-sm{
+    @apply absolute z-30 justify-center md:hidden w-14 h-14 transition-all duration-300 flex bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-20;
+}
+.button-open{
+    @apply rounded-full -right-10;
+}
+.button-closed{
+    @apply rounded-r-full -right-16;
+}
+.button-sm-open{
+    @apply rounded-full -right-7;
+}
+.button-sm-closed{
+    @apply rounded-r-full -right-12;
+}
+.button-arrow{
+    @apply z-40 text-4xl text-white;
+}
+.button-sm-arrow{
+    @apply z-40 text-3xl text-white;
+}
+.section-item{
+    @apply text-brandBlue-500 hover:text-brandBlue-400 font-header;
+}
+.current-section-item{
+    @apply text-brandRed-200 hover:text-brandRed-300;
 }
 .slanted{
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 56%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
-.slanted-reverse{
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 56%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+.header-body{
+    @apply z-30 gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24;
+}
+.profile-img{
+    @apply w-56 h-56 mx-auto mb-2 rounded-full lg:w-64 lg:h-64 xl:mb-0;
+}
+.title{
+    @apply hidden text-white xl:block;
+}
+.title-sm{
+    @apply text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden;
+}
+.section-header{
+    @apply mb-4 text-brandBlue-500 w-max;
+}
+.about-me-body{
+    @apply px-4 mx-auto 2xs:px-10 md:px-20 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex;
+}
+.about-me-paragraph{
+    @apply w-3/4 mx-auto mb-3 text-lg text-center xs:text-xl md:mx-0 md:text-left md:w-3/4 2xl:w-1/2;
+}
+.button-icon{
+    @apply mr-2 text-xl text-white;
+}
+.portfolio-body{
+    @apply container mx-auto 2xs:px-16 sm:px-32;
+}
+.portfolio-card-wrapper{
+    @apply py-4 mb-10 transition-all duration-500 transform lg:mb-0 hover:-translate-y-6;
+}
+.portfolio-card-body{
+    @apply container flex items-center justify-center max-w-sm mx-auto bg-white rounded-md shadow-lg;
+}
+.portfolio-card-content{
+    @apply px-4 py-8 bg-white rounded-b-md fd-cl
+}
+.site-img{
+    @apply w-full h-64 bg-cover bg-site rounded-t-md
+}
+.experience-body{
+    @apply container flex mx-auto 2xs:px-8 sm:px-16 xs:px-14 md:px-24 lg:px-32;
 }
