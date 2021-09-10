@@ -13,70 +13,72 @@
     <title>Thomas Surette</title>
 </head>
 <body x-data="{showModal:false}" class="w-screen overflow-x-hidden bg-brandRed-200">
+    
+            <!--Contact Me Modal-->
     <div x-show="showModal"
-            class="modal-bg"
-            x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0"
-            x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300"
-            x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-        
-                <div x-show="showModal" class="modal-body"
-                    x-on:click.away="showModal = false" x-transition:enter="transition ease duration-100 transform"
-                    x-transition:enter-start="opacity-0 scale-90 translate-y-1"
-                    x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-                    x-transition:leave="transition ease duration-100 transform"
-                    x-transition:leave-start="opacity-100 scale-100 translate-y-0"
-                    x-transition:leave-end="opacity-0 scale-90 translate-y-1">
-                    <div>
-                        <div class="modal-header">
-                            <h3 class="mb-6 text-brandBlue-500">Contact Me</h3>
-                            <div class="-mr-2">
-                                <button type="button" x-on:click="showModal = !showModal" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
-                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                        <form class=""
-                        action="https://formspree.io/f/xeqvvdqz"
-                        method="POST"
-                        >
-                        <div class="mb-4">
-                            <label class="form-label" for="name">
-                            First Name
-                            </label>
-                            <input class="form-input" required type="text" name="firstName">
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label" for="name">
-                            Last Name
-                            </label>
-                            <input class="form-input" required type="text" name="lastName">
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label" for="_replyto">
-                            Email                     
-                            </label>
-                            <input class="form-input" required type="email" name="_replyto">
-                        </div>
-                        <div class="mb-4">
-                            <label class="form-label" for="_replyto">
-                            Subject                       
-                            </label>
-                            <input class="form-input" required type="text" name="subject">
-                        </div>
-                        <div class="mb-6">
-                            <label class="form-label" for="message">
-                            Message
-                            </label>
-                            <textarea class="form-input" required name="message"></textarea>
-                        </div>
-                        
-                        <button class="button" type="submit"><p class="text-white">Send</p> <i class="ml-2 text-white fas fa-arrow-right"></i></button>
-                        </form>   
+    class="modal-bg"
+    x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300"
+    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
+
+        <div x-show="showModal" class="modal-body"
+            x-on:click.away="showModal = false" x-transition:enter="transition ease duration-100 transform"
+            x-transition:enter-start="opacity-0 scale-90 translate-y-1"
+            x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+            x-transition:leave="transition ease duration-100 transform"
+            x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+            x-transition:leave-end="opacity-0 scale-90 translate-y-1">
+            <div>
+                <div class="modal-header">
+                    <h3 class="mb-6 text-brandBlue-500">Contact Me</h3>
+                    <div class="-mr-2">
+                        <button type="button" x-on:click="showModal = !showModal" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
+                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
+                <form class=""
+                action="https://formspree.io/f/xeqvvdqz"
+                method="POST"
+                >
+                <div class="mb-4">
+                    <label class="form-label" for="name">
+                    First Name
+                    </label>
+                    <input class="form-input" required type="text" name="firstName">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="name">
+                    Last Name
+                    </label>
+                    <input class="form-input" required type="text" name="lastName">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="_replyto">
+                    Email                     
+                    </label>
+                    <input class="form-input" required type="email" name="_replyto">
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="_replyto">
+                    Subject                       
+                    </label>
+                    <input class="form-input" required type="text" name="subject">
+                </div>
+                <div class="mb-6">
+                    <label class="form-label" for="message">
+                    Message
+                    </label>
+                    <textarea class="form-input" required name="message"></textarea>
+                </div>
+                
+                <button class="button" type="submit"><p class="text-white">Send</p> <i class="ml-2 text-white fas fa-arrow-right"></i></button>
+                </form>   
             </div>
+        </div>
+    </div>
     <div x-data="{open: false, atElement: 0}"
          x-on:scroll.window="atElement=(document.querySelector('#skills').getBoundingClientRect().top <= 525 ? 3 :
          (document.querySelector('#experience').getBoundingClientRect().top <= 400 ? 2 :
@@ -147,7 +149,7 @@
                     <div class="portfolio-card-wrapper">
                         <div class="portfolio-card-body">
                             <div>
-                                <div class=".site-img">
+                                <div class="portfolio-card-img bg-site">
                                 </div>
                                 <div class="portfolio-card-content">
                                     <span class="block text-lg font-header">Personal Website</span>
@@ -169,35 +171,35 @@
                 <h2 class="mx-auto section-header lg:mx-0">Experience</h2>
                 <div>
                     <div class="py-4">
-                        <div class="flex items-center justify-center w-full rounded-b-lg shadow-xl xl:rounded-b-none xl:rounded-l-lg">
+                        <div class="experience-card-wrapper">
                             <div class="xl:pl-2 xl:flex">
-                                <div class="w-full bg-center bg-cover rounded-t-lg h-52 sm:h-56 md:h-64 lg:h-80 xl:hidden bg-qwally" >
+                                <div class="experience-card-img-sm bg-qwally" >
                                 </div>
-                                <div class="px-4 py-6 bg-white rounded-b-lg xl:rounded-b-none xl:rounded-l-lg fd-cl">
-                                    <div class="flex items-center justify-between w-full mb-1">
+                                <div class="experience-card-content">
+                                    <div class="experience-card-header">
                                         <h3 class="mr-2">Qwally</h3>
-                                        <p class="block ml-4 2xs:ml-0 text-md xs:text-lg font-header ">Jan 2021 - Sep 2021</p>
+                                        <p class="experience-card-date">Jan 2021 - Sep 2021</p>
                                     </div>
-                                    <p class="block mb-2 text-lg font-header">Software Engineering Intern</p>
-                                    <ul class="space-y-4 text-gray-700">
+                                    <p class="experience-card-position">Software Engineering Intern</p>
+                                    <ul class="experience-card-item-list">
                                         <li>
-                                            <p class="text-md xs:text-lg md:text-xl">• Streamlined content updates by building a headless content management system (CMS) to alleviate issue of software engineering team spending a significant portion of development time updating content</p>
+                                            <p class="experience-card-item">• Streamlined content updates by building a headless content management system (CMS) to alleviate issue of software engineering team spending a significant portion of development time updating content</p>
                                         </li>
                                         <li>
-                                            <p class="text-md xs:text-lg md:text-xl">• Built knowledge of company’s development platforms that includes C#, ASP.NET Core, TailwindCSS, AlpineJS, OrchardCore, GraphQL, Azure DevOps</p>
+                                            <p class="experience-card-item">• Built knowledge of company’s development platforms that includes C#, ASP.NET Core, TailwindCSS, AlpineJS, OrchardCore, GraphQL, Azure DevOps</p>
                                         </li>
                                         <li>
-                                            <p class="text-md xs:text-lg md:text-xl">• Worked with development team to identify key user interface elements for their web applications and created a hierarchy for the components in the CMS</p>
+                                            <p class="experience-card-item">• Worked with development team to identify key user interface elements for their web applications and created a hierarchy for the components in the CMS</p>
                                         </li>
                                         <li>
-                                            <p class="text-md xs:text-lg md:text-xl">• Implemented component hierarchy in the CMS and created a library to easily theme each component based on the application</p>
+                                            <p class="experience-card-item">• Implemented component hierarchy in the CMS and created a library to easily theme each component based on the application</p>
                                         </li>
                                         <li>
-                                            <p class="text-md xs:text-lg md:text-xl">• Integrated CMS across 60% of company’s web applications, resulting in a 30% time savings for software engineers</p>
+                                            <p class="experience-card-item">• Integrated CMS across 60% of company’s web applications, resulting in a 30% time savings for software engineers</p>
                                         </li>
                                     </ul>
                                 </div>
-                                <div class="hidden w-full bg-cover rounded-r-lg xl:block lg:bg-right xl:bg-center bg-qwally" >
+                                <div class="experience-card-img bg-qwally">
                                 </div>
                             </div>
                         </div>
@@ -208,13 +210,13 @@
         </div>
     </section>
     <section class="py-32 bg-gray-100" id="skills">
-        <div class="container mx-auto 2xs:px-12 xl:px-20">
-            <h2 class="mx-auto lg:mx-0 section-header xl:ml-14 2xl:ml-24 3xl:ml-40 4xl:ml-56 5xl:ml-96 justify-self-start">Skills</h2>
-            <div class="w-full gap-16 space-y-16 xl:gap-0 lg:space-y-0 lg:flex 5xl:px-64">
-                    <div class="container items-start justify-center max-w-md py-6 mx-auto bg-white rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl md:flex">
+        <div class="skills-body">
+            <h2 class="skills-header">Skills</h2>
+            <div class="skills-card-list">
+                    <div class="skills-language-card-wrapper">
                         <div>
-                            <h3 class="max-w-md mx-auto mb-3 text-center">Languages & Frameworks</h3>
-                            <div class="flex justify-between px-3 2xs:px-6 xs:px-12 md:px-16 lg:gap-10 2xl:gap-32 4xl:gap-36">
+                            <h3 class="skills-language-card-title">Languages & Frameworks</h3>
+                            <div class="skills-language-card-body">
                                 <ul class="space-y-2">
                                     <li>
                                         <div class="flex items-center">
@@ -223,7 +225,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div class="flex items-center">
+                                        <div class="">
                                             <svg class="mr-1" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 306 344.35" enable-background="new 0 0 306 344.35" xml:space="preserve">
                                                 <path fill="#00599C" d="M302.107,258.262c2.401-4.159,3.893-8.845,3.893-13.053V99.14c0-4.208-1.49-8.893-3.892-13.052L153,172.175  L302.107,258.262z"/>
                                                 <path fill="#004482" d="M166.25,341.193l126.5-73.034c3.644-2.104,6.956-5.737,9.357-9.897L153,172.175L3.893,258.263  c2.401,4.159,5.714,7.793,9.357,9.896l126.5,73.034C147.037,345.401,158.963,345.401,166.25,341.193z"/>
@@ -387,10 +389,10 @@
                             
                         </div>
                     </div>
-                    <div class="container flex items-start justify-center max-w-md py-6 mx-auto bg-white rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl">
+                    <div class="skills-software-card-wrapper">
                         <div>
-                            <h3 class="mb-3 text-center">Tools & <br> Applications</h3>
-                            <ul class="px-12 mx-auto space-y-2 md:px-16 w-max">
+                            <h3 class="skills-software-card-title">Tools & <br> Applications</h3>
+                            <ul class=".skills-software-card-body">
                                 <li>
                                     <div class="flex items-center">
                                         <svg class="mr-1" xmlns="http://www.w3.org/2000/svg" width="25" viewBox="0 0 18 18"><defs><linearGradient id="a" x1="9" y1="16.97" x2="9" y2="1.03" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0078d4"/><stop offset=".16" stop-color="#1380da"/><stop offset=".53" stop-color="#3c91e5"/><stop offset=".82" stop-color="#559cec"/><stop offset="1" stop-color="#5ea0ef"/></linearGradient></defs><path d="M17 4v9.74l-4 3.28-6.2-2.26V17l-3.51-4.59 10.23.8V4.44zm-3.41.49L7.85 1v2.29L2.58 4.84 1 6.87v4.61l2.26 1V6.57z" fill="url(#a)"/></svg>
@@ -477,14 +479,14 @@
                     </div> 
             </div>
         </div>
-    <a href="#" class="flex justify-center w-20 h-20 mx-auto mt-16 -mb-24 transition-all rounded-full animate-bounce bg-brandRed-200 hover:bg-brandRed-300 place-items-center">
-        <i class="z-40 text-4xl text-white fas fa-arrow-up"></i>
+    <a href="#" class="to-top-button">
+        <i class="to-top-button-icon fas fa-arrow-up"></i>
     </a>    
     </section>
     
     <footer class="bg-brandBlue-500 slanted-reverse">
-        <div class="gap-8 pt-16 pb-8 ml-12 md:flex md:items-center w-max"> 
-            <p class="text-white">© Thomas Surette 2021</p>
+        <div class="copyright-text"> 
+            <p>© Thomas Surette 2021</p>
         </div>
     </footer>
 </body>
