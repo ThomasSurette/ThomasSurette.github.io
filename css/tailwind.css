@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+// General Styles
 html{
     scroll-behavior: smooth;
 }
@@ -17,6 +18,16 @@ h3{
 p{
     @apply text-lg xs:text-xl font-sans;
 }
+
+// Button Styles
+.button{
+    @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200 hover:bg-brandRed-300;
+}
+.button p{
+    @apply font-header text-white;
+}
+
+// Modal Styles
 .modal-bg{
   @apply fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-40;
 }
@@ -32,12 +43,8 @@ p{
 .form-input{
     @apply w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none;
 }
-.button{
-    @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200 hover:bg-brandRed-300;
-}
-.button p{
-    @apply font-header text-white;
-}
+
+// Nav Menu Styles
 .nav-menu-wrapper{
     @apply fixed z-20 transition-all duration-300 top-1/3 rounded-r-2xl;
 }
@@ -77,6 +84,8 @@ p{
 .current-section-item{
     @apply text-brandRed-200 hover:text-brandRed-300;
 }
+
+// Header Styles
 .slanted{
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 56%, 0 100%);
     clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
@@ -93,9 +102,13 @@ p{
 .title-sm{
     @apply text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden;
 }
+
+// Section Header Style
 .section-header{
     @apply mb-4 text-brandBlue-500 w-max;
 }
+
+// About Me Section Styles
 .about-me-body{
     @apply px-4 mx-auto 2xs:px-10 md:px-20 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex;
 }
@@ -105,6 +118,8 @@ p{
 .button-icon{
     @apply mr-2 text-xl text-white;
 }
+
+// Portfolio Section Styles
 .portfolio-body{
     @apply container mx-auto 2xs:px-16 sm:px-32;
 }
@@ -120,6 +135,8 @@ p{
 .portfolio-card-img{
     @apply w-full h-64 bg-cover rounded-t-md;
 }
+
+// Experience Section Styles
 .experience-body{
     @apply container flex mx-auto 2xs:px-8 sm:px-16 xs:px-14 md:px-24 lg:px-32;
 }
@@ -150,6 +167,8 @@ p{
 .experience-card-item{
     @apply text-base xs:text-lg md:text-xl;
 }
+
+// Skills Section Styles
 .skills-body{
     @apply container mx-auto 2xs:px-12 xl:px-20;
 }
@@ -177,12 +196,16 @@ p{
 .skills-software-card-body{
     @apply px-12 mx-auto space-y-2 md:px-16 w-max;
 }
+
+// 'To Top' Button Styles
 .to-top-button{
     @apply flex justify-center w-20 h-20 mx-auto mt-16 -mb-24 transition-all rounded-full animate-bounce bg-brandRed-200 hover:bg-brandRed-300 place-items-center;
 }
 .to-top-button-icon{
     @apply z-40 text-4xl text-white;
 }
+
+// Footer/Copyright Styles
 .copyright-text{
     @apply gap-8 pt-16 pb-8 ml-12 text-white md:flex md:items-center w-max;
 }
