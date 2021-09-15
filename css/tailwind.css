@@ -21,7 +21,7 @@ p{
 
 /* Button Styles */
 .button{
-    @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200 hover:bg-brandRed-300;
+    @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200 hover:bg-brandRed-300 text-white font-header;
 }
 .button p{
     @apply font-header text-white;
