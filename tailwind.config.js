@@ -21,7 +21,10 @@ module.exports = {
       '5xl': '2304px',
     },
     extend: {
-      
+      inset: {
+       '22': '5.5rem',
+       '26': '6.5rem',
+      },
       backgroundImage: theme => ({
         'test': "url('/img/Koala.jpg')",
         'qwally': "url('/img/qwally.png')",
