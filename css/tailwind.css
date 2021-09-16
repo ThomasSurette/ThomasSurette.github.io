@@ -13,10 +13,10 @@ h2{
     @apply text-5xl xs:text-6xl font-header;
 }
 h3{
-    @apply text-3xl xs:text-4xl font-header;
+    @apply text-3xl xs:text-4xl font-header dark:text-white;
 }
 p{
-    @apply text-lg xs:text-xl font-sans;
+    @apply text-lg xs:text-xl font-sans dark:text-white;
 }
 
 /* Button Styles */
@@ -32,16 +32,16 @@ p{
   @apply fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-40;
 }
 .modal-body{
-    @apply flex-grow max-w-xs p-6 mx-0 bg-white shadow-2xl md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl rounded-xl lg:mx-24;
+    @apply flex-grow max-w-xs p-6 mx-0 bg-white dark:bg-gray-900 shadow-2xl md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl rounded-xl lg:mx-24;
 }
 .modal-header{
     @apply flex justify-between;
 }
 .form-label{
-    @apply block mb-2 text-lg font-header;
+    @apply block mb-2 text-lg font-header dark:text-white;
 }
 .form-input{
-    @apply w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none;
+    @apply w-full px-3 py-2 leading-tight dark:bg-gray-800 text-gray-700 dark:text-gray-200 border rounded shadow appearance-none focus:outline-none;
 }
 
 /* Nav Menu Styles */
@@ -103,11 +103,16 @@ p{
     @apply text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden;
 }
 
-/* Section Header Style */
+/* Section Styles */
 .section-header{
     @apply mb-4 text-brandBlue-500 w-max;
 }
-
+.section-type1{
+    @apply py-32 bg-white dark:bg-gray-900;
+}
+.section-type2{
+    @apply py-32 bg-gray-100 dark:bg-gray-800;
+}
 /* About Me Section Styles */
 .about-me-body{
     @apply px-4 mx-auto 2xs:px-10 md:px-20 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex;
@@ -127,10 +132,16 @@ p{
     @apply py-4 mb-10 transition-all duration-500 transform lg:mb-0 hover:-translate-y-6;
 }
 .portfolio-card-body{
-    @apply container flex items-center justify-center max-w-sm mx-auto bg-white rounded-md shadow-lg;
+    @apply container flex items-center justify-center max-w-sm mx-auto bg-white dark:bg-gray-900 rounded-md shadow-lg;
 }
 .portfolio-card-content{
-    @apply px-4 py-8 bg-white rounded-b-md;
+    @apply px-4 py-8 bg-white dark:bg-gray-900 rounded-b-md;
+}
+.portfolio-card-header{
+    @apply block text-lg font-header dark:text-white;
+}
+.portfolio-card-text{
+    @apply block text-gray-700 text-base dark:text-gray-200;
 }
 .portfolio-card-img{
     @apply w-full h-64 bg-cover rounded-t-md;
@@ -150,7 +161,7 @@ p{
     @apply w-full bg-center bg-cover rounded-t-lg h-52 sm:h-56 md:h-64 lg:h-80 xl:hidden;
 }
 .experience-card-content{
-    @apply px-4 py-6 bg-white rounded-b-lg xl:rounded-b-none xl:rounded-l-lg;
+    @apply px-4 py-6 bg-white dark:bg-gray-800 rounded-b-lg xl:rounded-b-none xl:rounded-l-lg;
 }
 .experience-card-header{
     @apply flex items-center justify-between w-full mb-1;
@@ -162,10 +173,10 @@ p{
     @apply block mb-2 text-lg font-header;
 }
 .experience-card-item-list{
-    @apply space-y-4 text-gray-700;
+    @apply space-y-4;
 }
 .experience-card-item{
-    @apply text-base xs:text-lg md:text-xl;
+    @apply text-base xs:text-lg md:text-xl text-gray-700 dark:text-gray-200;
 }
 
 /* Skills Section Styles */
@@ -179,7 +190,7 @@ p{
     @apply w-full gap-16 space-y-16 xl:gap-0 lg:space-y-0 lg:flex 5xl:px-64;
 }
 .skills-language-card-wrapper{
-    @apply container items-start justify-center max-w-md py-6 mx-auto bg-white rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl md:flex;
+    @apply container items-start justify-center max-w-md py-6 mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl md:flex;
 }
 .skills-language-card-title{
     @apply max-w-md mx-auto mb-3 text-center;
@@ -188,7 +199,7 @@ p{
     @apply flex justify-between px-3 2xs:px-6 xs:px-12 md:px-16 lg:gap-10 2xl:gap-32 4xl:gap-36;
 }
 .skills-software-card-wrapper{
-    @apply container flex items-start justify-center max-w-md py-6 mx-auto bg-white rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl;
+    @apply container flex items-start justify-center max-w-md py-6 mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl;
 }
 .skills-software-card-title{
     @apply mb-3 text-center;
