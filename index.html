@@ -7,10 +7,12 @@
     Uses Font Awesome for Icons
     Uses Formspree for Contact Me form
     Created: 09/02/2021
+
+    Note: Code does not validate in W3 validators because they do not recognize Tailwind CSS and alpine.js
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html x-data="{dark:false}" x-bind:class="dark ? 'dark' : ''" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,7 +35,7 @@
     alpine.js varible 'showModal' is declared and set to false. 
     It will be used to show and hide 'contact me' modal
 -->
-<body x-data="{showModal:false, dark:false}" x-bind:class="dark ? 'dark' : ''" class="w-screen overflow-x-hidden bg-brandRed-200">
+<body x-data="{showModal:false}" class="w-screen overflow-x-hidden bg-brandRed-200 dark:bg-brandRed-300">
     
     <!--
         'Contact Me' modal
@@ -122,7 +124,7 @@
          x-on:scroll.window="atElement=(document.querySelector('#skills').getBoundingClientRect().top <= 525 ? 3 :
          (document.querySelector('#experience').getBoundingClientRect().top <= 400 ? 2 :
          (document.querySelector('#portfolio').getBoundingClientRect().top <= 400 ? 1 : 0)))"
-         x-bind:class="open ? 'left-0' : '-left-48'" 
+         x-bind:class="open ? 'left-0' : '-left-52'" 
          class="nav-menu-wrapper">
         <div class="nav-menu-body">
             <!--
@@ -134,6 +136,14 @@
                 <li><a x-bind:class="{'current-section-item' : atElement === 1}" class="section-item" href="#portfolio">Portfolio</a></li>
                 <li><a x-bind:class="{'current-section-item' : atElement === 2}" class="section-item" href="#experience">Experience</a></li>
                 <li><a x-bind:class="{'current-section-item' : atElement === 3}" class="section-item" href="#skills">Skills</a></li>
+                <li>
+                    <button x-on:click="dark = !dark" x-bind:class=" dark ? 'bg-blue-900' : 'bg-yellow-300'" class="flex items-center w-20 h-10 px-1 mx-auto rounded-full">
+                        <!-- Switch -->
+                        <div class="w-8 h-8 transition-all transform bg-white rounded-full shadow-md" x-bind:class="{ 'translate-x-10': dark}">
+                            <i x-bind:class="dark ? 'fas fa-moon text-blue-900' : 'fas fa-sun text-yellow-300'"></i>
+                        </div>
+                    </button>
+                </li>
             </ul>
             
         </div>
@@ -156,7 +166,7 @@
             Includes photo and name
             Has slanted bottom to reveal red body bg underneath the blue header vg
         -->
-        <header class="bg-brandBlue-500 slanted">
+        <header class="bg-brandBlue-500 dark:bg-brandBlue-600 slanted">
             <div class="header-body">
                     <img class="profile-img" src="img/profile.jpg" alt="">  
                     <h1 class="title">Thomas Surette</h1>
@@ -175,7 +185,7 @@
                 <div class="mb-16">
                     <h2 class="mx-auto section-header md:mx-0">About Me</h2>
                     <p class="about-me-paragraph">I am a Senior at University of Massachusetts Lowell majoring in Computer Science. I have a passion for front-end development and GUI design and believe that software should be made to accomodate the user, not vice-versa.</p>
-                    <a href="/documents/resume.pdf" target="_blank" class="mx-auto button md:mx-0">
+                    <a href="/documents/resume.pdf" target="_blank" class="mx-auto button hover:bg-brandRed-300 md:mx-0">
                         <i class="button-icon fas fa-file"></i>
                         <p>My resume</p>
                     </a>
@@ -205,7 +215,7 @@
                         Inverts the current state of the 'showModal' variable, 
                         opening or closing the 'Contact Me' modal
                     -->
-                    <button x-on:click="showModal = ! showModal" class="mx-auto mb-3 2xs:mb-0 button">
+                    <button x-on:click="showModal = ! showModal" class="mx-auto mb-3 2xs:mb-0 button hover:bg-brandRed-300">
                         <i class="button-icon fas fa-comments"></i>
                         Contact Me
                     </button>
@@ -547,7 +557,7 @@
                                 <li>
                                     <div class="flex items-center pl-1">
                                         <!--GitHub logo-->
-                                        <i class="mr-1 text-xl fab fa-github"></i>
+                                        <i class="mr-1 text-xl fab fa-github dark:text-white"></i>
                                         <p>GitHub</p>
                                     </div>
                                 </li>
