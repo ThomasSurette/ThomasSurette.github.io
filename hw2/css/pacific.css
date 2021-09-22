@@ -6,6 +6,7 @@ body {
 	background-color:  #00569f;
 	color: #666666;
 	font-family: Arial, Helvetica, sans-serif;
+	margin:0 0;
 }
 header{
 	background-image: url("../img/sunset.jpg");
@@ -21,7 +22,6 @@ nav{
 }
 nav ul {
 	font-size: 1.2em;
-	margin: 0 0;
 	list-style:none;
 	padding: 0 1.5rem;
 }
@@ -40,7 +40,7 @@ h1 {
 }
 h2 {
 	color: #3399CC;
-	margin: 0 0;
+	margin: 0 0 1rem;
 }
 h1,
 h2 {
@@ -48,6 +48,7 @@ h2 {
 }
 img{
 	float:left;
+	margin-right:1.5rem;
 }
 #contact {
 	font-size: 90%;
@@ -57,19 +58,25 @@ dt {
 }
 footer {
 	font-family: Georgia, "Times New Roman", serif;
-	background-color:white
+	background-color:white;
+	margin-left: 15rem;
+	padding: 2rem;
+	font-size:small;
+	font-style:italic;
 }
 #wrapper{
 	min-width:600px;
 	width:80%;
 	margin: 0 auto;
+	background-color:#8DC6E4;
 }
 #content{
 	background-color:white;
+	margin-left: 15rem;
 	padding: 1rem 2rem;
 }
 #content ul{
-	list-style-image: url('../img/marker.gif');
+	list-style: inside url('../img/marker.gif');
 }
 .resort{
 	color: #3399CC;
