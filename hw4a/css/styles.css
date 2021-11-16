@@ -17,6 +17,12 @@ table thead tr:nth-child(2n) td{
     height:500px;
 }
 
+.error{
+    color:red;
+}
+label.error{
+    font-weight:600;
+}
 
 /* Code for fixed headers but it looks bad so I'm not using it */
 

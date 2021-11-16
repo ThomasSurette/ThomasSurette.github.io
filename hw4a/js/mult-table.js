@@ -5,55 +5,55 @@ function generateTable(){
     let minCol = parseInt(document.getElementById('numForm').minCol.value);
     let maxCol = parseInt(document.getElementById('numForm').maxCol.value);
 
-    // Check for an existing error message and clear it if there is one
-    var alert = document.getElementById("alert");
-    if(alert){
-        alert.parentNode.removeChild(alert);
-    }
+    // // Check for an existing error message and clear it if there is one
+    // var alert = document.getElementById("alert");
+    // if(alert){
+    //     alert.parentNode.removeChild(alert);
+    // }
 
-    // Potential Errors
+    // // Potential Errors
 
-    // If MinCol is not a number
-    if(!minCol){
-        document.getElementById('numForm').minCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
-        return;
-    }
+    // // If MinCol is not a number
+    // if(!minCol){
+    //     document.getElementById('numForm').minCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
+    //     return;
+    // }
 
-    // If MaxCol is not a number
-    if(!maxCol){
-        document.getElementById('numForm').maxCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
-        return;
-    }
-    // If MaxCol < MinCol
-    if(maxCol < minCol){
-            document.getElementById('numForm').maxCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Maximum Columns must be greater than or equal to Minimum Columns</div>');
-            return;
-    }
-    // If the column range > 500
-    if(maxCol - minCol > 500){
-        document.getElementById('numForm').maxCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Range between Minimum and Maximum Columns must be less than or equal to 500</div>');
-        return;
-    }
-    // If MinRow is not a number
-    if(!minRow){
-        document.getElementById('numForm').minRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
-        return;
-    }
-    // If MaxRow is not a number
-    if(!maxRow){
-        document.getElementById('numForm').maxRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
-        return;
-    }
-    // If MaxRow < MinRow
-    if(maxRow < minRow){
-        document.getElementById('numForm').maxRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Maximum Rows must be greater than or equal to Minimum Rows</div>');
-        return;
-    }
-    // If the row range > 500
-    if(maxRow - minRow > 500){
-        document.getElementById('numForm').maxRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Range between Minimum and Maximum Rows must be less than or equal to 500</div>');
-        return;
-    }
+    // // If MaxCol is not a number
+    // if(!maxCol){
+    //     document.getElementById('numForm').maxCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
+    //     return;
+    // }
+    // // If MaxCol < MinCol
+    // if(maxCol < minCol){
+    //         document.getElementById('numForm').maxCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Maximum Columns must be greater than or equal to Minimum Columns</div>');
+    //         return;
+    // }
+    // // If the column range > 500
+    // if(maxCol - minCol > 500){
+    //     document.getElementById('numForm').maxCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Range between Minimum and Maximum Columns must be less than or equal to 500</div>');
+    //     return;
+    // }
+    // // If MinRow is not a number
+    // if(!minRow){
+    //     document.getElementById('numForm').minRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
+    //     return;
+    // }
+    // // If MaxRow is not a number
+    // if(!maxRow){
+    //     document.getElementById('numForm').maxRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
+    //     return;
+    // }
+    // // If MaxRow < MinRow
+    // if(maxRow < minRow){
+    //     document.getElementById('numForm').maxRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Maximum Rows must be greater than or equal to Minimum Rows</div>');
+    //     return;
+    // }
+    // // If the row range > 500
+    // if(maxRow - minRow > 500){
+    //     document.getElementById('numForm').maxRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Range between Minimum and Maximum Rows must be less than or equal to 500</div>');
+    //     return;
+    // }
     // Clear existing table
     let table = document.querySelector("table");
     table.innerHTML = ""
