@@ -8,7 +8,9 @@
     <!-- Bootstrap Link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- External CSS Stylesheet Link -->
-    <link rel="stylesheet" href="/hw4a/css/styles.css">
+    <link rel="stylesheet" href="/hw4b/css/styles.css">
+    <!-- JQuery UI CSS -->
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
     
 </head>
 <body>
@@ -20,27 +22,36 @@
                 <!-- Input Form -->
             <h2>Please enter four numbers</h2>
             <form id="numForm" name="numForm" action="">
-                <div class="form-group"><label for="minCol">Minimum Column Value</label><input type="number" class="form-control" id="minCol" name="minCol" required></div>
-                <div class="form-group"><label for="maxCol">Maximum Column Value</label><input type="number" class="form-control" id="maxCol" name="maxCol" required></div>
-                <div class="form-group"><label for="minRow">Minimum Row Value</label><input type="number" class="form-control" id="minRow" name="minRow" required></div>
-                <div class="form-group"><label for="maxRow">Maximum Row Value</label><input type="number" class="form-control" id="maxRow" name="maxRow" required></div>
+                <div class="form-group"><label for="minCol">Minimum Column Value</label><input type="number" class="form-control" id="minCol" name="minCol" required><div class="mt-2 mb-3" id="sliderMinCol"></div></div>
+                <div class="form-group"><label for="maxCol">Maximum Column Value</label><input type="number" class="form-control" id="maxCol" name="maxCol" required><div class="mt-2 mb-3" id="sliderMaxCol"></div></div>
+                <div class="form-group"><label for="minRow">Minimum Row Value</label><input type="number" class="form-control" id="minRow" name="minRow" required><div class="mt-2 mb-3" id="sliderMinRow"></div></div>
+                <div class="form-group"><label for="maxRow">Maximum Row Value</label><input type="number" class="form-control" id="maxRow" name="maxRow" required><div class="mt-2 mb-3" id="sliderMaxRow"></div></div>
                 <br>
                 <button onclick="generateTable()" class="btn btn-primary" type="button" id="submit" name="submit" disabled>Submit</button>
             </form>
         </div>
         <!-- Table -->
-        <div id="table-div" class="col-lg-6 mh-100">
-            <table class="table table-bordered">
-            </table>
-        </div>
+            <div class="col-lg-6 mh-100" id="tabs">
+                <ul class="row">
+                    <li class="col-3"><a href = "#tab-1">Chart 1</a></li>
+                    <li class="col-3"><a href = "#tab-1">Chart 1</a></li>
+                    <li class="col-3"><a href = "#tab-1">Chart 1</a></li>
+                </ul>
+                <div id="table-div" class="">
+                    <table class="table table-bordered">
+                    </table>
+                </div>
+                <h1>gay</h1>
+            </div>
         </div>
         
         
     </div>
     <!-- External JS File Script -->
-    <script src="/hw4a/js/mult-table.js"></script>
+    <script src="/hw4b/js/mult-table.js"></script>
     <!-- JQuery Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -106,12 +117,91 @@
         });
         //Only enable submit button when form is valid
         $('input').on('blur keyup', function() {
-            if ($("#numForm").valid()) {
-                $('#submit').prop('disabled', false);  
-            } else {
-            $('#submit').prop('disabled', 'disabled');
-        }
-});
+                if ($("#numForm").valid()) {
+                    $('#submit').prop('disabled', false);  
+                } else {
+                $('#submit').prop('disabled', 'disabled');
+            }
+            $( "#sliderMinCol" ).slider("option", "value", $( "#minCol" ).val());
+            $( "#sliderMaxCol" ).slider("option", "value", $( "#maxCol" ).val());
+            $( "#sliderMinRow" ).slider("option", "value", $( "#minRow" ).val());
+            $( "#sliderMaxRow" ).slider("option", "value", $( "#maxRow" ).val());
+            if($("#numForm").valid()){
+                    generateTable()
+                  }
+        });
+
+        $(function() {
+            $("#sliderMinCol").slider({
+               min: -50,
+               max: 50,
+               value: 0,
+               animate:"slow",
+               orientation: "horizontal",
+               slide: function( event, ui ) {
+                  $( "#minCol" ).val(ui.value);
+                  if($("#numForm").valid()){
+                    generateTable()
+                  }
+               }
+            });
+            $( "#minCol" ).val( $( "#sliderMinCol" ).slider( "value" ) );
+         });
+        $(function() {
+            $("#sliderMaxCol").slider({
+               min: -50,
+               max: 50,
+               value: 0,
+               animate:"slow",
+               orientation: "horizontal",
+               slide: function( event, ui ) {
+                  $( "#maxCol" ).val(ui.value);
+                  if($("#numForm").valid()){
+                    generateTable()
+                  }
+               }
+            });
+            $( "#maxCol" ).val( $( "#sliderMaxCol" ).slider( "value" ) );
+         });
+        $(function() {
+            $("#sliderMinRow").slider({
+               min: -50,
+               max: 50,
+               value: 0,
+               animate:"slow",
+               orientation: "horizontal",
+               slide: function( event, ui ) {
+                  $( "#minRow" ).val(ui.value);
+                  if($("#numForm").valid()){
+                    generateTable()
+                  }
+               }
+            });
+            $( "#minRow" ).val( $( "#sliderMinRow" ).slider( "value" ) );
+         });
+        $(function() {
+            $("#sliderMaxRow").slider({
+               min: -50,
+               max: 50,
+               value: 0,
+               animate:"slow",
+               orientation: "horizontal",
+               slide: function( event, ui ) {
+                  $( "#maxRow" ).val(ui.value);
+                  if($("#numForm").valid()){
+                    generateTable()
+                  }
+               }
+            });
+            $( "#maxRow" ).val( $( "#sliderMaxRow" ).slider( "value" ) );
+         });
+
+         $(function() {
+            $( "#tabs" ).tabs({
+               heightStyle:"fill",
+               collapsible:true,
+            });
+         });
     </script>
 </body>
 </html>
