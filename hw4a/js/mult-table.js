@@ -5,55 +5,6 @@ function generateTable(){
     let minCol = parseInt(document.getElementById('numForm').minCol.value);
     let maxCol = parseInt(document.getElementById('numForm').maxCol.value);
 
-    // // Check for an existing error message and clear it if there is one
-    // var alert = document.getElementById("alert");
-    // if(alert){
-    //     alert.parentNode.removeChild(alert);
-    // }
-
-    // // Potential Errors
-
-    // // If MinCol is not a number
-    // if(!minCol){
-    //     document.getElementById('numForm').minCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
-    //     return;
-    // }
-
-    // // If MaxCol is not a number
-    // if(!maxCol){
-    //     document.getElementById('numForm').maxCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
-    //     return;
-    // }
-    // // If MaxCol < MinCol
-    // if(maxCol < minCol){
-    //         document.getElementById('numForm').maxCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Maximum Columns must be greater than or equal to Minimum Columns</div>');
-    //         return;
-    // }
-    // // If the column range > 500
-    // if(maxCol - minCol > 500){
-    //     document.getElementById('numForm').maxCol.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Range between Minimum and Maximum Columns must be less than or equal to 500</div>');
-    //     return;
-    // }
-    // // If MinRow is not a number
-    // if(!minRow){
-    //     document.getElementById('numForm').minRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
-    //     return;
-    // }
-    // // If MaxRow is not a number
-    // if(!maxRow){
-    //     document.getElementById('numForm').maxRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Please enter a numeric value</div>');
-    //     return;
-    // }
-    // // If MaxRow < MinRow
-    // if(maxRow < minRow){
-    //     document.getElementById('numForm').maxRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Maximum Rows must be greater than or equal to Minimum Rows</div>');
-    //     return;
-    // }
-    // // If the row range > 500
-    // if(maxRow - minRow > 500){
-    //     document.getElementById('numForm').maxRow.insertAdjacentHTML('afterend', '<div id="alert" class="alert alert-danger mt-2" role="alert"> Range between Minimum and Maximum Rows must be less than or equal to 500</div>');
-    //     return;
-    // }
     // Clear existing table
     let table = document.querySelector("table");
     table.innerHTML = ""
@@ -103,3 +54,70 @@ function generateBody(table, minCol, maxCol, minRow, maxRow){
           }
     } 
 }
+
+// Method to compare inputs to make sure max is greater
+jQuery.validator.addMethod("compare", function (value, element, arg) {
+    return (parseInt(value) >= parseInt($(arg).val()) && $(arg).val()!="");
+});
+//Validate form
+$("#numForm").validate({
+    //Form rules
+    rules: {
+        //Must enter a number between -50 and 50 for minCol
+        "minCol": {
+            required: true,
+            number: true,
+            range:[-50,50]
+        },
+        //Must enter a number between -50 and 50 for maxCol
+        "maxCol": {
+            required: true,
+            number: true,
+            range:[-50,50],
+            compare: $("#minCol")
+        },
+        //Must enter a number between -50 and 50 for minRow
+        "minRow":{
+            required: true,
+            number: true,
+            range:[-50,50],
+        },
+        //Must enter a number between -50 and 50 for maxRow
+        "maxRow": {
+            required: true,
+            number: true,
+            range:[-50,50],
+            compare: $("#minRow")
+        },
+    },
+    //Error messages
+    messages: {
+        "minCol": {
+            required: "This field is required",
+            number: "Please enter a valid number",
+            
+        },
+        "maxCol": {
+            required: "This field is required",
+            number: "Please enter a valid number",
+            compare:"Maximum Columns must be greater than or equal to Minimum Columns"
+        },
+        "minRow":{
+            required: "This field is required",
+            number: "Please enter a valid number",
+        },
+        "maxRow": {
+            required: "This field is required",
+            number: "Please enter a valid number",
+            compare:"Maximum Columns must be greater than or equal to Minimum Columns"
+        },
+    }
+});
+//Only enable submit button when form is valid
+$('input').on('blur keyup', function() {
+    if ($("#numForm").valid()) {
+        $('#submit').prop('disabled', false);  
+    } else {
+    $('#submit').prop('disabled', 'disabled');
+}
+});

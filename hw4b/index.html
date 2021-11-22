@@ -10,8 +10,7 @@
     <!-- External CSS Stylesheet Link -->
     <link rel="stylesheet" href="/hw4b/css/styles.css">
     <!-- JQuery UI CSS -->
-    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
-    
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css">
 </head>
 <body>
     <!-- Title -->
@@ -27,181 +26,34 @@
                 <div class="form-group"><label for="minRow">Minimum Row Value</label><input type="number" class="form-control" id="minRow" name="minRow" required><div class="mt-2 mb-3" id="sliderMinRow"></div></div>
                 <div class="form-group"><label for="maxRow">Maximum Row Value</label><input type="number" class="form-control" id="maxRow" name="maxRow" required><div class="mt-2 mb-3" id="sliderMaxRow"></div></div>
                 <br>
-                <button onclick="generateTable()" class="btn btn-primary" type="button" id="submit" name="submit" disabled>Submit</button>
+                <button onclick="addTab()" class="btn btn-primary" type="button" id="submit" name="submit" disabled>Add Tab</button>
+                <button onclick="removeSelectedTabs()" class="btn btn-secondary" type="button" id="remove" name="remove" remove>Remove Selected Tabs</button>
             </form>
         </div>
         <!-- Table -->
-            <div class="col-lg-6 mh-100" id="tabs">
-                <ul class="row">
-                    <li class="col-3"><a href = "#tab-1">Chart 1</a></li>
-                    <li class="col-3"><a href = "#tab-1">Chart 1</a></li>
-                    <li class="col-3"><a href = "#tab-1">Chart 1</a></li>
-                </ul>
-                <div id="table-div" class="">
+            <div class="col-lg-6 mh-100">
+                <div id="table-div" class="table-div">
                     <table class="table table-bordered">
                     </table>
                 </div>
-                <h1>gay</h1>
             </div>
         </div>
         
+        <div class="row justify-content-center">
+            <div id="tabs">
+                <ul id="tabList"></ul>
+                <div id="tabData"></div>
+            </div>
+        </div>
         
     </div>
-    <!-- External JS File Script -->
-    <script src="/hw4b/js/mult-table.js"></script>
     <!-- JQuery Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <script>
-        // Method to compare inputs to make sure max is greater
-        jQuery.validator.addMethod("compare", function (value, element, arg) {
-            return (parseInt(value) >= parseInt($(arg).val()) && $(arg).val()!="");
-        });
-        //Validate form
-        $("#numForm").validate({
-            //Form rules
-            rules: {
-                //Must enter a number between -50 and 50 for minCol
-                "minCol": {
-                    required: true,
-                    number: true,
-                    range:[-50,50]
-                },
-                //Must enter a number between -50 and 50 for maxCol
-                "maxCol": {
-                    required: true,
-                    number: true,
-                    range:[-50,50],
-                    compare: $("#minCol")
-                },
-                //Must enter a number between -50 and 50 for minRow
-                "minRow":{
-                    required: true,
-                    number: true,
-                    range:[-50,50],
-                },
-                //Must enter a number between -50 and 50 for maxRow
-                "maxRow": {
-                    required: true,
-                    number: true,
-                    range:[-50,50],
-                    compare: $("#minRow")
-                },
-            },
-            //Error messages
-            messages: {
-                "minCol": {
-                    required: "This field is required",
-                    number: "Please enter a valid number",
-                    
-                },
-                "maxCol": {
-                    required: "This field is required",
-                    number: "Please enter a valid number",
-                    compare:"Maximum Columns must be greater than or equal to Minimum Columns"
-                },
-                "minRow":{
-                    required: "This field is required",
-                    number: "Please enter a valid number",
-                },
-                "maxRow": {
-                    required: "This field is required",
-                    number: "Please enter a valid number",
-                    compare:"Maximum Columns must be greater than or equal to Minimum Columns"
-                },
-            }
-        });
-        //Only enable submit button when form is valid
-        $('input').on('blur keyup', function() {
-                if ($("#numForm").valid()) {
-                    $('#submit').prop('disabled', false);  
-                } else {
-                $('#submit').prop('disabled', 'disabled');
-            }
-            $( "#sliderMinCol" ).slider("option", "value", $( "#minCol" ).val());
-            $( "#sliderMaxCol" ).slider("option", "value", $( "#maxCol" ).val());
-            $( "#sliderMinRow" ).slider("option", "value", $( "#minRow" ).val());
-            $( "#sliderMaxRow" ).slider("option", "value", $( "#maxRow" ).val());
-            if($("#numForm").valid()){
-                    generateTable()
-                  }
-        });
-
-        $(function() {
-            $("#sliderMinCol").slider({
-               min: -50,
-               max: 50,
-               value: 0,
-               animate:"slow",
-               orientation: "horizontal",
-               slide: function( event, ui ) {
-                  $( "#minCol" ).val(ui.value);
-                  if($("#numForm").valid()){
-                    generateTable()
-                  }
-               }
-            });
-            $( "#minCol" ).val( $( "#sliderMinCol" ).slider( "value" ) );
-         });
-        $(function() {
-            $("#sliderMaxCol").slider({
-               min: -50,
-               max: 50,
-               value: 0,
-               animate:"slow",
-               orientation: "horizontal",
-               slide: function( event, ui ) {
-                  $( "#maxCol" ).val(ui.value);
-                  if($("#numForm").valid()){
-                    generateTable()
-                  }
-               }
-            });
-            $( "#maxCol" ).val( $( "#sliderMaxCol" ).slider( "value" ) );
-         });
-        $(function() {
-            $("#sliderMinRow").slider({
-               min: -50,
-               max: 50,
-               value: 0,
-               animate:"slow",
-               orientation: "horizontal",
-               slide: function( event, ui ) {
-                  $( "#minRow" ).val(ui.value);
-                  if($("#numForm").valid()){
-                    generateTable()
-                  }
-               }
-            });
-            $( "#minRow" ).val( $( "#sliderMinRow" ).slider( "value" ) );
-         });
-        $(function() {
-            $("#sliderMaxRow").slider({
-               min: -50,
-               max: 50,
-               value: 0,
-               animate:"slow",
-               orientation: "horizontal",
-               slide: function( event, ui ) {
-                  $( "#maxRow" ).val(ui.value);
-                  if($("#numForm").valid()){
-                    generateTable()
-                  }
-               }
-            });
-            $( "#maxRow" ).val( $( "#sliderMaxRow" ).slider( "value" ) );
-         });
-
-         $(function() {
-            $( "#tabs" ).tabs({
-               heightStyle:"fill",
-               collapsible:true,
-            });
-         });
-    </script>
+    <!-- External JS File Script -->
+    <script src="/hw4b/js/mult-table.js"></script>
 </body>
 </html>

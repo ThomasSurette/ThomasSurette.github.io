@@ -1,3 +1,4 @@
+
 /* Make cells change color on hover */
 table td:hover {
     background-color: rgba(0,0,0,.075);
@@ -12,7 +13,7 @@ table thead tr:nth-child(2n) td{
 }
 
 /* Set height of table and make it scroll on overflow */
-#table-div{
+.table-div{
     overflow:auto;
     height:500px;
 }

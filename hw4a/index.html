@@ -37,81 +37,12 @@
         
         
     </div>
-    <!-- External JS File Script -->
-    <script src="/hw4a/js/mult-table.js"></script>
     <!-- JQuery Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <script>
-        // Method to compare inputs to make sure max is greater
-        jQuery.validator.addMethod("compare", function (value, element, arg) {
-            return (parseInt(value) >= parseInt($(arg).val()) && $(arg).val()!="");
-        });
-        //Validate form
-        $("#numForm").validate({
-            //Form rules
-            rules: {
-                //Must enter a number between -50 and 50 for minCol
-                "minCol": {
-                    required: true,
-                    number: true,
-                    range:[-50,50]
-                },
-                //Must enter a number between -50 and 50 for maxCol
-                "maxCol": {
-                    required: true,
-                    number: true,
-                    range:[-50,50],
-                    compare: $("#minCol")
-                },
-                //Must enter a number between -50 and 50 for minRow
-                "minRow":{
-                    required: true,
-                    number: true,
-                    range:[-50,50],
-                },
-                //Must enter a number between -50 and 50 for maxRow
-                "maxRow": {
-                    required: true,
-                    number: true,
-                    range:[-50,50],
-                    compare: $("#minRow")
-                },
-            },
-            //Error messages
-            messages: {
-                "minCol": {
-                    required: "This field is required",
-                    number: "Please enter a valid number",
-                    
-                },
-                "maxCol": {
-                    required: "This field is required",
-                    number: "Please enter a valid number",
-                    compare:"Maximum Columns must be greater than or equal to Minimum Columns"
-                },
-                "minRow":{
-                    required: "This field is required",
-                    number: "Please enter a valid number",
-                },
-                "maxRow": {
-                    required: "This field is required",
-                    number: "Please enter a valid number",
-                    compare:"Maximum Columns must be greater than or equal to Minimum Columns"
-                },
-            }
-        });
-        //Only enable submit button when form is valid
-        $('input').on('blur keyup', function() {
-            if ($("#numForm").valid()) {
-                $('#submit').prop('disabled', false);  
-            } else {
-            $('#submit').prop('disabled', 'disabled');
-        }
-});
-    </script>
+    <!-- External JS File Script -->
+    <script src="/hw4a/js/mult-table.js"></script>
 </body>
 </html>
