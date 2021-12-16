@@ -315,7 +315,7 @@ function nextWord() {
 
   // Checks the dictionary for the given word
   function isDictionaryWord(possibleWord) {
-    if (possibleWord.length > 0 && dictionary.has(possibleWord+'\r')) {
+    if (possibleWord.length > 0 && dictionary.has(possibleWord)) {
       return true;
     } 
     return false;
