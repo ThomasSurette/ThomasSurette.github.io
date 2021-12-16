@@ -1,3 +1,10 @@
+<!-- 
+    Thomas Surette
+    Homework 5
+    Inspired by solution by Yong Cho:
+    http://yongcho.github.io/GUI-Programming-1/assignment9.html
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +16,31 @@
     <link rel="stylesheet" href="/hw5/css/styles.css">
 </head>
 <body>
+    <!-- Title -->
     <header class="py-4 d-flex justify-content-center">
         <h1>Scrabble</h1>
     </header>
+    <!-- Body -->
     <div class="container">
+        <!-- Score, word, etc. -->
         <div class="flex-row d-flex justify-content-around">
             <div>
+                <!-- Current word -->
                 <span>Word: </span>
                 <span id="word" class="fw-bold"></span>
             </div>
             <div>
+                <!-- Current score -->
                 <span>Score: </span>
                 <span id="score" class="fw-bold">0</span>
             </div>
             <div>
+                <!-- Number of tiles in the deck -->
                 <span>Remaining Tiles: </span>
                 <span id="remainingTiles" class="fw-bold"></span>
             </div>
             <div>
+                <!-- Best score -->
                 <span>Highest Score: </span>
                 <span id="highestScore" class="fw-bold"></span>
             </div>

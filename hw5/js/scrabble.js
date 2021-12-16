@@ -1,3 +1,4 @@
+// List of all the scrabble tiles, how many there are at the beginning, how many are left, and their images
 var ScrabbleTiles = [] ;
 ScrabbleTiles["A"] = { "value" : 1,  "original-distribution" : 9,  "number-remaining" : 9, "image" : "/hw5/graphics_data/Scrabble_Tiles/Scrabble_Tile_A.jpg" } ;
 ScrabbleTiles["B"] = { "value" : 3,  "original-distribution" : 2,  "number-remaining" : 2, "image" : "/hw5/graphics_data/Scrabble_Tiles/Scrabble_Tile_B.jpg" } ;
@@ -27,6 +28,7 @@ ScrabbleTiles["Y"] = { "value" : 4,  "original-distribution" : 2,  "number-remai
 ScrabbleTiles["Z"] = { "value" : 10, "original-distribution" : 1,  "number-remaining" : 1, "image" : "/hw5/graphics_data/Scrabble_Tiles/Scrabble_Tile_Z.jpg" } ;
 ScrabbleTiles["_"] = { "value" : 0,  "original-distribution" : 2,  "number-remaining" : 2, "image" : "/hw5/graphics_data/Scrabble_Tiles/Scrabble_Tile_Blank.jpg" } ;
 
+// The board object that stores the board slots and associated functions
 board = {}
 board.slots = [
     {"wordMult" : 1},
@@ -38,6 +40,7 @@ board.slots = [
     {"wordMult" : 1},
 ];
 
+// Makes the html for the board
 board.constructBoard = function(){
     for(i = 0; i<7; i++){
         bgImage = ""
@@ -49,18 +52,22 @@ board.constructBoard = function(){
     }
 }
 
+// Given the index of a slot, returns the tile id of the tile in that slot
 board.getTileIdFromSlot = function(index) {
     return board.slots[index].tileId;
   }
-  
-  board.getLetterFromSlot = function(index) {
-    return board.slots[index].letter;
-  }
 
+// Given the index of a slot, returns the letter of the tile in that slot
+board.getLetterFromSlot = function(index) {
+    return board.slots[index].letter;
+}
+
+// Returns whether a given slot is empty
 board.isSlotEmpty = function(index) {
     return typeof(board.slots[index].tileId) === "undefined";
 }
 
+// Adds a tile with the given id and letter at the slot at the given index
 board.addToSlot = function(tileId, letter, index) {
     for (i = 0; i < 7; i++) {
         if (board.slots[i].tileId === tileId) {
@@ -72,11 +79,13 @@ board.addToSlot = function(tileId, letter, index) {
     board.slots[index].tileId = tileId;
 }
 
-board.deleteFromSlot = function(i) {
-    delete board.slots[i].tileId;
-    delete board.slots[i].letter;
+// Removes the tile in the slot at the given index
+board.deleteFromSlot = function(index) {
+    delete board.slots[index].tileId;
+    delete board.slots[index].letter;
   }
 
+// Removes all the tiles on the board
 board.clearBoard = function() { 
     $("#board img").remove();
 
@@ -86,11 +95,7 @@ board.clearBoard = function() {
       }
   }  
 
-board.clearSlot = function(i) {
-    delete board.slots[i].tileId;
-    delete board.slots[i].letter;
-}
-
+// Returns the index of the slot that a tile is in given its id, or -1 if it's in the rack
 board.findSlotFromTileId = function(tileId) {
       for (i = 0; i < 7; i++) {
         if (board.slots[i].tileId === tileId) {
@@ -100,8 +105,20 @@ board.findSlotFromTileId = function(tileId) {
     return -1;
 }
 
+// Checks if a given slot is the leftmost valid slot
+board.isLeftmostSlot = function(to, from){
+    leftMost = 7;
+    for(i = 6; i>=0; i--){
+        if(board.isSlotEmpty(i) || (i === from)){
+            leftMost = i
+        }
+    }
+    return(to == leftMost);
+}
+
 score = {"totalScore": 0, "highestScore": 0};
 
+// Calculates the current score
 score.calculateScore = function() {
     var multiplier = 1, boardScore = 0;
     if (!validateWord()) {
@@ -117,6 +134,7 @@ score.calculateScore = function() {
     return boardScore *= multiplier;
 }
 
+// Updates the score to reflect the current score of the board
 score.refresh = function() {
     boardScore = score.calculateScore();
   
@@ -131,12 +149,14 @@ score.refresh = function() {
     $("#highestScore").html(score.highestScore);
 }
 
+// Resets the score to 0
 score.reset = function() {
     score.totalScore = 0;
     $("#score").html(0);
     $("#highestScore").css("color", "#000000");
   }
 
+// Adds the board score to the total score and updated the high score if necessary
 score.commit = function() {
     boardScore = score.calculateScore();
     score.totalScore += boardScore;
@@ -152,16 +172,8 @@ score.commit = function() {
     }
 }
 
-board.isLeftmostSlot = function(to, from){
-    leftMost = 7;
-    for(i = 6; i>=0; i--){
-        if(board.isSlotEmpty(i) || (i === from)){
-            leftMost = i
-        }
-    }
-    return(to == leftMost);
-}
 
+// Gets a new random tile from the deck
 function getFromDeck(n) {
     var hand = [];
     var allTiles = [];
@@ -190,6 +202,7 @@ function getFromDeck(n) {
     return hand;
   }
 
+// Returns the number of tiles still in the deck
 function numTilesInDeck() {
     var numTotalTiles = 0;
   
@@ -202,27 +215,28 @@ function numTilesInDeck() {
     return numTotalTiles;
   }
   
-
-  function numTilesOnRack() {
+// Returns the number of tiles in the rack
+function numTilesOnRack() {
     return $("#tileRack img").length;
-  }
-  
+}
 
-  function toggleFinishButton(toFinishButton) {
+// Changes the next word button to finish when the deck runs out
+function toggleFinishButton(toFinishButton) {
     var nextWordButton = document.getElementById("nextWordButton");
     if (toFinishButton) {
-      nextWordButton.innerHTML = "Finish";
-      nextWordButton.onclick = function(event) {
+        nextWordButton.innerHTML = "Finish";
+        nextWordButton.onclick = function(event) {
         finish();
-      }
+        }
     } else {
-      nextWordButton.innerHTML = "Next Word";
-      nextWordButton.onclick = function(event) {
+        nextWordButton.innerHTML = "Next Word";
+        nextWordButton.onclick = function(event) {
         nextWord();
-      }
+        }
     }
-  }
+}
 
+// Restarts the game
 function restart() {
     $("#tileRack img").remove();
     board.clearBoard();
@@ -236,11 +250,13 @@ function restart() {
     nextWord();
   }
 
+// Gets the next word
 function nextWord() {
     var key, tileImageId, newTile;
     score.commit();
     board.clearBoard();
     newTiles = getFromDeck(7 - numTilesOnRack());
+    // This loop adds new tiles to the rack
     for (i = 0; i < newTiles.length; ++i) {
       key = newTiles[i];
       tileImageId = generateTileId();
@@ -265,7 +281,7 @@ function nextWord() {
     checkSingleWord(false);
     checkTwoLettersAndMore(false);
     checkDictionary(false);
-  
+
     if (numTilesInDeck() == 0) {
       toggleFinishButton(true);
       document.getElementById("nextWordButton").disabled = false;
@@ -274,12 +290,14 @@ function nextWord() {
     }
   }
 
+// Finishes the game
   function finish() {
     score.commit();
     document.getElementById("nextWordButton").disabled = true; 
     $(".tile").draggable("disable");
   }
-  
+
+// Generates an id for a tile
   function generateTileId() {
     var id;
     generateTileId.id = ++generateTileId.id || 1;
@@ -287,12 +305,15 @@ function nextWord() {
     return id;
   }
   
+  // Returns a random integer
   function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
+  // Makes a set to use for the dictionary
   var dictionary = new Set();
 
+  // Checks the dictionary for the given word
   function isDictionaryWord(possibleWord) {
     if (possibleWord.length > 0 && dictionary.has(possibleWord+'\r')) {
       return true;
@@ -300,28 +321,36 @@ function nextWord() {
     return false;
   }
 
+  // Checks to see if a word meets all of the given criteria
   function validateWord() {
     var letter, errorCount, word = "";
 
     for (i = 0; i < 7; i++) {
         letter = board.getLetterFromSlot(i);
         if (typeof(letter) === "undefined") {
+        // Dot character represents empty slots
         word += "\xB7";
         } else {
         word += letter;
         }
     }
+    // Keeps track of number of errors
     errorCount = 0;
+
+    // Makes sure word starts in the first slot
     if(word[0] === "\xB7") {
         checkFirstSlot(false);
         errorCount++;
     } else {
         checkFirstSlot(true);
     }
+
+    // Removes trailing dots
     word = word.replace(/\xB7+$/, "");
   
     $("#word").html(word);
 
+    // Makes sure that there's no gaps in the word
     if (word == "") {
       checkSingleWord(false);
       errorCount++;
@@ -335,12 +364,15 @@ function nextWord() {
       }
     }
   
+    // Makes sure the word has at least 2 letters
     if (word.length >= 2) {
       checkTwoLettersAndMore(true);
     } else {
       checkTwoLettersAndMore(false);
       ++errorCount;
     }
+
+    // Makes sure the word is in the dictionary
     if (isDictionaryWord(word)) {
       checkDictionary(true);
     } else {
@@ -348,6 +380,7 @@ function nextWord() {
       ++errorCount;
     }
   
+    // Disables the next word button if there's errors
     if (errorCount) {
       document.getElementById("nextWordButton").disabled = true;
       $("#word").css("color", "#FF0000");
@@ -359,6 +392,7 @@ function nextWord() {
     return word;
   }
 
+// Controls the error message for the word being 2 or more letters
 function checkTwoLettersAndMore(check) {
     if (!check) {
         if($("#lengthError").html() === undefined)
@@ -368,6 +402,7 @@ function checkTwoLettersAndMore(check) {
     }
   }
 
+// Controls the error message for the word starting at the first slot
 function checkFirstSlot(check) {
     if (!check) {
         if($("#firstSlotError").html() === undefined)
@@ -377,6 +412,7 @@ function checkFirstSlot(check) {
     }
 }  
 
+// Controls the error message for not having spaces
 function checkSingleWord(check) {
     if (!check) {
         if($("#spaceError").html() === undefined)
@@ -386,6 +422,7 @@ function checkSingleWord(check) {
     }
 }
 
+// Controls the error messages for the word being in the dictionary
 function checkDictionary(check) {
     if (!check) {
         if($("#dictionaryError").html() === undefined)
@@ -395,6 +432,7 @@ function checkDictionary(check) {
     }
 }
 
+// Opens the modal for the blank tile
 function openBlankTileDialog(blankTileDraggable, tileId, index) {
     var tileSelectorDialog = $("<div id='blankTileDialog'></div>");
     var letterKey, newTile;
@@ -431,7 +469,10 @@ function openBlankTileDialog(blankTileDraggable, tileId, index) {
 
 
 $(function () {
+    // Contruct the board html
     board.constructBoard();
+
+    // Populate the dictionary using the txt file
     $.ajax({
         url: "/hw5/doc/words.txt",
         success: function(result) {
@@ -441,6 +482,7 @@ $(function () {
           }
         }
       });
+    // Make the board slots droppable if they are valid slots
     $(".boardSlot").droppable({
         accept: function(draggable) {      
             index = $(this).attr("index");
@@ -468,6 +510,7 @@ $(function () {
             score.refresh();
         }}
         });
+    // Makes the tile rack droppable
     $("#tileRack").droppable({
         activeClass: "dragHighlight",
         hoverClass: "hoverHighlight",
@@ -481,6 +524,7 @@ $(function () {
           }
     
           tileId = ui.draggable.attr("id");
+          // If the tile came from a board slot, remove it from the slot
           pos = board.findSlotFromTileId(tileId);
           if (pos >= 0) {
             board.deleteFromSlot(pos);
@@ -494,5 +538,5 @@ $(function () {
         }
       });
 });
-
+// Start the game
 restart();
