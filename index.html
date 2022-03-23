@@ -13,607 +13,1389 @@
 
 <!DOCTYPE html>
 <html x-data="{dark:false}" x-bind:class="dark ? 'dark' : ''" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--CSS Stylesheet-->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
     <!--Google Fonts-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <!--Font Awesome-->
-    <script src="https://kit.fontawesome.com/2eb191a26e.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/2eb191a26e.js"
+      crossorigin="anonymous"
+    ></script>
     <!--alpine.js-->
     <script src="//unpkg.com/alpinejs" defer></script>
     <title>Thomas Surette</title>
-</head>
+  </head>
 
-<!--
+  <!--
     Page Body
     alpine.js varible 'showModal' is declared and set to false. 
     It will be used to show and hide 'contact me' modal
 -->
-<body x-data="{showModal:false}" class="w-screen overflow-x-hidden bg-brandRed-200 dark:bg-brandRed-300">
-    
+  <body
+    x-data="{showModal:false}"
+    class="w-screen overflow-x-hidden bg-brandRed-200 dark:bg-brandRed-300 debug-screens"
+  >
     <!--
         'Contact Me' modal
         Uses alpine.js variable 'showModal to determine if modal is displayed
     -->
-    
+
     <!--Translucent background while modal is open-->
-    <div x-show="showModal"
-    class="modal-bg"
-    x-transition:enter="transition ease duration-300" x-transition:enter-start="opacity-0"
-    x-transition:enter-end="opacity-100" x-transition:leave="transition ease duration-300"
-    x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0">
-    
-        <!--Body of contact modal-->
-        <div x-show="showModal" class="modal-body"
-            x-on:click.away="showModal = false" x-transition:enter="transition ease duration-100 transform"
-            x-transition:enter-start="opacity-0 scale-90 translate-y-1"
-            x-transition:enter-end="opacity-100 scale-100 translate-y-0"
-            x-transition:leave="transition ease duration-100 transform"
-            x-transition:leave-start="opacity-100 scale-100 translate-y-0"
-            x-transition:leave-end="opacity-0 scale-90 translate-y-1">
-            <div>
-                
-                <!--Modal header includes title (Contact Me) and 'x' button to close-->
-                <div class="modal-header">
-                    <h3 class="mb-6 text-brandBlue-500">Contact Me</h3>
-                    <div class="-mr-2">
-                        <button type="button" x-on:click="showModal = !showModal" class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500">
-                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                
-                <!--
+    <div
+      x-show="showModal"
+      class="modal-bg"
+      x-transition:enter="transition ease duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease duration-300"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+    >
+      <!--Body of contact modal-->
+      <div
+        x-show="showModal"
+        class="modal-body"
+        x-on:click.away="showModal = false"
+        x-transition:enter="transition ease duration-100 transform"
+        x-transition:enter-start="opacity-0 scale-90 translate-y-1"
+        x-transition:enter-end="opacity-100 scale-100 translate-y-0"
+        x-transition:leave="transition ease duration-100 transform"
+        x-transition:leave-start="opacity-100 scale-100 translate-y-0"
+        x-transition:leave-end="opacity-0 scale-90 translate-y-1"
+      >
+        <div>
+          <!--Modal header includes title (Contact Me) and 'x' button to close-->
+          <div class="modal-header">
+            <h3 class="mb-6 text-brandBlue-500">Contact Me</h3>
+            <div class="-mr-2">
+              <button
+                type="button"
+                x-on:click="showModal = !showModal"
+                class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500"
+              >
+                <svg
+                  class="w-6 h-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!--
                     Contact form
                     Uses Formspree for form submissions
                 -->
-                <form class=""
-                action="https://formspree.io/f/xeqvvdqz"
-                method="POST"
-                >
-                    <div class="mb-4">
-                        <label class="form-label">
-                        First Name
-                        </label>
-                        <input class="form-input" required type="text" name="firstName">
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label">
-                        Last Name
-                        </label>
-                        <input class="form-input" required type="text" name="lastName">
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label">
-                        Email                     
-                        </label>
-                        <input class="form-input" required type="email" name="_replyto">
-                    </div>
-                    <div class="mb-4">
-                        <label class="form-label">
-                        Subject                       
-                        </label>
-                        <input class="form-input" required type="text" name="subject">
-                    </div>
-                    <div class="mb-6">
-                        <label class="form-label">
-                        Message
-                        </label>
-                        <textarea class="form-input" required name="message"></textarea>
-                    </div> 
-                    <button class="button" type="submit">Send <i class="ml-2 text-white fas fa-arrow-right"></i></button>
-                </form>   
+          <form class="" action="https://formspree.io/f/xeqvvdqz" method="POST">
+            <div class="mb-4">
+              <label class="form-label"> First Name </label>
+              <input class="form-input" required type="text" name="firstName" />
             </div>
+            <div class="mb-4">
+              <label class="form-label"> Last Name </label>
+              <input class="form-input" required type="text" name="lastName" />
+            </div>
+            <div class="mb-4">
+              <label class="form-label"> Email </label>
+              <input class="form-input" required type="email" name="_replyto" />
+            </div>
+            <div class="mb-4">
+              <label class="form-label"> Subject </label>
+              <input class="form-input" required type="text" name="subject" />
+            </div>
+            <div class="mb-6">
+              <label class="form-label"> Message </label>
+              <textarea class="form-input" required name="message"></textarea>
+            </div>
+            <button class="button" type="submit">
+              Send <i class="ml-2 text-white fas fa-arrow-right"></i>
+            </button>
+          </form>
         </div>
+      </div>
     </div>
-    
+
     <!--
         Navigation menu
         Defines alpine.js variables 'open' to determine if menu is open 
         and 'atElement' to track screen location and update nav menu colors accordingly
     -->
-    <div x-data="{open: false, atElement: 0}"
-         x-on:scroll.window="atElement=(document.querySelector('#skills').getBoundingClientRect().top <= 525 ? 3 :
+    <div
+      x-data="{open: false, atElement: 0}"
+      x-on:scroll.window="atElement=(document.querySelector('#skills').getBoundingClientRect().top <= 525 ? 3 :
          (document.querySelector('#experience').getBoundingClientRect().top <= 400 ? 2 :
          (document.querySelector('#portfolio').getBoundingClientRect().top <= 400 ? 1 : 0)))"
-         x-bind:class="open ? 'left-0' : '-left-52'" 
-         class="nav-menu-wrapper">
-        <div class="nav-menu-body">
-            <!--
+      x-bind:class="open ? 'left-0' : '-left-52'"
+      class="nav-menu-wrapper"
+    >
+      <div class="nav-menu-body">
+        <!--
                 List of sections
                 Current section will be highlighted in red
             -->
-            <ul class="section-list">
-                <li><a x-bind:class="{'current-section-item' : atElement === 0}" class="section-item" href="#about-me">About Me</a></li>
-                <li><a x-bind:class="{'current-section-item' : atElement === 1}" class="section-item" href="#portfolio">Portfolio</a></li>
-                <li><a x-bind:class="{'current-section-item' : atElement === 2}" class="section-item" href="#experience">Experience</a></li>
-                <li><a x-bind:class="{'current-section-item' : atElement === 3}" class="section-item" href="#skills">Skills</a></li>
-                <li>
-                    <button x-on:click="dark = !dark" x-bind:class=" dark ? 'bg-blue-900' : 'bg-yellow-300'" class="flex items-center w-20 h-10 px-1 mx-auto rounded-full">
-                        <!-- Switch -->
-                        <div class="w-8 h-8 transition-all transform bg-white rounded-full shadow-md" x-bind:class="{ 'translate-x-10': dark}">
-                            <i x-bind:class="dark ? 'fas fa-moon text-blue-900' : 'fas fa-sun text-yellow-300'"></i>
-                        </div>
-                    </button>
-                </li>
-            </ul>
-            
-        </div>
-        
-        <!--
+        <ul class="section-list">
+          <li>
+            <a
+              x-bind:class="{'current-section-item' : atElement === 0}"
+              class="section-item"
+              href="#about-me"
+              >About Me</a
+            >
+          </li>
+          <li>
+            <a
+              x-bind:class="{'current-section-item' : atElement === 1}"
+              class="section-item"
+              href="#portfolio"
+              >Portfolio</a
+            >
+          </li>
+          <li>
+            <a
+              x-bind:class="{'current-section-item' : atElement === 2}"
+              class="section-item"
+              href="#experience"
+              >Experience</a
+            >
+          </li>
+          <li>
+            <a
+              x-bind:class="{'current-section-item' : atElement === 3}"
+              class="section-item"
+              href="#skills"
+              >Skills</a
+            >
+          </li>
+          <li>
+            <button
+              x-on:click="dark = !dark"
+              x-bind:class=" dark ? 'bg-blue-900' : 'bg-yellow-300'"
+              class="flex items-center w-20 h-10 px-1 mx-auto rounded-full"
+            >
+              <!-- Switch -->
+              <div
+                class="w-8 h-8 transition-all transform bg-white rounded-full shadow-md"
+                x-bind:class="{ 'translate-x-10': dark}"
+              >
+                <i
+                  x-bind:class="dark ? 'fas fa-moon text-blue-900' : 'fas fa-sun text-yellow-300'"
+                ></i>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!--
             Large and small open/close buttons are shown/hidden based on window size to prevent
             sections from being covered by the tab on the side of the screen.
             They also change shape/location/icon based on 'open' variable to show their function 
         -->
-        <button x-on:click="open = ! open" x-bind:class="open ? 'button-open' : 'button-closed'" class="nav-menu-button">
-            <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="button-arrow"></i>
-        </button>
-        <button x-on:click="open = ! open" x-bind:class="open ? 'button-sm-open' : 'button-sm-closed'" class="nav-menu-button-sm">
-            <i x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'" class="button-sm-arrow"></i>
-        </button>
+      <button
+        x-on:click="open = ! open"
+        x-bind:class="open ? 'button-open' : 'button-closed'"
+        class="nav-menu-button"
+      >
+        <i
+          x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'"
+          class="button-arrow"
+        ></i>
+      </button>
+      <button
+        x-on:click="open = ! open"
+        x-bind:class="open ? 'button-sm-open' : 'button-sm-closed'"
+        class="nav-menu-button-sm"
+      >
+        <i
+          x-bind:class="open ? 'fas fa-arrow-left' : 'fas fa-arrow-right'"
+          class="button-sm-arrow"
+        ></i>
+      </button>
     </div>
-    
-        <!--
+
+    <!--
             Page header
             Includes photo and name
             Has slanted bottom to reveal red body bg underneath the blue header vg
         -->
-        <header class="bg-brandBlue-500 dark:bg-brandBlue-600 slanted">
-            <div class="header-body">
-                    <img class="profile-img" src="img/profile.jpg" alt="">  
-                    <h1 class="title">Thomas Surette</h1>
-                    <h1 class="title-sm">Thomas<br> Surette</h1>
-            </div>
-        </header>
-        
-        <!--
+    <header class="bg-brandBlue-500 dark:bg-brandBlue-600 slanted">
+      <div class="header-body">
+        <img class="profile-img" src="img/profile.jpg" alt="" />
+        <h1 class="title">Thomas Surette</h1>
+        <h1 class="title-sm">
+          Thomas<br />
+          Surette
+        </h1>
+      </div>
+    </header>
+
+    <!--
             'About Me' section
             Contains 'About Me' paragraph and 'Where to Find Me' links
         -->
-        <section class="section-type1" id="about-me">
-            <div class="about-me-body">
-                
-                <!--'About Me' paragraph with resume link-->
-                <div class="mb-16">
-                    <h2 class="mx-auto section-header md:mx-0">About Me</h2>
-                    <p class="about-me-paragraph">I am a Senior at University of Massachusetts Lowell majoring in Computer Science. I have a passion for front-end development and GUI design and believe that software should be made to accomodate the user, not vice-versa.</p>
-                    <a href="/documents/resume.pdf" target="_blank" class="mx-auto button hover:bg-brandRed-300 md:mx-0">
-                        <i class="button-icon fas fa-file"></i>
-                        <p>My resume</p>
-                    </a>
-                </div>
-                <!--'
+    <section class="section-type1" id="about-me">
+      <div class="about-me-body">
+        <!--'About Me' paragraph with resume link-->
+        <div class="mb-16">
+          <h2 class="mx-auto section-header md:mx-0">About Me</h2>
+          <p class="about-me-paragraph">
+            I am a Senior at University of Massachusetts Lowell majoring in
+            Computer Science. I have a passion for front-end development and GUI
+            design and believe that software should be made to accomodate the
+            user, not vice-versa.
+          </p>
+          <a
+            href="/documents/resume.pdf"
+            target="_blank"
+            class="mx-auto button hover:bg-brandRed-300 md:mx-0"
+          >
+            <i class="button-icon fas fa-file"></i>
+            <p>My resume</p>
+          </a>
+        </div>
+        <!--'
                     Where to Find Me' links
                     Github, Linkedin, and Contact Me
                 -->
-                <div>
-                    <h2 class="hidden xl:block section-header">Where to Find Me</h2>
-                    <h2 class="mx-auto xl:hidden section-header">Where to <br> Find Me</h2>
-                    <div class="flex gap-4 mx-auto mb-3 w-max">
-                            <!--GitHub button-->
-                            <a href="https://github.com/ThomasSurette" target="_blank" class="button hover:bg-gitHub">
-                                <i class="button-icon fab fa-github"></i>
-                                <p>GitHub</p>
-                            </a>
-                            <!--LinkedIn button-->
-                            <a href="https://www.linkedin.com/in/thomas-surette-218a3a1b8/" target="_blank" class="button hover:bg-linkedIn">
-                                <i class="button-icon fab fa-linkedin"></i>
-                                <p>LinkedIn</p>
-                            </a>
-                    </div>
-                    
-                    <!--
+        <div>
+          <h2 class="hidden xl:block section-header">Where to Find Me</h2>
+          <h2 class="mx-auto xl:hidden section-header">
+            Where to <br />
+            Find Me
+          </h2>
+          <div class="flex gap-4 mx-auto mb-3 w-max">
+            <!--GitHub button-->
+            <a
+              href="https://github.com/ThomasSurette"
+              target="_blank"
+              class="button hover:bg-gitHub"
+            >
+              <i class="button-icon fab fa-github"></i>
+              <p>GitHub</p>
+            </a>
+            <!--LinkedIn button-->
+            <a
+              href="https://www.linkedin.com/in/thomas-surette-218a3a1b8/"
+              target="_blank"
+              class="button hover:bg-linkedIn"
+            >
+              <i class="button-icon fab fa-linkedin"></i>
+              <p>LinkedIn</p>
+            </a>
+          </div>
+
+          <!--
                         'Contact Me' button
                         Inverts the current state of the 'showModal' variable, 
                         opening or closing the 'Contact Me' modal
                     -->
-                    <button x-on:click="showModal = ! showModal" class="mx-auto mb-3 2xs:mb-0 button hover:bg-brandRed-300">
-                        <i class="button-icon fas fa-comments"></i>
-                        Contact Me
-                    </button>
-                </div>
+          <button
+            x-on:click="showModal = ! showModal"
+            class="mx-auto mb-3 2xs:mb-0 button hover:bg-brandRed-300"
+          >
+            <i class="button-icon fas fa-comments"></i>
+            Contact Me
+          </button>
+        </div>
+      </div>
+    </section>
 
-            </div>
-        </section>
-        
     <!--
         Portfolio Section
         Contains cards showcasing projects with images and descriptions
         Clicking a card links to the GitHub page for that project
     -->
     <section class="section-type2" id="portfolio">
-        <div class="portfolio-body">
-            <h2 class="mx-auto section-header lg:mx-0">Portfolio</h2>
-            <div class="lg:flex lg:gap-16">
-                
-                <!--Personal Website Card (This site)-->
-                <a href="https://github.com/ThomasSurette/ThomasSurette.github.io" target="_blank">
-                    <div class="portfolio-card-wrapper">
-                        <div class="portfolio-card-body">
-                            <div>
-                                <!--Image of site-->
-                                <div class="portfolio-card-img bg-site">
-                                </div>
-                                <div class="portfolio-card-content">
-                                    <span class="portfolio-card-header">Personal Website</span>
-                                    <span  class="portfolio-card-text">
-                                        Created the website you are browsing right now. Built to be responsive and accessible on all devices using the Tailwind CSS and AlpineJS frameworks.
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
-                </a>
-                   
+      <div class="portfolio-body">
+        <h2 class="mx-auto section-header lg:mx-0">Portfolio</h2>
+        <div class="lg:flex lg:gap-16">
+          <!--Personal Website Card (This site)-->
+          <a
+            href="https://github.com/ThomasSurette/ThomasSurette.github.io"
+            target="_blank"
+          >
+            <div class="portfolio-card-wrapper">
+              <div class="portfolio-card-body">
+                <div>
+                  <!--Image of site-->
+                  <div class="portfolio-card-img bg-site"></div>
+                  <div class="portfolio-card-content">
+                    <span class="portfolio-card-header">Personal Website</span>
+                    <span class="portfolio-card-text">
+                      Created the website you are browsing right now. Built to
+                      be responsive and accessible on all devices using the
+                      Tailwind CSS and AlpineJS frameworks.
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
+          </a>
         </div>
+      </div>
     </section>
-    
+
     <!--
         Experience Section
         Contains cards detailing work experience
     -->
     <section class="section-type1" id="experience">
-        <div class="experience-body">
-            <div>
-                <h2 class="mx-auto section-header lg:mx-0">Experience</h2>
-                <div>
-                    
-                    <!--Qwally Card-->
-                    <div class="py-4">
-                        <div class="experience-card-wrapper">
-                            <div class="xl:pl-2 xl:flex">
-                                <!--
+      <div class="experience-body">
+        <div>
+          <h2 class="mx-auto section-header lg:mx-0">Experience</h2>
+          <div>
+            <!--Qwally Card-->
+            <div class="py-4">
+              <div class="experience-card-wrapper">
+                <div class="xl:pl-2 xl:flex">
+                  <!--
                                     Image of qwally logo
                                     Visible on top of the card on small screens
                                 -->
-                                <div class="experience-card-img-sm bg-qwally" >
-                                </div>
-                                <div class="experience-card-content">
-                                    <!--Card header includes company name and employment period-->
-                                    <div class="experience-card-header">
-                                        <h3 class="mr-2">Qwally</h3>
-                                        <p class="experience-card-date">Jan 2021 - Sep 2021</p>
-                                    </div>
-                                    <p class="experience-card-position">Software Engineering Intern</p>
-                                    <ul class="experience-card-item-list">
-                                        <li>
-                                            <p class="experience-card-item">• Streamlined content updates by building a headless content management system (CMS) to alleviate issue of software engineering team spending a significant portion of development time updating content</p>
-                                        </li>
-                                        <li>
-                                            <p class="experience-card-item">• Built knowledge of company’s development platforms that includes C#, ASP.NET Core, TailwindCSS, AlpineJS, OrchardCore, GraphQL, Azure DevOps</p>
-                                        </li>
-                                        <li>
-                                            <p class="experience-card-item">• Worked with development team to identify key user interface elements for their web applications and created a hierarchy for the components in the CMS</p>
-                                        </li>
-                                        <li>
-                                            <p class="experience-card-item">• Implemented component hierarchy in the CMS and created a library to easily theme each component based on the application</p>
-                                        </li>
-                                        <li>
-                                            <p class="experience-card-item">• Integrated CMS across 60% of company’s web applications, resulting in a 30% time savings for software engineers</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!--
+                  <div class="experience-card-img-sm bg-qwally"></div>
+                  <div class="experience-card-content">
+                    <!--Card header includes company name and employment period-->
+                    <div class="experience-card-header">
+                      <h3 class="mr-2">Qwally</h3>
+                      <p class="experience-card-date">Jan 2021 - Sep 2021</p>
+                    </div>
+                    <p class="experience-card-position">
+                      Software Engineering Intern
+                    </p>
+                    <ul class="experience-card-item-list">
+                      <li>
+                        <p class="experience-card-item">
+                          • Streamlined content updates by building a headless
+                          content management system (CMS) to alleviate issue of
+                          software engineering team spending a significant
+                          portion of development time updating content
+                        </p>
+                      </li>
+                      <li>
+                        <p class="experience-card-item">
+                          • Built knowledge of company’s development platforms
+                          that includes C#, ASP.NET Core, TailwindCSS, AlpineJS,
+                          OrchardCore, GraphQL, Azure DevOps
+                        </p>
+                      </li>
+                      <li>
+                        <p class="experience-card-item">
+                          • Worked with development team to identify key user
+                          interface elements for their web applications and
+                          created a hierarchy for the components in the CMS
+                        </p>
+                      </li>
+                      <li>
+                        <p class="experience-card-item">
+                          • Implemented component hierarchy in the CMS and
+                          created a library to easily theme each component based
+                          on the application
+                        </p>
+                      </li>
+                      <li>
+                        <p class="experience-card-item">
+                          • Integrated CMS across 60% of company’s web
+                          applications, resulting in a 30% time savings for
+                          software engineers
+                        </p>
+                      </li>
+                    </ul>
+                  </div>
+                  <!--
                                     Image of qwally logo
                                     Visible on the right of the card on large screens
                                 -->
-                                <div class="experience-card-img bg-qwally">
-                                </div>
-                            </div>
-                        </div>
-                    </div>  
+                  <div class="experience-card-img bg-qwally"></div>
                 </div>
+              </div>
             </div>
-
+          </div>
         </div>
+      </div>
     </section>
-    
+
     <!--
         Skills Section
         Contains cards for languages/frameworks and programs
     -->
     <section class="section-type2" id="skills">
-        <div class="skills-body">
-            <h2 class="skills-header">Skills</h2>
-            <div class="skills-card-list">
-                
-                    <!--Languages/Frameworks Card-->
-                    <div class="skills-language-card-wrapper">
-                        <div>
-                            <h3 class="skills-language-card-title">Languages & Frameworks</h3>
-                            <div class="skills-language-card-body">
-                                <ul class="space-y-2">
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--C# logo-->
-                                            <svg class="mr-1" fill="none" height="25" viewBox="204.925 153.577 757.617 860.543" width="25"><path d="m962.541 407.983c0-14.237-3.034-27.074-9.336-37.811-6.068-10.736-15.171-19.605-27.307-26.607-100.829-58.117-201.891-116.233-302.72-174.35-27.308-15.638-53.449-15.171-80.523.7-40.145 23.574-241.336 138.873-301.086 173.65-24.741 14.237-36.644 36.177-36.644 64.652v351.033c0 14.004 3.034 26.374 8.869 37.111 6.069 10.97 15.405 20.306 27.775 27.541 59.984 34.777 260.941 149.843 301.086 173.65 27.074 15.868 53.448 16.568 80.523.7 100.829-58.35 201.891-116.233 302.72-174.35 12.603-7.235 21.706-16.338 27.774-27.541 5.835-10.737 8.869-23.107 8.869-37.111z" fill="#9a4993"/><path d="m584.667 582.333-371.34 213.794c6.069 10.97 15.405 20.306 27.775 27.542 59.984 34.776 260.941 149.842 301.086 173.649 27.074 15.872 53.449 16.572 80.523.7 100.829-58.35 201.891-116.233 302.72-174.349 12.603-7.236 21.706-16.338 27.774-27.542z" fill="#6a1577"/><path d="m474.735 645.584c21.707 37.811 62.318 63.252 108.765 63.252 46.913 0 87.758-25.674 109.231-63.952l-108.064-62.551z" fill="#6a1577"/><path d="m962.542 407.983c0-14.237-3.035-27.074-9.336-37.811l-368.539 212.161 369.005 213.795c5.835-10.737 8.87-23.107 8.87-37.111z" fill="#813084"/><g fill="#fff"><path d="m692.731 644.884c-21.472 38.044-62.317 63.952-109.231 63.952-46.68 0-87.291-25.441-108.764-63.252-10.503-18.438-16.572-39.444-16.572-62.084 0-69.32 56.016-125.336 125.336-125.336 46.213 0 86.592 25.207 108.298 62.551l109.464-63.018c-43.645-75.154-124.869-125.802-217.995-125.802-139.107 0-251.605 112.732-251.605 251.605 0 45.513 12.136 88.459 33.376 125.336 43.412 75.388 125.102 126.269 218.462 126.269 93.594 0 175.284-51.114 218.696-126.969zm138.406-120.901h-24.974v120.668h24.974zm55.316 0h-24.974v120.668h24.974z"/><path d="m906.759 544.289h-120.668v24.974h120.668zm0 55.082h-120.668v24.974h120.668z"/></g></svg>
-                                            <p>C#</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--C++ logo-->
-                                            <svg class="mr-1" version="1.1" width="25px" height="25px" viewBox="0 0 306 344.35" enable-background="new 0 0 306 344.35">
-                                                <path fill="#00599C" d="M302.107,258.262c2.401-4.159,3.893-8.845,3.893-13.053V99.14c0-4.208-1.49-8.893-3.892-13.052L153,172.175  L302.107,258.262z"/>
-                                                <path fill="#004482" d="M166.25,341.193l126.5-73.034c3.644-2.104,6.956-5.737,9.357-9.897L153,172.175L3.893,258.263  c2.401,4.159,5.714,7.793,9.357,9.896l126.5,73.034C147.037,345.401,158.963,345.401,166.25,341.193z"/>
-                                                <path fill="#659AD2" d="M302.108,86.087c-2.402-4.16-5.715-7.793-9.358-9.897L166.25,3.156c-7.287-4.208-19.213-4.208-26.5,0  L13.25,76.19C5.962,80.397,0,90.725,0,99.14v146.069c0,4.208,1.491,8.894,3.893,13.053L153,172.175L302.108,86.087z"/>
-                                                <g>
-                                                    <path fill="#FFFFFF" d="M153,274.175c-56.243,0-102-45.757-102-102s45.757-102,102-102c36.292,0,70.139,19.53,88.331,50.968   l-44.143,25.544c-9.105-15.736-26.038-25.512-44.188-25.512c-28.122,0-51,22.878-51,51c0,28.121,22.878,51,51,51   c18.152,0,35.085-9.776,44.191-25.515l44.143,25.543C223.142,254.644,189.294,274.175,153,274.175z"/>
-                                                </g>
-                                                <g>
-                                                    <polygon fill="#FFFFFF" points="255,166.508 243.666,166.508 243.666,155.175 232.334,155.175 232.334,166.508 221,166.508    221,177.841 232.334,177.841 232.334,189.175 243.666,189.175 243.666,177.841 255,177.841  "/>
-                                                </g>
-                                                <g>
-                                                    <polygon fill="#FFFFFF" points="297.5,166.508 286.166,166.508 286.166,155.175 274.834,155.175 274.834,166.508 263.5,166.508    263.5,177.841 274.834,177.841 274.834,189.175 286.166,189.175 286.166,177.841 297.5,177.841  "/>
-                                                </g>
-                                            </svg>
-                                            <p>C++</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--C logo-->
-                                            <svg class="mr-1" viewBox="0 0 38.000089 42.000031" width="25" height="25">
-                                                <path fill="#283593" fill-rule="evenodd" d="m 17.903,0.28628166 c 0.679,-0.381 1.515,-0.381 2.193,0 C 23.451,2.1692817 33.547,7.8372817 36.903,9.7202817 37.582,10.100282 38,10.804282 38,11.566282 c 0,3.766 0,15.101 0,18.867 0,0.762 -0.418,1.466 -1.097,1.847 -3.355,1.883 -13.451,7.551 -16.807,9.434 -0.679,0.381 -1.515,0.381 -2.193,0 -3.355,-1.883 -13.451,-7.551 -16.807,-9.434 -0.678,-0.381 -1.096,-1.084 -1.096,-1.846 0,-3.766 0,-15.101 0,-18.867 0,-0.762 0.418,-1.466 1.097,-1.8470003 3.354,-1.883 13.452,-7.551 16.806,-9.43400004 z" clip-rule="evenodd" style="fill:#004482;fill-opacity:1"/>
-                                                <path fill="#5c6bc0" fill-rule="evenodd" d="m 0.304,31.404282 c -0.266,-0.356 -0.304,-0.694 -0.304,-1.149 0,-3.744 0,-15.014 0,-18.759 0,-0.758 0.417,-1.458 1.094,-1.8360003 3.343,-1.872 13.405,-7.507 16.748,-9.38000004 0.677,-0.379 1.594,-0.371 2.271,0.008 3.343,1.87200004 13.371,7.45900004 16.714,9.33100004 0.27,0.152 0.476,0.335 0.66,0.5760003 z" clip-rule="evenodd" style="fill:#659ad2;fill-opacity:1"/>
-                                                <path fill="#ffffff" fill-rule="evenodd" d="m 19,7.0002817 c 7.727,0 14,6.2730003 14,14.0000003 0,7.727 -6.273,14 -14,14 -7.727,0 -14,-6.273 -14,-14 0,-7.727 6.273,-14.0000003 14,-14.0000003 z m 0,7.0000003 c 3.863,0 7,3.136 7,7 0,3.863 -3.137,7 -7,7 -3.863,0 -7,-3.137 -7,-7 0,-3.864 3.136,-7 7,-7 z" clip-rule="evenodd"/>
-                                                <path fill="#3949ab" fill-rule="evenodd" d="m 37.485,10.205282 c 0.516,0.483 0.506,1.211 0.506,1.784 0,3.795 -0.032,14.589 0.009,18.384 0.004,0.396 -0.127,0.813 -0.323,1.127 l -19.084,-10.5 z" clip-rule="evenodd" style="fill:#00599c;fill-opacity:1"/>
-                                              </svg>
-                                            <p>C</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--Python logo-->
-                                            <svg class="mr-1" width="25px" height="25px" viewBox="0 0 256 255" preserveAspectRatio="xMidYMid">
-                                                <defs>
-                                                    <linearGradient x1="12.9593594%" y1="12.0393928%" x2="79.6388325%" y2="78.2008538%" id="linearGradient-1">
-                                                        <stop stop-color="#387EB8" offset="0%"/>
-                                                        <stop stop-color="#366994" offset="100%"/>
-                                                    </linearGradient>
-                                                    <linearGradient x1="19.127525%" y1="20.5791813%" x2="90.7415328%" y2="88.4290372%" id="linearGradient-2">
-                                                        <stop stop-color="#FFE052" offset="0%"/>
-                                                        <stop stop-color="#FFC331" offset="100%"/>
-                                                    </linearGradient>
-                                                </defs>
-                                                <g>
-                                                    <path d="M126.915866,0.0722755491 C62.0835831,0.0722801733 66.1321288,28.1874648 66.1321288,28.1874648 L66.2044043,57.3145115 L128.072276,57.3145115 L128.072276,66.0598532 L41.6307171,66.0598532 C41.6307171,66.0598532 0.144551098,61.3549438 0.144551098,126.771315 C0.144546474,192.187673 36.3546019,189.867871 36.3546019,189.867871 L57.9649915,189.867871 L57.9649915,159.51214 C57.9649915,159.51214 56.8001363,123.302089 93.5968379,123.302089 L154.95878,123.302089 C154.95878,123.302089 189.434218,123.859386 189.434218,89.9830604 L189.434218,33.9695088 C189.434218,33.9695041 194.668541,0.0722755491 126.915866,0.0722755491 L126.915866,0.0722755491 L126.915866,0.0722755491 Z M92.8018069,19.6589497 C98.9572068,19.6589452 103.932242,24.6339846 103.932242,30.7893845 C103.932246,36.9447844 98.9572068,41.9198193 92.8018069,41.9198193 C86.646407,41.9198239 81.6713721,36.9447844 81.6713721,30.7893845 C81.6713674,24.6339846 86.646407,19.6589497 92.8018069,19.6589497 L92.8018069,19.6589497 L92.8018069,19.6589497 Z" fill="url(#linearGradient-1)"/>
-                                                    <path d="M128.757101,254.126271 C193.589403,254.126271 189.540839,226.011081 189.540839,226.011081 L189.468564,196.884035 L127.600692,196.884035 L127.600692,188.138693 L214.042251,188.138693 C214.042251,188.138693 255.528417,192.843589 255.528417,127.427208 C255.52844,62.0108566 219.318366,64.3306589 219.318366,64.3306589 L197.707976,64.3306589 L197.707976,94.6863832 C197.707976,94.6863832 198.87285,130.896434 162.07613,130.896434 L100.714182,130.896434 C100.714182,130.896434 66.238745,130.339138 66.238745,164.215486 L66.238745,220.229038 C66.238745,220.229038 61.0044225,254.126271 128.757101,254.126271 L128.757101,254.126271 L128.757101,254.126271 Z M162.87116,234.539597 C156.715759,234.539597 151.740726,229.564564 151.740726,223.409162 C151.740726,217.253759 156.715759,212.278727 162.87116,212.278727 C169.026563,212.278727 174.001595,217.253759 174.001595,223.409162 C174.001618,229.564564 169.026563,234.539597 162.87116,234.539597 L162.87116,234.539597 L162.87116,234.539597 Z" fill="url(#linearGradient-2)"/>
-                                                </g>
-                                            </svg>
-                                            <p>Python</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--Java logo-->
-                                            <svg class="mr-1" width="25" height="25" viewBox="0 0 32 32"><path d="M11.622 24.74s-1.23.748.855.962c2.51.32 3.847.267 6.625-.267a10.02 10.02 0 0 0 1.763.855c-6.25 2.672-14.16-.16-9.244-1.55zm-.8-3.473s-1.336 1.015.748 1.23c2.725.267 4.862.32 8.55-.427a3.26 3.26 0 0 0 1.282.801c-7.534 2.244-15.976.214-10.58-1.603zm14.747 6.09s.908.748-1.015 1.336c-3.58 1.07-15.014 1.39-18.22 0-1.122-.48 1.015-1.175 1.7-1.282.695-.16 1.07-.16 1.07-.16-1.23-.855-8.175 1.763-3.526 2.51 12.77 2.084 23.296-.908 19.983-2.404zM12.2 17.633s-5.824 1.39-2.084 1.87c1.603.214 4.755.16 7.694-.053 2.404-.214 4.81-.64 4.81-.64s-.855.374-1.443.748c-5.93 1.55-17.312.855-14.052-.748 2.778-1.336 5.076-1.175 5.076-1.175zm10.42 5.824c5.984-3.1 3.206-6.09 1.282-5.717-.48.107-.695.214-.695.214s.16-.32.534-.427c3.794-1.336 6.786 4.007-1.23 6.09 0 0 .053-.053.107-.16zm-9.83 8.442c5.77.374 14.587-.214 14.8-2.94 0 0-.427 1.07-4.755 1.87-4.916.908-11.007.8-14.587.214 0 0 .748.64 4.542.855z" fill="#4e7896"/><path d="M18.996.001s3.313 3.366-3.152 8.442c-5.183 4.114-1.175 6.465 0 9.137-3.046-2.725-5.236-5.13-3.74-7.373C14.294 6.893 20.332 5.3 18.996.001zm-1.7 15.335c1.55 1.763-.427 3.366-.427 3.366s3.954-2.03 2.137-4.542c-1.656-2.404-2.94-3.58 4.007-7.587 0 0-10.953 2.725-5.717 8.763z" fill="#f58219"/></svg>
-                                            <p>Java</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--Kotlin logo-->
-                                            <svg class="mr-1" width="25" height="25" viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;">
-                                                <g>
-                                                
-                                                        <linearGradient gradientUnits="userSpaceOnUse" x1="15.9594" y1="-13.0143" x2="44.3068" y2="15.3332" gradientTransform="matrix(1 0 0 -1 0 61)" id="XMLID_3_">
-                                                        <stop offset="9.677000e-02" style="stop-color:#0095D5"/>
-                                                        <stop offset="0.3007" style="stop-color:#238AD9"/>
-                                                        <stop offset="0.6211" style="stop-color:#557BDE"/>
-                                                        <stop offset="0.8643" style="stop-color:#7472E2"/>
-                                                        <stop offset="1" style="stop-color:#806EE3"/>
-                                                    </linearGradient>
-                                                    <polygon style="fill:url(#XMLID_3_);" points="0,60 30.1,29.9 60,60  "/>
-                                                
-                                                        <linearGradient gradientUnits="userSpaceOnUse" x1="4.2092" y1="48.9409" x2="20.6734" y2="65.405" gradientTransform="matrix(1 0 0 -1 0 61)" id="SVGID_1_">
-                                                        <stop offset="0.1183" style="stop-color:#0095D5"/>
-                                                        <stop offset="0.4178" style="stop-color:#3C83DC"/>
-                                                        <stop offset="0.6962" style="stop-color:#6D74E1"/>
-                                                        <stop offset="0.8333" style="stop-color:#806EE3"/>
-                                                    </linearGradient>
-                                                    <polygon style="fill:url(#SVGID_1_);" points="0,0 30.1,0 0,32.5  "/>
-                                                
-                                                    <linearGradient gradientUnits="userSpaceOnUse" x1="-10.1017" y1="5.8362" x2="45.7315" y2="61.6694" gradientTransform="matrix(1 0 0 -1 0 61)" id="SVGID_2_">
-                                                        <stop offset="0.1075" style="stop-color:#C757BC"/>
-                                                        <stop offset="0.2138" style="stop-color:#D0609A"/>
-                                                        <stop offset="0.4254" style="stop-color:#E1725C"/>
-                                                        <stop offset="0.6048" style="stop-color:#EE7E2F"/>
-                                                        <stop offset="0.743" style="stop-color:#F58613"/>
-                                                        <stop offset="0.8232" style="stop-color:#F88909"/>
-                                                    </linearGradient>
-                                                    <polygon style="fill:url(#SVGID_2_);" points="30.1,0 0,31.7 0,60 30.1,29.9 60,0  "/>
-                                                </g>
-                                                </svg>
-                                            <p>Kotlin</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <ul class="space-y-2">
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--HTML5 logo-->
-                                            <svg class="mr-1" width="25" height="25" viewBox="0 0 512 512">
-                                                <title>HTML5 Logo Badge</title>
-                                                <path fill="#E34F26" d="M71,460 L30,0 481,0 440,460 255,512"/>
-                                                <path fill="#EF652A" d="M256,472 L405,431 440,37 256,37"/>
-                                                <path fill="#EBEBEB" d="M256,208 L181,208 176,150 256,150 256,94 255,94 114,94 115,109 129,265 256,265zM256,355 L255,355 192,338 188,293 158,293 132,293 139,382 255,414 256,414z"/>
-                                                <path fill="#FFF" d="M255,208 L255,265 325,265 318,338 255,355 255,414 371,382 372,372 385,223 387,208 371,208zM255,94 L255,129 255,150 255,150 392,150 392,150 392,150 393,138 396,109 397,94z"/>
-                                              </svg>
-                                            <p>HTML</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--CSS3 logo-->
-                                            <svg class="mr-1" width="25" height="25" viewBox="0 0 512 512">
-                                                <path fill="#264de4" d="M71.357 460.819L30.272 0h451.456l-41.129 460.746L255.724 512z"/>
-                                                <path fill="#2965f1" d="M405.388 431.408l35.148-393.73H256v435.146z"/>
-                                                <path fill="#ebebeb" d="M124.46 208.59l5.065 56.517H256V208.59zM119.419 150.715H256V94.197H114.281zM256 355.372l-.248.066-62.944-16.996-4.023-45.076h-56.736l7.919 88.741 115.772 32.14.26-.073z"/>
-                                                <path fill="#fff" d="M255.805 208.59v56.517H325.4l-6.56 73.299-63.035 17.013v58.8l115.864-32.112.85-9.549 13.28-148.792 1.38-15.176 10.203-114.393H255.805v56.518h79.639L330.3 208.59z"/>
-                                            </svg>
-                                            <p>CSS</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--JavaScript logo-->
-                                            <svg class="mr-1" width="25" height="25" viewBox="0 0 630 630">
-                                                <rect width="630" height="630" fill="#f7df1e"/>
-                                                <path d="m423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z"/>
-                                                </svg>
-                                            <p>JavaScript</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--.NET Core logo-->
-                                            <svg class="mr-1" width="25" height="25" viewBox="0 0 64 64"><defs><style>.cls-1{fill:#5c2d91;}.cls-2,.cls-3{fill:#fff;}.cls-2{opacity:0.1;}.cls-4{fill:#f2f2f2;}</style></defs><title>logo_NETcore</title><circle class="cls-1" cx="32" cy="32" r="32"/><path class="cls-2" d="M9.82,9A32,32,0,1,0,55,54.18Z"/><path class="cls-3" d="M7.4,37.25a1.35,1.35,0,0,1-1-.42,1.38,1.38,0,0,1-.41-1,1.4,1.4,0,0,1,.41-1,1.34,1.34,0,0,1,1-.43,1.37,1.37,0,0,1,1,.43,1.39,1.39,0,0,1,.42,1,1.37,1.37,0,0,1-.42,1A1.38,1.38,0,0,1,7.4,37.25Z"/><path class="cls-3" d="M27.27,37H24.65L15.28,22.46a6,6,0,0,1-.58-1.14h-.08a18.72,18.72,0,0,1,.1,2.5V37H12.59V18.77h2.77l9.12,14.28q.57.89.74,1.22h.05a19.28,19.28,0,0,1-.13-2.68V18.77h2.13Z"/><path class="cls-3" d="M41.69,37H32V18.77h9.24V20.7H34.18v6.06h6.58v1.92H34.18V35h7.52Z"/><path class="cls-3" d="M56,20.7H50.7V37H48.57V20.7H43.33V18.77H56Z"/><path class="cls-4" d="M26.12,49.4a4.93,4.93,0,0,1-2.32.49,3.74,3.74,0,0,1-2.87-1.15,4.26,4.26,0,0,1-1.08-3,4.46,4.46,0,0,1,1.21-3.26,4.12,4.12,0,0,1,3.08-1.24,4.93,4.93,0,0,1,2,.35v1a4,4,0,0,0-2-.5,3.06,3.06,0,0,0-2.35,1,3.64,3.64,0,0,0-.9,2.58,3.47,3.47,0,0,0,.84,2.45,2.86,2.86,0,0,0,2.21.91,4.14,4.14,0,0,0,2.19-.56Z"/><path class="cls-4" d="M30.21,49.89A2.78,2.78,0,0,1,28.08,49a3.11,3.11,0,0,1-.79-2.23,3.24,3.24,0,0,1,.83-2.36,3,3,0,0,1,2.23-.85,2.69,2.69,0,0,1,2.09.83,3.28,3.28,0,0,1,.75,2.29,3.22,3.22,0,0,1-.81,2.3A2.84,2.84,0,0,1,30.21,49.89Zm.07-5.47a1.83,1.83,0,0,0-1.46.63,2.59,2.59,0,0,0-.54,1.74,2.45,2.45,0,0,0,.54,1.68,1.85,1.85,0,0,0,1.46.62,1.76,1.76,0,0,0,1.43-.6,2.62,2.62,0,0,0,.5-1.72,2.66,2.66,0,0,0-.5-1.73A1.75,1.75,0,0,0,30.28,44.42Z"/><path class="cls-4" d="M37.86,44.72a1.18,1.18,0,0,0-.73-.19,1.23,1.23,0,0,0-1,.58,2.68,2.68,0,0,0-.41,1.58v3.06h-1v-6h1V45h0a2.1,2.1,0,0,1,.63-1,1.43,1.43,0,0,1,.94-.35,1.57,1.57,0,0,1,.57.08Z"/><path class="cls-4" d="M43.72,47H39.49A2.24,2.24,0,0,0,40,48.54a1.86,1.86,0,0,0,1.42.54,3,3,0,0,0,1.86-.67v.9a3.48,3.48,0,0,1-2.09.57,2.54,2.54,0,0,1-2-.82,3.35,3.35,0,0,1-.73-2.3,3.28,3.28,0,0,1,.79-2.28,2.55,2.55,0,0,1,2-.88,2.26,2.26,0,0,1,1.82.76,3.18,3.18,0,0,1,.64,2.12Zm-1-.81a2,2,0,0,0-.4-1.29,1.37,1.37,0,0,0-1.1-.46,1.55,1.55,0,0,0-1.15.49,2.21,2.21,0,0,0-.59,1.27Z"/></svg>
-                                            <p>.NET Core</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--Tailwind CSS logo-->
-                                            <svg class="mr-1" height="25" preserveAspectRatio="xMidYMid" width="25" viewBox="0 0 256 153.6"><linearGradient x1="-2.778%" y1="32%" y2="67.556%"><stop offset="0" stop-color="#2298bd"/><stop offset="1" stop-color="#0ed7b5"/></linearGradient><path d="M128 0C93.867 0 72.533 17.067 64 51.2 76.8 34.133 91.733 27.733 108.8 32c9.737 2.434 16.697 9.499 24.401 17.318C145.751 62.057 160.275 76.8 192 76.8c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C174.249 14.743 159.725 0 128 0zM64 76.8C29.867 76.8 8.533 93.867 0 128c12.8-17.067 27.733-23.467 44.8-19.2 9.737 2.434 16.697 9.499 24.401 17.318C81.751 138.857 96.275 153.6 128 153.6c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C110.249 91.543 95.725 76.8 64 76.8z" fill="url(#a)"/></svg>
-                                            <p>Tailwind CSS</p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="flex items-center">
-                                            <!--alpine.js logo-->
-                                            <svg class="mr-1" viewBox="0 0 16 16" width="25" height="25">
-                                                <path fill="#fff" opacity=".2" d="M0.48 0.16L15.52 0.16C15.7 0.16 15.84 0.3 15.84 0.48L15.84 15.52C15.84 15.7 15.7 15.84 15.52 15.84L0.48 15.84C0.3 15.84 0.16 15.7 0.16 15.52L0.16 0.48C0.16 0.3 0.3 0.16 0.48 0.16Z"/>
-                                                <path fill="#77c1d2" d="M12.06 4.64L15.35 7.92L12.06 11.19L8.77 7.92L12.06 4.64Z"/>
-                                                <path fill="#2d3441" d="M3.85 4.64L10.65 11.42L4.08 11.42L0.56 7.92L3.85 4.64Z"/>
-                                            </svg>
-                                            <p>Alpine.js</p>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                        </div>
+      <div class="skills-body">
+        <h2 class="skills-header">Skills</h2>
+        <div class="skills-card-list">
+          <!--Languages/Frameworks Card-->
+          <div class="skills-language-card-wrapper">
+            <div>
+              <h3 class="skills-language-card-title">Languages & Frameworks</h3>
+              <div class="skills-language-card-body">
+                <ul class="space-y-2">
+                  <li>
+                    <div class="flex items-center">
+                      <!--C# logo-->
+                      <svg
+                        class="mr-1"
+                        fill="none"
+                        height="25"
+                        viewBox="204.925 153.577 757.617 860.543"
+                        width="25"
+                      >
+                        <path
+                          d="m962.541 407.983c0-14.237-3.034-27.074-9.336-37.811-6.068-10.736-15.171-19.605-27.307-26.607-100.829-58.117-201.891-116.233-302.72-174.35-27.308-15.638-53.449-15.171-80.523.7-40.145 23.574-241.336 138.873-301.086 173.65-24.741 14.237-36.644 36.177-36.644 64.652v351.033c0 14.004 3.034 26.374 8.869 37.111 6.069 10.97 15.405 20.306 27.775 27.541 59.984 34.777 260.941 149.843 301.086 173.65 27.074 15.868 53.448 16.568 80.523.7 100.829-58.35 201.891-116.233 302.72-174.35 12.603-7.235 21.706-16.338 27.774-27.541 5.835-10.737 8.869-23.107 8.869-37.111z"
+                          fill="#9a4993"
+                        />
+                        <path
+                          d="m584.667 582.333-371.34 213.794c6.069 10.97 15.405 20.306 27.775 27.542 59.984 34.776 260.941 149.842 301.086 173.649 27.074 15.872 53.449 16.572 80.523.7 100.829-58.35 201.891-116.233 302.72-174.349 12.603-7.236 21.706-16.338 27.774-27.542z"
+                          fill="#6a1577"
+                        />
+                        <path
+                          d="m474.735 645.584c21.707 37.811 62.318 63.252 108.765 63.252 46.913 0 87.758-25.674 109.231-63.952l-108.064-62.551z"
+                          fill="#6a1577"
+                        />
+                        <path
+                          d="m962.542 407.983c0-14.237-3.035-27.074-9.336-37.811l-368.539 212.161 369.005 213.795c5.835-10.737 8.87-23.107 8.87-37.111z"
+                          fill="#813084"
+                        />
+                        <g fill="#fff">
+                          <path
+                            d="m692.731 644.884c-21.472 38.044-62.317 63.952-109.231 63.952-46.68 0-87.291-25.441-108.764-63.252-10.503-18.438-16.572-39.444-16.572-62.084 0-69.32 56.016-125.336 125.336-125.336 46.213 0 86.592 25.207 108.298 62.551l109.464-63.018c-43.645-75.154-124.869-125.802-217.995-125.802-139.107 0-251.605 112.732-251.605 251.605 0 45.513 12.136 88.459 33.376 125.336 43.412 75.388 125.102 126.269 218.462 126.269 93.594 0 175.284-51.114 218.696-126.969zm138.406-120.901h-24.974v120.668h24.974zm55.316 0h-24.974v120.668h24.974z"
+                          />
+                          <path
+                            d="m906.759 544.289h-120.668v24.974h120.668zm0 55.082h-120.668v24.974h120.668z"
+                          />
+                        </g>
+                      </svg>
+                      <p>C#</p>
                     </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--C++ logo-->
+                      <svg
+                        class="mr-1"
+                        version="1.1"
+                        width="25px"
+                        height="25px"
+                        viewBox="0 0 306 344.35"
+                        enable-background="new 0 0 306 344.35"
+                      >
+                        <path
+                          fill="#00599C"
+                          d="M302.107,258.262c2.401-4.159,3.893-8.845,3.893-13.053V99.14c0-4.208-1.49-8.893-3.892-13.052L153,172.175  L302.107,258.262z"
+                        />
+                        <path
+                          fill="#004482"
+                          d="M166.25,341.193l126.5-73.034c3.644-2.104,6.956-5.737,9.357-9.897L153,172.175L3.893,258.263  c2.401,4.159,5.714,7.793,9.357,9.896l126.5,73.034C147.037,345.401,158.963,345.401,166.25,341.193z"
+                        />
+                        <path
+                          fill="#659AD2"
+                          d="M302.108,86.087c-2.402-4.16-5.715-7.793-9.358-9.897L166.25,3.156c-7.287-4.208-19.213-4.208-26.5,0  L13.25,76.19C5.962,80.397,0,90.725,0,99.14v146.069c0,4.208,1.491,8.894,3.893,13.053L153,172.175L302.108,86.087z"
+                        />
+                        <g>
+                          <path
+                            fill="#FFFFFF"
+                            d="M153,274.175c-56.243,0-102-45.757-102-102s45.757-102,102-102c36.292,0,70.139,19.53,88.331,50.968   l-44.143,25.544c-9.105-15.736-26.038-25.512-44.188-25.512c-28.122,0-51,22.878-51,51c0,28.121,22.878,51,51,51   c18.152,0,35.085-9.776,44.191-25.515l44.143,25.543C223.142,254.644,189.294,274.175,153,274.175z"
+                          />
+                        </g>
+                        <g>
+                          <polygon
+                            fill="#FFFFFF"
+                            points="255,166.508 243.666,166.508 243.666,155.175 232.334,155.175 232.334,166.508 221,166.508    221,177.841 232.334,177.841 232.334,189.175 243.666,189.175 243.666,177.841 255,177.841  "
+                          />
+                        </g>
+                        <g>
+                          <polygon
+                            fill="#FFFFFF"
+                            points="297.5,166.508 286.166,166.508 286.166,155.175 274.834,155.175 274.834,166.508 263.5,166.508    263.5,177.841 274.834,177.841 274.834,189.175 286.166,189.175 286.166,177.841 297.5,177.841  "
+                          />
+                        </g>
+                      </svg>
+                      <p>C++</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--C logo-->
+                      <svg
+                        class="mr-1"
+                        viewBox="0 0 38.000089 42.000031"
+                        width="25"
+                        height="25"
+                      >
+                        <path
+                          fill="#283593"
+                          fill-rule="evenodd"
+                          d="m 17.903,0.28628166 c 0.679,-0.381 1.515,-0.381 2.193,0 C 23.451,2.1692817 33.547,7.8372817 36.903,9.7202817 37.582,10.100282 38,10.804282 38,11.566282 c 0,3.766 0,15.101 0,18.867 0,0.762 -0.418,1.466 -1.097,1.847 -3.355,1.883 -13.451,7.551 -16.807,9.434 -0.679,0.381 -1.515,0.381 -2.193,0 -3.355,-1.883 -13.451,-7.551 -16.807,-9.434 -0.678,-0.381 -1.096,-1.084 -1.096,-1.846 0,-3.766 0,-15.101 0,-18.867 0,-0.762 0.418,-1.466 1.097,-1.8470003 3.354,-1.883 13.452,-7.551 16.806,-9.43400004 z"
+                          clip-rule="evenodd"
+                          style="fill: #004482; fill-opacity: 1"
+                        />
+                        <path
+                          fill="#5c6bc0"
+                          fill-rule="evenodd"
+                          d="m 0.304,31.404282 c -0.266,-0.356 -0.304,-0.694 -0.304,-1.149 0,-3.744 0,-15.014 0,-18.759 0,-0.758 0.417,-1.458 1.094,-1.8360003 3.343,-1.872 13.405,-7.507 16.748,-9.38000004 0.677,-0.379 1.594,-0.371 2.271,0.008 3.343,1.87200004 13.371,7.45900004 16.714,9.33100004 0.27,0.152 0.476,0.335 0.66,0.5760003 z"
+                          clip-rule="evenodd"
+                          style="fill: #659ad2; fill-opacity: 1"
+                        />
+                        <path
+                          fill="#ffffff"
+                          fill-rule="evenodd"
+                          d="m 19,7.0002817 c 7.727,0 14,6.2730003 14,14.0000003 0,7.727 -6.273,14 -14,14 -7.727,0 -14,-6.273 -14,-14 0,-7.727 6.273,-14.0000003 14,-14.0000003 z m 0,7.0000003 c 3.863,0 7,3.136 7,7 0,3.863 -3.137,7 -7,7 -3.863,0 -7,-3.137 -7,-7 0,-3.864 3.136,-7 7,-7 z"
+                          clip-rule="evenodd"
+                        />
+                        <path
+                          fill="#3949ab"
+                          fill-rule="evenodd"
+                          d="m 37.485,10.205282 c 0.516,0.483 0.506,1.211 0.506,1.784 0,3.795 -0.032,14.589 0.009,18.384 0.004,0.396 -0.127,0.813 -0.323,1.127 l -19.084,-10.5 z"
+                          clip-rule="evenodd"
+                          style="fill: #00599c; fill-opacity: 1"
+                        />
+                      </svg>
+                      <p>C</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--Python logo-->
+                      <svg
+                        class="mr-1"
+                        width="25px"
+                        height="25px"
+                        viewBox="0 0 256 255"
+                        preserveAspectRatio="xMidYMid"
+                      >
+                        <defs>
+                          <linearGradient
+                            x1="12.9593594%"
+                            y1="12.0393928%"
+                            x2="79.6388325%"
+                            y2="78.2008538%"
+                            id="linearGradient-1"
+                          >
+                            <stop stop-color="#387EB8" offset="0%" />
+                            <stop stop-color="#366994" offset="100%" />
+                          </linearGradient>
+                          <linearGradient
+                            x1="19.127525%"
+                            y1="20.5791813%"
+                            x2="90.7415328%"
+                            y2="88.4290372%"
+                            id="linearGradient-2"
+                          >
+                            <stop stop-color="#FFE052" offset="0%" />
+                            <stop stop-color="#FFC331" offset="100%" />
+                          </linearGradient>
+                        </defs>
+                        <g>
+                          <path
+                            d="M126.915866,0.0722755491 C62.0835831,0.0722801733 66.1321288,28.1874648 66.1321288,28.1874648 L66.2044043,57.3145115 L128.072276,57.3145115 L128.072276,66.0598532 L41.6307171,66.0598532 C41.6307171,66.0598532 0.144551098,61.3549438 0.144551098,126.771315 C0.144546474,192.187673 36.3546019,189.867871 36.3546019,189.867871 L57.9649915,189.867871 L57.9649915,159.51214 C57.9649915,159.51214 56.8001363,123.302089 93.5968379,123.302089 L154.95878,123.302089 C154.95878,123.302089 189.434218,123.859386 189.434218,89.9830604 L189.434218,33.9695088 C189.434218,33.9695041 194.668541,0.0722755491 126.915866,0.0722755491 L126.915866,0.0722755491 L126.915866,0.0722755491 Z M92.8018069,19.6589497 C98.9572068,19.6589452 103.932242,24.6339846 103.932242,30.7893845 C103.932246,36.9447844 98.9572068,41.9198193 92.8018069,41.9198193 C86.646407,41.9198239 81.6713721,36.9447844 81.6713721,30.7893845 C81.6713674,24.6339846 86.646407,19.6589497 92.8018069,19.6589497 L92.8018069,19.6589497 L92.8018069,19.6589497 Z"
+                            fill="url(#linearGradient-1)"
+                          />
+                          <path
+                            d="M128.757101,254.126271 C193.589403,254.126271 189.540839,226.011081 189.540839,226.011081 L189.468564,196.884035 L127.600692,196.884035 L127.600692,188.138693 L214.042251,188.138693 C214.042251,188.138693 255.528417,192.843589 255.528417,127.427208 C255.52844,62.0108566 219.318366,64.3306589 219.318366,64.3306589 L197.707976,64.3306589 L197.707976,94.6863832 C197.707976,94.6863832 198.87285,130.896434 162.07613,130.896434 L100.714182,130.896434 C100.714182,130.896434 66.238745,130.339138 66.238745,164.215486 L66.238745,220.229038 C66.238745,220.229038 61.0044225,254.126271 128.757101,254.126271 L128.757101,254.126271 L128.757101,254.126271 Z M162.87116,234.539597 C156.715759,234.539597 151.740726,229.564564 151.740726,223.409162 C151.740726,217.253759 156.715759,212.278727 162.87116,212.278727 C169.026563,212.278727 174.001595,217.253759 174.001595,223.409162 C174.001618,229.564564 169.026563,234.539597 162.87116,234.539597 L162.87116,234.539597 L162.87116,234.539597 Z"
+                            fill="url(#linearGradient-2)"
+                          />
+                        </g>
+                      </svg>
+                      <p>Python</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--Java logo-->
+                      <svg
+                        class="mr-1"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 32 32"
+                      >
+                        <path
+                          d="M11.622 24.74s-1.23.748.855.962c2.51.32 3.847.267 6.625-.267a10.02 10.02 0 0 0 1.763.855c-6.25 2.672-14.16-.16-9.244-1.55zm-.8-3.473s-1.336 1.015.748 1.23c2.725.267 4.862.32 8.55-.427a3.26 3.26 0 0 0 1.282.801c-7.534 2.244-15.976.214-10.58-1.603zm14.747 6.09s.908.748-1.015 1.336c-3.58 1.07-15.014 1.39-18.22 0-1.122-.48 1.015-1.175 1.7-1.282.695-.16 1.07-.16 1.07-.16-1.23-.855-8.175 1.763-3.526 2.51 12.77 2.084 23.296-.908 19.983-2.404zM12.2 17.633s-5.824 1.39-2.084 1.87c1.603.214 4.755.16 7.694-.053 2.404-.214 4.81-.64 4.81-.64s-.855.374-1.443.748c-5.93 1.55-17.312.855-14.052-.748 2.778-1.336 5.076-1.175 5.076-1.175zm10.42 5.824c5.984-3.1 3.206-6.09 1.282-5.717-.48.107-.695.214-.695.214s.16-.32.534-.427c3.794-1.336 6.786 4.007-1.23 6.09 0 0 .053-.053.107-.16zm-9.83 8.442c5.77.374 14.587-.214 14.8-2.94 0 0-.427 1.07-4.755 1.87-4.916.908-11.007.8-14.587.214 0 0 .748.64 4.542.855z"
+                          fill="#4e7896"
+                        />
+                        <path
+                          d="M18.996.001s3.313 3.366-3.152 8.442c-5.183 4.114-1.175 6.465 0 9.137-3.046-2.725-5.236-5.13-3.74-7.373C14.294 6.893 20.332 5.3 18.996.001zm-1.7 15.335c1.55 1.763-.427 3.366-.427 3.366s3.954-2.03 2.137-4.542c-1.656-2.404-2.94-3.58 4.007-7.587 0 0-10.953 2.725-5.717 8.763z"
+                          fill="#f58219"
+                        />
+                      </svg>
+                      <p>Java</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--Kotlin logo-->
+                      <svg
+                        class="mr-1"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 60 60"
+                        style="enable-background: new 0 0 60 60"
+                      >
+                        <g>
+                          <linearGradient
+                            gradientUnits="userSpaceOnUse"
+                            x1="15.9594"
+                            y1="-13.0143"
+                            x2="44.3068"
+                            y2="15.3332"
+                            gradientTransform="matrix(1 0 0 -1 0 61)"
+                            id="XMLID_3_"
+                          >
+                            <stop
+                              offset="9.677000e-02"
+                              style="stop-color: #0095d5"
+                            />
+                            <stop offset="0.3007" style="stop-color: #238ad9" />
+                            <stop offset="0.6211" style="stop-color: #557bde" />
+                            <stop offset="0.8643" style="stop-color: #7472e2" />
+                            <stop offset="1" style="stop-color: #806ee3" />
+                          </linearGradient>
+                          <polygon
+                            style="fill: url(#XMLID_3_)"
+                            points="0,60 30.1,29.9 60,60  "
+                          />
 
-                    <!--Software Card-->
-                    <div class="skills-software-card-wrapper">
-                        <div>
-                            <h3 class="skills-software-card-title">Tools & <br> Applications</h3>
-                            <ul class="skills-software-card-body">
-                                <li>
-                                    <div class="flex items-center">
-                                        <!--Azure DevOps logo-->
-                                        <svg class="mr-1" width="25" viewBox="0 0 18 18"><defs><linearGradient id='a' x1="9" y1="16.97" x2="9" y2="1.03" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#0078d4"/><stop offset=".16" stop-color="#1380da"/><stop offset=".53" stop-color="#3c91e5"/><stop offset=".82" stop-color="#559cec"/><stop offset="1" stop-color="#5ea0ef"/></linearGradient></defs><path d="M17 4v9.74l-4 3.28-6.2-2.26V17l-3.51-4.59 10.23.8V4.44zm-3.41.49L7.85 1v2.29L2.58 4.84 1 6.87v4.61l2.26 1V6.57z" fill="url(#a)"/></svg>
-                                        <p>Azure DevOps</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="flex items-center">
-                                        <!--Visual Studio logo-->
-                                        <svg class="mr-1" width="25" height="25" viewBox="0 0 96 96">
-                                            <defs>
-                                              <linearGradient x1="48" y1="96" x2="48" gradientUnits="userSpaceOnUse">
-                                                <stop offset="0" stop-color="#fff"/>
-                                                <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-                                              </linearGradient>
-                                              <clipPath>
-                                                <path d="M68.891,95.6a5.976,5.976,0,0,0,3.933-.439L92.6,85.651A6,6,0,0,0,96,80.244V15.757a6,6,0,0,0-3.4-5.408L72.824.839A5.98,5.98,0,0,0,66,2L34.118,37.264,15.5,22l-1.631-1.4a4,4,0,0,0-3.61-.834,3.947,3.947,0,0,0-.531.179L2.462,22.974A4,4,0,0,0,.011,26.366c-.007.1-.011.2-.011.3V69.333c0,.1,0,.2.011.3a4,4,0,0,0,2.451,3.392l7.266,3.027a3.947,3.947,0,0,0,.531.179,4,4,0,0,0,3.61-.834L15.5,74,34.117,58.736,66,94A5.964,5.964,0,0,0,68.891,95.6ZM72,27.677,47.212,48,72,68.323Zm-60,6.6L24.411,48,12,61.727Z" fill="none" clip-rule="evenodd"/>
-                                              </clipPath>
-                                            </defs>
-                                            <g style="isolation:isolate">
-                                              <rect width="96" height="96" opacity="0" fill="url(#a)"/>
-                                              <g clip-path="url(#b)">
-                                                <image width="40" height="82" transform="translate(-12 7)" opacity="0.25" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAABSCAYAAAAmR5bKAAAACXBIWXMAAAsSAAALEgHS3X78AAAEe0lEQVRoQ+2aW3fbIBCEB1+aS9Mm//93NokdJ1YfYMRotSBs6rYPmnP2YEnY+jIsqBUbhmHA/6zNUod/rd1Sh0sUQgila8OVQ9UFWAByIW3XVuDQ2G8iAxYKrWootIugFwEKmLYa9poCaei5KmTTEBfANshg+llhgQhxdtrxegghlCCrgAtgmxRb+aygQIbR+ErXecx+roqABk6dIlQpFFChvgB8pmtfyDoDQAjBHWoX0IGzYLsUe/m8Q3aT+Ue4UwpeA3IOjrnqDXVtiBVOwfYpvpkgJBf/ARnuA8DRXNNQ6IlmgMk9C8ebE+YewF1q7zGFJITCHTCFs3k5umg1AXTWNwW8S/GQ4lE+E5KAA2K+HRHhtuk3OeSfyPmo95zJG2LPvW+IcI8pngB8Ty1B75AnyRnZOd5DHdWZP4G0eVjKQZ0UBLxHhPmR4mdqnzAFBKI7B8Rc5fExHSvcokbAwszdIk8IBXwG8IIM+Zj6cHg/kOFOyLA6yyHtqKVZ7E2QPXLucVgJ+III+IAMSLcCspN2CaIG085UGmIvB+ngE7KLz8gOqmMEfUeGs24twgHtk4QuKiRBfyI6uEO82RFxknD2eouzRlUtQ0xAusil5XsKzuIt8iPsiAwHzKHOzrnldVBUg9QFmnGX+vKZ6zmnC7MLVXwWOwt0yUkF1cfdHtktXUI85zzIpkniQW5MMOEJupMIyP+UUimYB1XNQ7tYztYlzGF1oWVY1ykvz5qco0o5CExv5g27wvEP9dy7GEplHfRk4bxU8FQDaYZtAfTkgdVAb+pgi0pw3boG8GYwnq4B/KtaAXu1AvZqBezVCtirFbBXK2CvVsBerYC9WgF7tQL2agXs1QrYq2sAL3q30qtrAD3dDPpaQO8tVQmy9vpuUS2AtddntddpNZBm2Bqg3twC2pfh+v5Z5bm3CKWyr4A9NyzUF6aAhNO+VAmwGVYBB+QveE6dEbe3uN97Qt735Yt1haVCuraBD1eF3AHAMAyD7JV4w6mb0NzzZfuBDKDuAnOgDcqwbi6X3vJ7cFp7cJDYI96AW2F0Wd2swY1qKaooOae1B+8pXhF3mbapv24mKiTgO+nl48xFz8ESIJ17A/ALcX+O3//EfAP7BN9JLw+Lqg2xAtK9N0QwFlCE1O8D8w3tQzpPN73Jo62rliGme+/INTNaPHGCXxLwlr5jh9wuQ9rONALKTPYAtYKDhRMDsrt01hZVvKX2CH/IZznXWvVxRvyrdIg5A4H4w4Q/oF6W8oo83ArJCVRVaZIA2UGb0HSX4O9YLuyhk5qT+hQaHasuM86CrZD2nM7sltIo5iOfQDM4TzMHEyQPdRhqudlaXHbE3MUqZG2/WIeax3b5oYuE01oF+8doeIAupAtoZjQw/SHmDiG3JjRfta8+z133vKKKapHtDUtE9XhAZHNBmqqAF0DtZwUEMqTXjg52AVIFUAulLX98MKHnqmXKFwFSTp2N16qGQvtnC72tDOh42jkHmFm6BEZ1AVoVgAG0A1n9UcBbqOX/xf9UvwEExnQ10JbSfgAAAABJRU5ErkJggg==" style="mix-blend-mode:soft-light"/>
-                                                <path d="M15.5,74l-1.631,1.4a4,4,0,0,1-4.141.655L2.462,73.026A4,4,0,0,1,0,69.333V26.667a4,4,0,0,1,2.462-3.693l7.266-3.027a4,4,0,0,1,4.141.655L15.5,22A2.213,2.213,0,0,0,12,23.8V72.2A2.214,2.214,0,0,0,15.5,74Z" fill="#52218a"/>
-                                                <image width="120" height="101" transform="translate(-12 -12)" opacity="0.25" xlink:href="data:image/png;base64,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" style="mix-blend-mode:soft-light"/>
-                                                <path d="M96,15.77V16a3.786,3.786,0,0,0-6.187-2.928L15.5,74l-1.631,1.4a4,4,0,0,1-4.141.655L2.462,73.026A4,4,0,0,1,0,69.333V69a2.31,2.31,0,0,0,4.024,1.549L66,2A5.979,5.979,0,0,1,72.823.841L92.6,10.364A6,6,0,0,1,96,15.77Z" fill="#6c33af"/>
-                                                <image width="120" height="101" transform="translate(-12 7)" opacity="0.25" xlink:href="data:image/png;base64,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" style="mix-blend-mode:soft-light"/>
-                                                <path d="M96,80v.23a6,6,0,0,1-3.4,5.406l-19.78,9.523A5.979,5.979,0,0,1,66,94L4.024,25.451A2.31,2.31,0,0,0,0,27v-.333a4,4,0,0,1,2.462-3.693l7.266-3.027a4,4,0,0,1,4.141.655L15.5,22,89.813,82.928A3.786,3.786,0,0,0,96,80Z" fill="#854cc7"/>
-                                                <image width="54" height="120" transform="translate(54 -12)" opacity="0.25" xlink:href="data:image/png;base64,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" style="mix-blend-mode:soft-light"/>
-                                                <path d="M66,94c.138.138.292.254.441.377A3.751,3.751,0,0,1,66,94Zm.441-92.377A3.751,3.751,0,0,0,66,2C66.139,1.861,66.292,1.746,66.441,1.623ZM92.6,10.349,72.823.839a5.968,5.968,0,0,0-6.382.784A3.517,3.517,0,0,1,72,4.485v87.03a3.517,3.517,0,0,1-5.559,2.862,5.968,5.968,0,0,0,6.382.784L92.6,85.651A6,6,0,0,0,96,80.244V15.757A6,6,0,0,0,92.6,10.349Z" fill="#b179f1"/>
-                                              </g>
-                                            </g>
-                                          </svg>
-                                        <p>Visual Studio</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="flex items-center">
-                                        <!--Android Studio logo-->
-                                        <svg class="mr-1" width="25" height="25" viewBox="0 0 128 128"><defs><linearGradient x1="31.677%" y1="34.912%" x2="78.46%" y2="88.594%"><stop stop-color="#E6E6E6" offset="0%"/><stop stop-color="#FFF" stop-opacity="0" offset="92.575%"/></linearGradient></defs><g transform="translate(6.5 6)" fill-rule="nonzero" fill="none"><ellipse fill="#000" opacity=".2" cx="57.54" cy="58.396" rx="57.54" ry="57.475"/><ellipse fill="#FFF" cx="57.54" cy="57.475" rx="57.54" ry="57.475"/><path d="M114.59 64.987L68.636 19.084l-37.02 60.613 34.637 34.598c25.198-3.824 45.026-23.972 48.337-49.308z" fill="#FFF"/><path d="M83.058 46.114L37.104.211.085 60.824l34.637 34.598c25.197-3.824 45.025-23.972 48.336-49.308z" fill="url(#a)" transform="translate(31.532 18.873)"/><path d="M79.185 41.314h-2.246c-.521-6.21-4.074-11.467-9.266-14.292l-1.128-.563c-2.342-1.069-4.973-1.664-7.78-1.664-2.807 0-5.438.595-7.78 1.664l-.01-.016c-.387.172-.777.334-1.174.483l.056.096a17.836 17.836 0 0 0-3.686 2.666h-10.5c-3.196 0-5.812 2.616-5.812 5.813 0 .078.002.156.005.234-.011-.16-.011-.252-.011-.252v40.175c0 3.198 2.616 5.814 5.813 5.814h10.187l-2.502 5.33c-.878 1.885.498 4.044 2.577 4.044a2.843 2.843 0 0 0 2.578-1.643l3.618-7.731h13.118l3.67 7.626a2.84 2.84 0 0 0 2.558 1.606c2.093 0 3.468-2.188 2.56-4.074l-2.476-5.158h8.156l-.014 8.992c0 .16.13.29.29.29l2.46.013c2.877 0 5.231-2.354 5.231-5.23v-38.62c0-6.333-8.492-5.603-8.492-5.603zM36.04 41.314h4.55-4.549z" fill="#CCC"/><g><path d="M49.693 27.832H33.82c-3.197 0-5.813 2.616-5.813 5.813 0 3.197 2.423 5.813 5.62 5.813H49.83l-.136-11.626z" fill="#073042"/><path d="M85.826 79.616H33.814c-3.197 0-5.813-2.616-5.813-5.814V33.627s-.017 5.831 6.195 5.831h43.137s8.493-.73 8.493 5.603v34.555z" fill="#4285F4"/><path d="M54.712 59.112L45.08 79.637h6.271l4.465-9.542c.82-1.74 3.291-1.747 4.12-.012l4.598 9.554h6.311l-9.91-20.65a5.232 5.232 0 0 0 2.049-4.148c0-2.445-1.684-4.5-3.953-5.076v-3.407a1.008 1.008 0 0 0-2.015 0v3.296c-2.548.355-4.518 2.543-4.518 5.187 0 1.763.877 3.322 2.214 4.273zm3.029-7.501a3.229 3.229 0 1 1 0 6.457 3.229 3.229 0 0 1 0-6.457z" fill="#3870B2"/><path fill="#FFF" d="M46.253 30.687h22.254v4.075H46.253z"/><path d="M65.278 34.284c-.834 0-1.513-.68-1.513-1.514 0-.835.679-1.514 1.513-1.514.835 0 1.514.68 1.514 1.514 0 .835-.679 1.514-1.514 1.514m-16.73 0c-.834 0-1.513-.68-1.513-1.514 0-.835.679-1.514 1.513-1.514.835 0 1.514.68 1.514 1.514 0 .835-.68 1.514-1.514 1.514m17.273-9.118l3.025-5.239a.63.63 0 0 0-1.09-.63l-3.063 5.306c-2.342-1.069-4.973-1.664-7.78-1.664-2.807 0-5.437.595-7.78 1.664l-3.063-5.305a.63.63 0 0 0-1.09.63l3.025 5.238c-5.194 2.825-8.747 8.084-9.267 14.297h36.35c-.52-6.213-4.073-11.472-9.267-14.297" fill="#3DDC84"/><path d="M80.595 50.617h-2.403a.29.29 0 0 0-.289.29l-.058 37.7c0 .16.13.29.289.29l2.46.014c2.878 0 5.232-2.354 5.232-5.23V45.38c0 2.877-2.354 5.236-5.231 5.236zM56.63 51.658a3.229 3.229 0 1 1 0 6.457 3.229 3.229 0 0 1 0-6.457zm1.29-1.93v-3.325a1.008 1.008 0 0 0-2.014 0v3.296c-2.549.355-4.519 2.543-4.519 5.187 0 1.763.877 3.322 2.215 4.273L41.499 84.946c-.878 1.885.498 4.044 2.578 4.044a2.843 2.843 0 0 0 2.578-1.643l8.05-17.205c.82-1.74 3.292-1.747 4.121-.012l8.234 17.112a2.84 2.84 0 0 0 2.558 1.606c2.094 0 3.468-2.188 2.56-4.074l-12.353-25.74a5.232 5.232 0 0 0 2.048-4.148c0-2.445-1.684-4.5-3.953-5.076" fill="#073042"/></g></g></svg>
-                                        <p>Android Studio</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="flex items-center pl-1">
-                                        <!--GitHub logo-->
-                                        <i class="mr-1 text-xl fab fa-github dark:text-white"></i>
-                                        <p>GitHub</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="flex items-center">
-                                        <!--AWS logo-->
-                                        <svg class="mr-1" version="1.1" width="25" viewBox="0 0 304 182" style="enable-background:new 0 0 304 182;">
-                                            <style type="text/css">
-                                                .st0{fill:#252F3E;}
-                                                .st1{fill-rule:evenodd;clip-rule:evenodd;fill:#FF9900;}
-                                            </style>
-                                            <g>
-                                                <path class="st0" d="M86.4,66.4c0,3.7,0.4,6.7,1.1,8.9c0.8,2.2,1.8,4.6,3.2,7.2c0.5,0.8,0.7,1.6,0.7,2.3c0,1-0.6,2-1.9,3l-6.3,4.2   c-0.9,0.6-1.8,0.9-2.6,0.9c-1,0-2-0.5-3-1.4C76.2,90,75,88.4,74,86.8c-1-1.7-2-3.6-3.1-5.9c-7.8,9.2-17.6,13.8-29.4,13.8   c-8.4,0-15.1-2.4-20-7.2c-4.9-4.8-7.4-11.2-7.4-19.2c0-8.5,3-15.4,9.1-20.6c6.1-5.2,14.2-7.8,24.5-7.8c3.4,0,6.9,0.3,10.6,0.8   c3.7,0.5,7.5,1.3,11.5,2.2v-7.3c0-7.6-1.6-12.9-4.7-16c-3.2-3.1-8.6-4.6-16.3-4.6c-3.5,0-7.1,0.4-10.8,1.3c-3.7,0.9-7.3,2-10.8,3.4   c-1.6,0.7-2.8,1.1-3.5,1.3c-0.7,0.2-1.2,0.3-1.6,0.3c-1.4,0-2.1-1-2.1-3.1v-4.9c0-1.6,0.2-2.8,0.7-3.5c0.5-0.7,1.4-1.4,2.8-2.1   c3.5-1.8,7.7-3.3,12.6-4.5c4.9-1.3,10.1-1.9,15.6-1.9c11.9,0,20.6,2.7,26.2,8.1c5.5,5.4,8.3,13.6,8.3,24.6V66.4z M45.8,81.6   c3.3,0,6.7-0.6,10.3-1.8c3.6-1.2,6.8-3.4,9.5-6.4c1.6-1.9,2.8-4,3.4-6.4c0.6-2.4,1-5.3,1-8.7v-4.2c-2.9-0.7-6-1.3-9.2-1.7   c-3.2-0.4-6.3-0.6-9.4-0.6c-6.7,0-11.6,1.3-14.9,4c-3.3,2.7-4.9,6.5-4.9,11.5c0,4.7,1.2,8.2,3.7,10.6   C37.7,80.4,41.2,81.6,45.8,81.6z M126.1,92.4c-1.8,0-3-0.3-3.8-1c-0.8-0.6-1.5-2-2.1-3.9L96.7,10.2c-0.6-2-0.9-3.3-0.9-4   c0-1.6,0.8-2.5,2.4-2.5h9.8c1.9,0,3.2,0.3,3.9,1c0.8,0.6,1.4,2,2,3.9l16.8,66.2l15.6-66.2c0.5-2,1.1-3.3,1.9-3.9c0.8-0.6,2.2-1,4-1   h8c1.9,0,3.2,0.3,4,1c0.8,0.6,1.5,2,1.9,3.9l15.8,67l17.3-67c0.6-2,1.3-3.3,2-3.9c0.8-0.6,2.1-1,3.9-1h9.3c1.6,0,2.5,0.8,2.5,2.5   c0,0.5-0.1,1-0.2,1.6c-0.1,0.6-0.3,1.4-0.7,2.5l-24.1,77.3c-0.6,2-1.3,3.3-2.1,3.9c-0.8,0.6-2.1,1-3.8,1h-8.6c-1.9,0-3.2-0.3-4-1   c-0.8-0.7-1.5-2-1.9-4L156,23l-15.4,64.4c-0.5,2-1.1,3.3-1.9,4c-0.8,0.7-2.2,1-4,1H126.1z M254.6,95.1c-5.2,0-10.4-0.6-15.4-1.8   c-5-1.2-8.9-2.5-11.5-4c-1.6-0.9-2.7-1.9-3.1-2.8c-0.4-0.9-0.6-1.9-0.6-2.8v-5.1c0-2.1,0.8-3.1,2.3-3.1c0.6,0,1.2,0.1,1.8,0.3   c0.6,0.2,1.5,0.6,2.5,1c3.4,1.5,7.1,2.7,11,3.5c4,0.8,7.9,1.2,11.9,1.2c6.3,0,11.2-1.1,14.6-3.3c3.4-2.2,5.2-5.4,5.2-9.5   c0-2.8-0.9-5.1-2.7-7c-1.8-1.9-5.2-3.6-10.1-5.2L246,52c-7.3-2.3-12.7-5.7-16-10.2c-3.3-4.4-5-9.3-5-14.5c0-4.2,0.9-7.9,2.7-11.1   c1.8-3.2,4.2-6,7.2-8.2c3-2.3,6.4-4,10.4-5.2c4-1.2,8.2-1.7,12.6-1.7c2.2,0,4.5,0.1,6.7,0.4c2.3,0.3,4.4,0.7,6.5,1.1   c2,0.5,3.9,1,5.7,1.6c1.8,0.6,3.2,1.2,4.2,1.8c1.4,0.8,2.4,1.6,3,2.5c0.6,0.8,0.9,1.9,0.9,3.3v4.7c0,2.1-0.8,3.2-2.3,3.2   c-0.8,0-2.1-0.4-3.8-1.2c-5.7-2.6-12.1-3.9-19.2-3.9c-5.7,0-10.2,0.9-13.3,2.8c-3.1,1.9-4.7,4.8-4.7,8.9c0,2.8,1,5.2,3,7.1   c2,1.9,5.7,3.8,11,5.5l14.2,4.5c7.2,2.3,12.4,5.5,15.5,9.6c3.1,4.1,4.6,8.8,4.6,14c0,4.3-0.9,8.2-2.6,11.6   c-1.8,3.4-4.2,6.4-7.3,8.8c-3.1,2.5-6.8,4.3-11.1,5.6C264.4,94.4,259.7,95.1,254.6,95.1z"/>
-                                                <g>
-                                                    <path class="st1" d="M273.5,143.7c-32.9,24.3-80.7,37.2-121.8,37.2c-57.6,0-109.5-21.3-148.7-56.7c-3.1-2.8-0.3-6.6,3.4-4.4    c42.4,24.6,94.7,39.5,148.8,39.5c36.5,0,76.6-7.6,113.5-23.2C274.2,133.6,278.9,139.7,273.5,143.7z"/>
-                                                    <path class="st1" d="M287.2,128.1c-4.2-5.4-27.8-2.6-38.5-1.3c-3.2,0.4-3.7-2.4-0.8-4.5c18.8-13.2,49.7-9.4,53.3-5    c3.6,4.5-1,35.4-18.6,50.2c-2.7,2.3-5.3,1.1-4.1-1.9C282.5,155.7,291.4,133.4,287.2,128.1z"/>
-                                                </g>
-                                            </g>
-                                            </svg>
-                                        <p>Amazon Web Services</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="flex items-center">
-                                        <!--Microsoft Office logo-->
-                                        <svg class="mr-1" viewBox="0 0 53.59 64.356" width="25" height="25">
-                                            <g transform="translate(-216.07358,-549.28882)">
-                                             <g transform="matrix(1.8232952,0,0,1.8232952,-597.71681,-124.12247)">
-                                              <g transform="translate(0,-91.137241)">
-                                               <g fill="#eb3c00" transform="matrix(0.74069815,0,0,0.74069815,98.5698,-8.2505871)">
-                                                <path d="m469.87,671.03,0-28.52,25.229-9.3238,13.711,4.3877,0,38.392-13.711,4.133-25.229-9.0691,25.229,3.0361,0-33.201-16.454,3.8392,0,22.487z"/>
-                                               </g>
-                                              </g>
-                                             </g>
-                                            </g>
-                                           </svg>
-                                        <p>Microsoft Office</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div> 
+                          <linearGradient
+                            gradientUnits="userSpaceOnUse"
+                            x1="4.2092"
+                            y1="48.9409"
+                            x2="20.6734"
+                            y2="65.405"
+                            gradientTransform="matrix(1 0 0 -1 0 61)"
+                            id="SVGID_1_"
+                          >
+                            <stop offset="0.1183" style="stop-color: #0095d5" />
+                            <stop offset="0.4178" style="stop-color: #3c83dc" />
+                            <stop offset="0.6962" style="stop-color: #6d74e1" />
+                            <stop offset="0.8333" style="stop-color: #806ee3" />
+                          </linearGradient>
+                          <polygon
+                            style="fill: url(#SVGID_1_)"
+                            points="0,0 30.1,0 0,32.5  "
+                          />
+
+                          <linearGradient
+                            gradientUnits="userSpaceOnUse"
+                            x1="-10.1017"
+                            y1="5.8362"
+                            x2="45.7315"
+                            y2="61.6694"
+                            gradientTransform="matrix(1 0 0 -1 0 61)"
+                            id="SVGID_2_"
+                          >
+                            <stop offset="0.1075" style="stop-color: #c757bc" />
+                            <stop offset="0.2138" style="stop-color: #d0609a" />
+                            <stop offset="0.4254" style="stop-color: #e1725c" />
+                            <stop offset="0.6048" style="stop-color: #ee7e2f" />
+                            <stop offset="0.743" style="stop-color: #f58613" />
+                            <stop offset="0.8232" style="stop-color: #f88909" />
+                          </linearGradient>
+                          <polygon
+                            style="fill: url(#SVGID_2_)"
+                            points="30.1,0 0,31.7 0,60 30.1,29.9 60,0  "
+                          />
+                        </g>
+                      </svg>
+                      <p>Kotlin</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--GraphQL logo-->
+                      <svg
+                        class="mr-1"
+                        version="1.1"
+                        id="GraphQL_Logo"
+                        width="25px"
+                        height="25px"
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                        x="0px"
+                        y="0px"
+                        viewBox="0 0 400 400"
+                        enable-background="new 0 0 400 400"
+                        xml:space="preserve"
+                      >
+                        <g>
+                          <g>
+                            <g>
+                              <rect
+                                x="122"
+                                y="-0.4"
+                                transform="matrix(-0.866 -0.5 0.5 -0.866 163.3196 363.3136)"
+                                fill="#E535AB"
+                                width="16.6"
+                                height="320.3"
+                              />
+                            </g>
+                          </g>
+                          <g>
+                            <g>
+                              <rect
+                                x="39.8"
+                                y="272.2"
+                                fill="#E535AB"
+                                width="320.3"
+                                height="16.6"
+                              />
+                            </g>
+                          </g>
+                          <g>
+                            <g>
+                              <rect
+                                x="37.9"
+                                y="312.2"
+                                transform="matrix(-0.866 -0.5 0.5 -0.866 83.0693 663.3409)"
+                                fill="#E535AB"
+                                width="185"
+                                height="16.6"
+                              />
+                            </g>
+                          </g>
+                          <g>
+                            <g>
+                              <rect
+                                x="177.1"
+                                y="71.1"
+                                transform="matrix(-0.866 -0.5 0.5 -0.866 463.3409 283.0693)"
+                                fill="#E535AB"
+                                width="185"
+                                height="16.6"
+                              />
+                            </g>
+                          </g>
+                          <g>
+                            <g>
+                              <rect
+                                x="122.1"
+                                y="-13"
+                                transform="matrix(-0.5 -0.866 0.866 -0.5 126.7903 232.1221)"
+                                fill="#E535AB"
+                                width="16.6"
+                                height="185"
+                              />
+                            </g>
+                          </g>
+                          <g>
+                            <g>
+                              <rect
+                                x="109.6"
+                                y="151.6"
+                                transform="matrix(-0.5 -0.866 0.866 -0.5 266.0828 473.3766)"
+                                fill="#E535AB"
+                                width="320.3"
+                                height="16.6"
+                              />
+                            </g>
+                          </g>
+                          <g>
+                            <g>
+                              <rect
+                                x="52.5"
+                                y="107.5"
+                                fill="#E535AB"
+                                width="16.6"
+                                height="185"
+                              />
+                            </g>
+                          </g>
+                          <g>
+                            <g>
+                              <rect
+                                x="330.9"
+                                y="107.5"
+                                fill="#E535AB"
+                                width="16.6"
+                                height="185"
+                              />
+                            </g>
+                          </g>
+                          <g>
+                            <g>
+                              <rect
+                                x="262.4"
+                                y="240.1"
+                                transform="matrix(-0.5 -0.866 0.866 -0.5 126.7953 714.2875)"
+                                fill="#E535AB"
+                                width="14.5"
+                                height="160.9"
+                              />
+                            </g>
+                          </g>
+                          <path
+                            fill="#E535AB"
+                            d="M369.5,297.9c-9.6,16.7-31,22.4-47.7,12.8c-16.7-9.6-22.4-31-12.8-47.7c9.6-16.7,31-22.4,47.7-12.8   C373.5,259.9,379.2,281.2,369.5,297.9"
+                          />
+                          <path
+                            fill="#E535AB"
+                            d="M90.9,137c-9.6,16.7-31,22.4-47.7,12.8c-16.7-9.6-22.4-31-12.8-47.7c9.6-16.7,31-22.4,47.7-12.8   C94.8,99,100.5,120.3,90.9,137"
+                          />
+                          <path
+                            fill="#E535AB"
+                            d="M30.5,297.9c-9.6-16.7-3.9-38,12.8-47.7c16.7-9.6,38-3.9,47.7,12.8c9.6,16.7,3.9,38-12.8,47.7   C61.4,320.3,40.1,314.6,30.5,297.9"
+                          />
+                          <path
+                            fill="#E535AB"
+                            d="M309.1,137c-9.6-16.7-3.9-38,12.8-47.7c16.7-9.6,38-3.9,47.7,12.8c9.6,16.7,3.9,38-12.8,47.7   C340.1,159.4,318.7,153.7,309.1,137"
+                          />
+                          <path
+                            fill="#E535AB"
+                            d="M200,395.8c-19.3,0-34.9-15.6-34.9-34.9c0-19.3,15.6-34.9,34.9-34.9c19.3,0,34.9,15.6,34.9,34.9   C234.9,380.1,219.3,395.8,200,395.8"
+                          />
+                          <path
+                            fill="#E535AB"
+                            d="M200,74c-19.3,0-34.9-15.6-34.9-34.9c0-19.3,15.6-34.9,34.9-34.9c19.3,0,34.9,15.6,34.9,34.9   C234.9,58.4,219.3,74,200,74"
+                          />
+                        </g>
+                      </svg>
+                      <p>GraphQL</p>
+                    </div>
+                  </li>
+                </ul>
+                <ul class="space-y-2">
+                  <li>
+                    <div class="flex items-center">
+                      <!--HTML5 logo-->
+                      <svg
+                        class="mr-1"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 512 512"
+                      >
+                        <title>HTML5 Logo Badge</title>
+                        <path
+                          fill="#E34F26"
+                          d="M71,460 L30,0 481,0 440,460 255,512"
+                        />
+                        <path
+                          fill="#EF652A"
+                          d="M256,472 L405,431 440,37 256,37"
+                        />
+                        <path
+                          fill="#EBEBEB"
+                          d="M256,208 L181,208 176,150 256,150 256,94 255,94 114,94 115,109 129,265 256,265zM256,355 L255,355 192,338 188,293 158,293 132,293 139,382 255,414 256,414z"
+                        />
+                        <path
+                          fill="#FFF"
+                          d="M255,208 L255,265 325,265 318,338 255,355 255,414 371,382 372,372 385,223 387,208 371,208zM255,94 L255,129 255,150 255,150 392,150 392,150 392,150 393,138 396,109 397,94z"
+                        />
+                      </svg>
+                      <p>HTML</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--CSS3 logo-->
+                      <svg
+                        class="mr-1"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 512 512"
+                      >
+                        <path
+                          fill="#264de4"
+                          d="M71.357 460.819L30.272 0h451.456l-41.129 460.746L255.724 512z"
+                        />
+                        <path
+                          fill="#2965f1"
+                          d="M405.388 431.408l35.148-393.73H256v435.146z"
+                        />
+                        <path
+                          fill="#ebebeb"
+                          d="M124.46 208.59l5.065 56.517H256V208.59zM119.419 150.715H256V94.197H114.281zM256 355.372l-.248.066-62.944-16.996-4.023-45.076h-56.736l7.919 88.741 115.772 32.14.26-.073z"
+                        />
+                        <path
+                          fill="#fff"
+                          d="M255.805 208.59v56.517H325.4l-6.56 73.299-63.035 17.013v58.8l115.864-32.112.85-9.549 13.28-148.792 1.38-15.176 10.203-114.393H255.805v56.518h79.639L330.3 208.59z"
+                        />
+                      </svg>
+                      <p>CSS</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--JavaScript logo-->
+                      <svg
+                        class="mr-1"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 630 630"
+                      >
+                        <rect width="630" height="630" fill="#f7df1e" />
+                        <path
+                          d="m423.2 492.19c12.69 20.72 29.2 35.95 58.4 35.95 24.53 0 40.2-12.26 40.2-29.2 0-20.3-16.1-27.49-43.1-39.3l-14.8-6.35c-42.72-18.2-71.1-41-71.1-89.2 0-44.4 33.83-78.2 86.7-78.2 37.64 0 64.7 13.1 84.2 47.4l-46.1 29.6c-10.15-18.2-21.1-25.37-38.1-25.37-17.34 0-28.33 11-28.33 25.37 0 17.76 11 24.95 36.4 35.95l14.8 6.34c50.3 21.57 78.7 43.56 78.7 93 0 53.3-41.87 82.5-98.1 82.5-54.98 0-90.5-26.2-107.88-60.54zm-209.13 5.13c9.3 16.5 17.76 30.45 38.1 30.45 19.45 0 31.72-7.61 31.72-37.2v-201.3h59.2v202.1c0 61.3-35.94 89.2-88.4 89.2-47.4 0-74.85-24.53-88.81-54.075z"
+                        />
+                      </svg>
+                      <p>JavaScript</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--React logo-->
+                      <svg
+                        class="mr-1"
+                        width="25px"
+                        height="25px"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="-11.5 -10.23174 23 20.46348"
+                      >
+                        <title>React Logo</title>
+                        <circle cx="0" cy="0" r="2.05" fill="#61dafb" />
+                        <g stroke="#61dafb" stroke-width="1" fill="none">
+                          <ellipse rx="11" ry="4.2" />
+                          <ellipse rx="11" ry="4.2" transform="rotate(60)" />
+                          <ellipse rx="11" ry="4.2" transform="rotate(120)" />
+                        </g>
+                      </svg>
+                      <p>React</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--.NET Core logo-->
+                      <svg
+                        class="mr-1"
+                        width="25"
+                        height="25"
+                        viewBox="0 0 64 64"
+                      >
+                        <defs>
+                          <style>
+                            .cls-1 {
+                              fill: #5c2d91;
+                            }
+                            .cls-2,
+                            .cls-3 {
+                              fill: #fff;
+                            }
+                            .cls-2 {
+                              opacity: 0.1;
+                            }
+                            .cls-4 {
+                              fill: #f2f2f2;
+                            }
+                          </style>
+                        </defs>
+                        <title>logo_NETcore</title>
+                        <circle class="cls-1" cx="32" cy="32" r="32" />
+                        <path class="cls-2" d="M9.82,9A32,32,0,1,0,55,54.18Z" />
+                        <path
+                          class="cls-3"
+                          d="M7.4,37.25a1.35,1.35,0,0,1-1-.42,1.38,1.38,0,0,1-.41-1,1.4,1.4,0,0,1,.41-1,1.34,1.34,0,0,1,1-.43,1.37,1.37,0,0,1,1,.43,1.39,1.39,0,0,1,.42,1,1.37,1.37,0,0,1-.42,1A1.38,1.38,0,0,1,7.4,37.25Z"
+                        />
+                        <path
+                          class="cls-3"
+                          d="M27.27,37H24.65L15.28,22.46a6,6,0,0,1-.58-1.14h-.08a18.72,18.72,0,0,1,.1,2.5V37H12.59V18.77h2.77l9.12,14.28q.57.89.74,1.22h.05a19.28,19.28,0,0,1-.13-2.68V18.77h2.13Z"
+                        />
+                        <path
+                          class="cls-3"
+                          d="M41.69,37H32V18.77h9.24V20.7H34.18v6.06h6.58v1.92H34.18V35h7.52Z"
+                        />
+                        <path
+                          class="cls-3"
+                          d="M56,20.7H50.7V37H48.57V20.7H43.33V18.77H56Z"
+                        />
+                        <path
+                          class="cls-4"
+                          d="M26.12,49.4a4.93,4.93,0,0,1-2.32.49,3.74,3.74,0,0,1-2.87-1.15,4.26,4.26,0,0,1-1.08-3,4.46,4.46,0,0,1,1.21-3.26,4.12,4.12,0,0,1,3.08-1.24,4.93,4.93,0,0,1,2,.35v1a4,4,0,0,0-2-.5,3.06,3.06,0,0,0-2.35,1,3.64,3.64,0,0,0-.9,2.58,3.47,3.47,0,0,0,.84,2.45,2.86,2.86,0,0,0,2.21.91,4.14,4.14,0,0,0,2.19-.56Z"
+                        />
+                        <path
+                          class="cls-4"
+                          d="M30.21,49.89A2.78,2.78,0,0,1,28.08,49a3.11,3.11,0,0,1-.79-2.23,3.24,3.24,0,0,1,.83-2.36,3,3,0,0,1,2.23-.85,2.69,2.69,0,0,1,2.09.83,3.28,3.28,0,0,1,.75,2.29,3.22,3.22,0,0,1-.81,2.3A2.84,2.84,0,0,1,30.21,49.89Zm.07-5.47a1.83,1.83,0,0,0-1.46.63,2.59,2.59,0,0,0-.54,1.74,2.45,2.45,0,0,0,.54,1.68,1.85,1.85,0,0,0,1.46.62,1.76,1.76,0,0,0,1.43-.6,2.62,2.62,0,0,0,.5-1.72,2.66,2.66,0,0,0-.5-1.73A1.75,1.75,0,0,0,30.28,44.42Z"
+                        />
+                        <path
+                          class="cls-4"
+                          d="M37.86,44.72a1.18,1.18,0,0,0-.73-.19,1.23,1.23,0,0,0-1,.58,2.68,2.68,0,0,0-.41,1.58v3.06h-1v-6h1V45h0a2.1,2.1,0,0,1,.63-1,1.43,1.43,0,0,1,.94-.35,1.57,1.57,0,0,1,.57.08Z"
+                        />
+                        <path
+                          class="cls-4"
+                          d="M43.72,47H39.49A2.24,2.24,0,0,0,40,48.54a1.86,1.86,0,0,0,1.42.54,3,3,0,0,0,1.86-.67v.9a3.48,3.48,0,0,1-2.09.57,2.54,2.54,0,0,1-2-.82,3.35,3.35,0,0,1-.73-2.3,3.28,3.28,0,0,1,.79-2.28,2.55,2.55,0,0,1,2-.88,2.26,2.26,0,0,1,1.82.76,3.18,3.18,0,0,1,.64,2.12Zm-1-.81a2,2,0,0,0-.4-1.29,1.37,1.37,0,0,0-1.1-.46,1.55,1.55,0,0,0-1.15.49,2.21,2.21,0,0,0-.59,1.27Z"
+                        />
+                      </svg>
+                      <p>.NET Core</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--Tailwind CSS logo-->
+                      <svg
+                        class="mr-1"
+                        height="25"
+                        preserveAspectRatio="xMidYMid"
+                        width="25"
+                        viewBox="0 0 256 153.6"
+                      >
+                        <linearGradient x1="-2.778%" y1="32%" y2="67.556%">
+                          <stop offset="0" stop-color="#2298bd" />
+                          <stop offset="1" stop-color="#0ed7b5" />
+                        </linearGradient>
+                        <path
+                          d="M128 0C93.867 0 72.533 17.067 64 51.2 76.8 34.133 91.733 27.733 108.8 32c9.737 2.434 16.697 9.499 24.401 17.318C145.751 62.057 160.275 76.8 192 76.8c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C174.249 14.743 159.725 0 128 0zM64 76.8C29.867 76.8 8.533 93.867 0 128c12.8-17.067 27.733-23.467 44.8-19.2 9.737 2.434 16.697 9.499 24.401 17.318C81.751 138.857 96.275 153.6 128 153.6c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C110.249 91.543 95.725 76.8 64 76.8z"
+                          fill="url(#a)"
+                        />
+                      </svg>
+                      <p>Tailwind CSS</p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="flex items-center">
+                      <!--alpine.js logo-->
+                      <svg
+                        class="mr-1"
+                        viewBox="0 0 16 16"
+                        width="25"
+                        height="25"
+                      >
+                        <path
+                          fill="#fff"
+                          opacity=".2"
+                          d="M0.48 0.16L15.52 0.16C15.7 0.16 15.84 0.3 15.84 0.48L15.84 15.52C15.84 15.7 15.7 15.84 15.52 15.84L0.48 15.84C0.3 15.84 0.16 15.7 0.16 15.52L0.16 0.48C0.16 0.3 0.3 0.16 0.48 0.16Z"
+                        />
+                        <path
+                          fill="#77c1d2"
+                          d="M12.06 4.64L15.35 7.92L12.06 11.19L8.77 7.92L12.06 4.64Z"
+                        />
+                        <path
+                          fill="#2d3441"
+                          d="M3.85 4.64L10.65 11.42L4.08 11.42L0.56 7.92L3.85 4.64Z"
+                        />
+                      </svg>
+                      <p>Alpine.js</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </div>
+
+          <!--Software Card-->
+          <div class="skills-software-card-wrapper">
+            <div>
+              <h3 class="skills-software-card-title">
+                Tools & <br />
+                Applications
+              </h3>
+              <ul class="skills-software-card-body">
+                <li>
+                  <div class="flex items-center">
+                    <!--Azure DevOps logo-->
+                    <svg class="mr-1" width="25" viewBox="0 0 18 18">
+                      <defs>
+                        <linearGradient
+                          id="a"
+                          x1="9"
+                          y1="16.97"
+                          x2="9"
+                          y2="1.03"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop offset="0" stop-color="#0078d4" />
+                          <stop offset=".16" stop-color="#1380da" />
+                          <stop offset=".53" stop-color="#3c91e5" />
+                          <stop offset=".82" stop-color="#559cec" />
+                          <stop offset="1" stop-color="#5ea0ef" />
+                        </linearGradient>
+                      </defs>
+                      <path
+                        d="M17 4v9.74l-4 3.28-6.2-2.26V17l-3.51-4.59 10.23.8V4.44zm-3.41.49L7.85 1v2.29L2.58 4.84 1 6.87v4.61l2.26 1V6.57z"
+                        fill="url(#a)"
+                      />
+                    </svg>
+                    <p>Azure DevOps</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="flex items-center">
+                    <!--Visual Studio logo-->
+                    <svg
+                      class="mr-1"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 96 96"
+                    >
+                      <defs>
+                        <linearGradient
+                          x1="48"
+                          y1="96"
+                          x2="48"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop offset="0" stop-color="#fff" />
+                          <stop offset="1" stop-color="#fff" stop-opacity="0" />
+                        </linearGradient>
+                        <clipPath>
+                          <path
+                            d="M68.891,95.6a5.976,5.976,0,0,0,3.933-.439L92.6,85.651A6,6,0,0,0,96,80.244V15.757a6,6,0,0,0-3.4-5.408L72.824.839A5.98,5.98,0,0,0,66,2L34.118,37.264,15.5,22l-1.631-1.4a4,4,0,0,0-3.61-.834,3.947,3.947,0,0,0-.531.179L2.462,22.974A4,4,0,0,0,.011,26.366c-.007.1-.011.2-.011.3V69.333c0,.1,0,.2.011.3a4,4,0,0,0,2.451,3.392l7.266,3.027a3.947,3.947,0,0,0,.531.179,4,4,0,0,0,3.61-.834L15.5,74,34.117,58.736,66,94A5.964,5.964,0,0,0,68.891,95.6ZM72,27.677,47.212,48,72,68.323Zm-60,6.6L24.411,48,12,61.727Z"
+                            fill="none"
+                            clip-rule="evenodd"
+                          />
+                        </clipPath>
+                      </defs>
+                      <g style="isolation: isolate">
+                        <rect
+                          width="96"
+                          height="96"
+                          opacity="0"
+                          fill="url(#a)"
+                        />
+                        <g clip-path="url(#b)">
+                          <image
+                            width="40"
+                            height="82"
+                            transform="translate(-12 7)"
+                            opacity="0.25"
+                            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAABSCAYAAAAmR5bKAAAACXBIWXMAAAsSAAALEgHS3X78AAAEe0lEQVRoQ+2aW3fbIBCEB1+aS9Mm//93NokdJ1YfYMRotSBs6rYPmnP2YEnY+jIsqBUbhmHA/6zNUod/rd1Sh0sUQgila8OVQ9UFWAByIW3XVuDQ2G8iAxYKrWootIugFwEKmLYa9poCaei5KmTTEBfANshg+llhgQhxdtrxegghlCCrgAtgmxRb+aygQIbR+ErXecx+roqABk6dIlQpFFChvgB8pmtfyDoDQAjBHWoX0IGzYLsUe/m8Q3aT+Ue4UwpeA3IOjrnqDXVtiBVOwfYpvpkgJBf/ARnuA8DRXNNQ6IlmgMk9C8ebE+YewF1q7zGFJITCHTCFs3k5umg1AXTWNwW8S/GQ4lE+E5KAA2K+HRHhtuk3OeSfyPmo95zJG2LPvW+IcI8pngB8Ty1B75AnyRnZOd5DHdWZP4G0eVjKQZ0UBLxHhPmR4mdqnzAFBKI7B8Rc5fExHSvcokbAwszdIk8IBXwG8IIM+Zj6cHg/kOFOyLA6yyHtqKVZ7E2QPXLucVgJ+III+IAMSLcCspN2CaIG085UGmIvB+ngE7KLz8gOqmMEfUeGs24twgHtk4QuKiRBfyI6uEO82RFxknD2eouzRlUtQ0xAusil5XsKzuIt8iPsiAwHzKHOzrnldVBUg9QFmnGX+vKZ6zmnC7MLVXwWOwt0yUkF1cfdHtktXUI85zzIpkniQW5MMOEJupMIyP+UUimYB1XNQ7tYztYlzGF1oWVY1ykvz5qco0o5CExv5g27wvEP9dy7GEplHfRk4bxU8FQDaYZtAfTkgdVAb+pgi0pw3boG8GYwnq4B/KtaAXu1AvZqBezVCtirFbBXK2CvVsBerYC9WgF7tQL2agXs1QrYq2sAL3q30qtrAD3dDPpaQO8tVQmy9vpuUS2AtddntddpNZBm2Bqg3twC2pfh+v5Z5bm3CKWyr4A9NyzUF6aAhNO+VAmwGVYBB+QveE6dEbe3uN97Qt735Yt1haVCuraBD1eF3AHAMAyD7JV4w6mb0NzzZfuBDKDuAnOgDcqwbi6X3vJ7cFp7cJDYI96AW2F0Wd2swY1qKaooOae1B+8pXhF3mbapv24mKiTgO+nl48xFz8ESIJ17A/ALcX+O3//EfAP7BN9JLw+Lqg2xAtK9N0QwFlCE1O8D8w3tQzpPN73Jo62rliGme+/INTNaPHGCXxLwlr5jh9wuQ9rONALKTPYAtYKDhRMDsrt01hZVvKX2CH/IZznXWvVxRvyrdIg5A4H4w4Q/oF6W8oo83ArJCVRVaZIA2UGb0HSX4O9YLuyhk5qT+hQaHasuM86CrZD2nM7sltIo5iOfQDM4TzMHEyQPdRhqudlaXHbE3MUqZG2/WIeax3b5oYuE01oF+8doeIAupAtoZjQw/SHmDiG3JjRfta8+z133vKKKapHtDUtE9XhAZHNBmqqAF0DtZwUEMqTXjg52AVIFUAulLX98MKHnqmXKFwFSTp2N16qGQvtnC72tDOh42jkHmFm6BEZ1AVoVgAG0A1n9UcBbqOX/xf9UvwEExnQ10JbSfgAAAABJRU5ErkJggg=="
+                            style="mix-blend-mode: soft-light"
+                          />
+                          <path
+                            d="M15.5,74l-1.631,1.4a4,4,0,0,1-4.141.655L2.462,73.026A4,4,0,0,1,0,69.333V26.667a4,4,0,0,1,2.462-3.693l7.266-3.027a4,4,0,0,1,4.141.655L15.5,22A2.213,2.213,0,0,0,12,23.8V72.2A2.214,2.214,0,0,0,15.5,74Z"
+                            fill="#52218a"
+                          />
+                          <image
+                            width="120"
+                            height="101"
+                            transform="translate(-12 -12)"
+                            opacity="0.25"
+                            xlink:href="data:image/png;base64,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"
+                            style="mix-blend-mode: soft-light"
+                          />
+                          <path
+                            d="M96,15.77V16a3.786,3.786,0,0,0-6.187-2.928L15.5,74l-1.631,1.4a4,4,0,0,1-4.141.655L2.462,73.026A4,4,0,0,1,0,69.333V69a2.31,2.31,0,0,0,4.024,1.549L66,2A5.979,5.979,0,0,1,72.823.841L92.6,10.364A6,6,0,0,1,96,15.77Z"
+                            fill="#6c33af"
+                          />
+                          <image
+                            width="120"
+                            height="101"
+                            transform="translate(-12 7)"
+                            opacity="0.25"
+                            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAABlCAYAAACGLCeXAAAACXBIWXMAAAsSAAALEgHS3X78AAAL60lEQVR4Xu2d63abSBCEayQlzmV33/89d5PYcWz2B5QoSt0zYEuyLvQ5fWa4DQof1dM0PqF0XYfVbtc2rR1Wu27btXZYYqWUUtvereHi7Fbec80ToBnkyYlW2OexNynYwJakdeu05RAr6NPaIsACVlt33Q5Mwar3O66gT2qzQnQCdoMR6sZa3Vehvg7eSbsHvkI+vlUVHIRih7kBsJX+BlPIwBTuy+Cv5h2ArpSyQj6ypYBNtQpXoe6GPluu13BNiC8A/kjLfpF91pB9ZAsBB3BVnYT5aeh/kj63ETLVS6DP5goakNBdSikr5PdbLURHqlWgn8UfZN0OU8Cv6CH+HvxpcC5v0MMumIJeQ/YR7ACwqVfhKtiHwb8A+Dq0D8O2TxhV3KGH9owe6uPgv4ZW1a6QCRor5PdZpmCfdxl+P6OH+QXAN/OvGCFTxQzPzxjB/hz2+4FpSKeSaeu8fASbAE7mXiZPVC/h/iX+HVPInzBV8G+McH/IPqp2Tc6esc7LR7FIwRFkzr0Mz1/RQ/0LwD8A/h7639DfAJ+H44AeFMPzD0yVTsCagUchG1ghv8laIVrnYFexQv4bPejvGAFuMQL6jR4wbwAqeCfuz9OErLYmXwutVaok5IIpZFUzQzZhf8cIsKBXHpMswtcQ7SrWxEvDthZI1uRrpu0BJ4WN/WZML3j06KTAvw7LW4zz8BPG0MzwrIAjFStgD9dr8jXDWgpW6xJX00eqB4zZ9CtG5SrcnXmkZIdMW5OvGRYBjiBquVFLjV6VesEIXR+vgBGsQ1W4DloBb9DP5a7mdV6u2B5w13WdvVwADuE+Y6xGadGCYZkVKi0/UtVAG2ykYp+XPWSvRZGKZSHa1Uu17tBD/GT+2Vy3ObQNDuHtrB8dk83LwFoUSS0L0cx+qZINxnqyXmgHNGdO/YwpNAedHVcDvBZFEpsAljDNC0PIfxBn1ZpdR8rMAPlNUjt2jprXokhitRDN9nXo+/xMq4GOYLCMuUuOyRRdA03IamvyhQCwJVsK+A/iRyNgCkpV6RCK9LfBcTXYmXM8PcdaFBksVPAAeb8obRcsA7GKM8DqDigCXJvfa+dYiyLIQ7RD5lw82WVoi7QZYL8BHPJO1mdqzkK1h2wdm3a3yVcKGEiTrrlh2i+4AuT+bAmppmRVsfcd8Ab941yk5ruCXAUMjCFtUDMfoYB+Tgbq6nRVO2htFbKqm6BrcBUy24Jp5Yu/966SryZgmqmZide+ioQYqsPN4Ot+O+nXlNwCreel3V3yNRswcAC5wwg4g6cAFaIDoPMVoyp5DugMbnRj3VXytQgwMIH8iv4CqoppGegMsIJwyNExGdzWszKddvPJ12LAQJp8RXOyLivMGuAIso7h8JYA3uDO3ki9CTAQPkYB4xsntRbgCHjB9Fk3G6Ol4Ah2Mb/pN1JvBgykkGmuvAhKBjc61tfVQEfAa+cCbvSN1LsAA03IQA66dcHZMlxHkN0z0HMA3+QbqXcDBlLIBeNbnhZcVaQDLhiVyH4EugaXgGuwb/KN1FEAAyHk2iNUpqZNcgyNkNn6sRFsL5BkqiZktatPvo4GGGiGawcRgefB3urxBFO7aVyxLfcIUnAjRZGjAgYmkBVwBjOC1NpH96OSgSkkV7JXvlTVWTQhZOCKk6+jAxbzkuZcaAopgg6MiZdC9nEiBWeh2kO2nw+40uTrJIAHFRccljTVirQZ6GiZronXBnnyFanZFR0B3uAGiiInAQzMrnZpPwKdeXQDREp2wDW42bysfnVFkZMBBmZXu94KVm+S7dBm+6iCo3Bdy659TOCKiiInBQw0M2u1uYCjC+7rdTwfMwO9BPDVFEVODhhoQs4Up0CyC662k20OJRovgztHzVdTFDkLYKAJGciB1NTkDvRQfF009tb6Hq5roAlZ7SKTr7MBBo5W0oxAq7mCHbiP4wpuOcfWc1xsUeSsgIGjlDQjFfvxsGPmjO0hemeehWuFDFxY8nV2wEAzXDuACEwGbT/o0O/sOCA+JlJyFqo9ZEfnvpjk60MAA4tLmqreJdBh2xiuERyfqTl7nPKocpFFkQ8DLLakpLmxfhQuawoHYiVHgGtws3lZ/SKKIh8KeFBxQbukGYGuuUOFrdc+grFr4XrOY5SO/aFFkQ8FDMwuaToIDY2tC6zmYDfor0F282SglwD+0KLIhwMGZpc0gfmA/UI71OzGiQCzjeDOUfOHFkUuAjAwO7OuKSxTkhr/vdzOPi+03xAOWs/pc3T2WwhZ7WzJ18UABpqQgRx0BjdScAS5BMvROVzBLeeY+pvOWhS5KMDA0apdflHdOO9C9iloKzlSsapZVV276c5WFLk4wMBRql1cz2P0WF23lT7X1yIAt7tSs1DtIVvHoZ00+bpIwEAzXDvcDAaCZa7TdoN4HZcdcKbm7HHKI8vZiiIXCxhYXO2KQLT2cajaZusiwDW42bysfrKiyEUDFltS7XK42TxIcLBjuNwN63ReZqtj18L1nMco/S1HL4pcPOBBxbzgtWoX2wx0axuNUIu0DNdMznQMD9UOegngoxdFLh4wMLvapf0IZuQRYGAKWdfVxt1KG8Gdo+b06zO0pbCvAjCQJl3H/AM+Pd4VrNtp2bm21vdw3QKtkPchezDe6P3CDNhXAxhoZtZqcwEraEgL2UZjP7o5onO5gue4j818ozMHBHYN9FUBBpqQWxe+Ng9CWtomWK+ggfq87CpWNc9JwvjfMlPJDhlozNNXBxhoQgbqFzyCq+7WghyNoed2lXqozh6rnjD9j9YJusMUNlCBfJWAgRRywbKSZgSapssZ5IKpmiLAmZojFTtofv5Pv/H4Oowdzs8O+WoBAyHkpSXNSIGw/g7T9Wz1+VjH0eMjwFHC5bDZ5+f/9LMJ+tVWwCDD7KoBA81w7Rc6gh7dDBH0LQ6za1jfle7n8jAche3In3D4b3jBCJQhG67iqwcMTCDPKWmqeudA1/Eg2/URKoJM5eu4WciuQd/aMfqbOA/rb72dEB0YExCgXdLcWN8vYg32HMi18/q5vB+1PIcmWa/D9tt5TMrMql0dTvsHfEXaCDL7atE4kP06c13HhOrFXMeLznk7gIEDyEBc0iy27CrK4EbHcTkDq/sBdWD6Larsi+nq/hv3pvPwTQEGkCVdx/oDPmB6MR2yGvdT+ByXc6x/lugB0y/E6cfEdC6eAK3ZzQEGUsg0VaTC1AQnU3JkCpnWBa2HX1p0o/mNFY2dLU9KlzcJGGhCBnLQGVx3Wmf7cV0UjluhV6tW7lqu1JbnC+1mAQMp5IJl1S5Xkxufj6lkoA5XPw34K3F+NpCVLC90RLBDyDcNGAghL612KVhXbofp/FhwCPcPYriPGD95/x+Af8X/G9b/wAic34VUpSvcEPLNAwaa4drhZiGZ7heUSZADZmil+iLlEqIDdtA/MSo6ewEBAAevDu8CMDCBPKfaFfl+KIwKfcH4neSt7KPKZZjVr7X+xFS9kRM+96WKPVSn6gXuCLCYJietapfD1eM5r/7G+BVzKpjbnnGoWoerrUPlMU8Y4RKwzsMADtUL3BngBdUutpF6CZdh9wvGMM19uJ1gNCQTroL9Ka0mWjxeQ7PD7dD/01YFAweQgTGcAlOgtbBM5T6i/zA2P5lbZDwCVuWqQmtq9QzaH5+aoZl2d4ABZEmXV7tqoZnwvqFXcASYSVUGWMFyfqZaW2D3z7+Zcml3CRhIIWfGi6rwHtEDZlmRSVYNsM7BEVh/3tUCx4FqW3CBOwYMzIasF1XV+wt9eH7A+E3kSMGaPXshYylYYAFc4M4BA4sgR3MrwzOfg4ExjDPUMlFSqCcHS7t7wMAsyNH8+wvTtz0coMPhM3DkWuE6OljaCniwCmTPoPl49IhpFcsVzH2penVm4icDS1sBiyWQHbAXN7QOzf0VsitVM+KTgaWtgGPjxY0g/0EP9TemcB0w/cXas4CllSOPdxNWRhl7ybL2KpHWYXpDvEpf25OCpa2AK1YBHTlNwWW+3+9UYGkr4IYJZCAuZep2NQet604OlrYCnmkB6Ll2dqhqK+A3mMGu2kdAVVsB37jpH4qtdoP2P4qA0sQj04aEAAAAAElFTkSuQmCC"
+                            style="mix-blend-mode: soft-light"
+                          />
+                          <path
+                            d="M96,80v.23a6,6,0,0,1-3.4,5.406l-19.78,9.523A5.979,5.979,0,0,1,66,94L4.024,25.451A2.31,2.31,0,0,0,0,27v-.333a4,4,0,0,1,2.462-3.693l7.266-3.027a4,4,0,0,1,4.141.655L15.5,22,89.813,82.928A3.786,3.786,0,0,0,96,80Z"
+                            fill="#854cc7"
+                          />
+                          <image
+                            width="54"
+                            height="120"
+                            transform="translate(54 -12)"
+                            opacity="0.25"
+                            xlink:href="data:image/png;base64,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"
+                            style="mix-blend-mode: soft-light"
+                          />
+                          <path
+                            d="M66,94c.138.138.292.254.441.377A3.751,3.751,0,0,1,66,94Zm.441-92.377A3.751,3.751,0,0,0,66,2C66.139,1.861,66.292,1.746,66.441,1.623ZM92.6,10.349,72.823.839a5.968,5.968,0,0,0-6.382.784A3.517,3.517,0,0,1,72,4.485v87.03a3.517,3.517,0,0,1-5.559,2.862,5.968,5.968,0,0,0,6.382.784L92.6,85.651A6,6,0,0,0,96,80.244V15.757A6,6,0,0,0,92.6,10.349Z"
+                            fill="#b179f1"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                    <p>Visual Studio</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="flex items-center">
+                    <!--Android Studio logo-->
+                    <svg
+                      class="mr-1"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 128 128"
+                    >
+                      <defs>
+                        <linearGradient
+                          x1="31.677%"
+                          y1="34.912%"
+                          x2="78.46%"
+                          y2="88.594%"
+                        >
+                          <stop stop-color="#E6E6E6" offset="0%" />
+                          <stop
+                            stop-color="#FFF"
+                            stop-opacity="0"
+                            offset="92.575%"
+                          />
+                        </linearGradient>
+                      </defs>
+                      <g
+                        transform="translate(6.5 6)"
+                        fill-rule="nonzero"
+                        fill="none"
+                      >
+                        <ellipse
+                          fill="#000"
+                          opacity=".2"
+                          cx="57.54"
+                          cy="58.396"
+                          rx="57.54"
+                          ry="57.475"
+                        />
+                        <ellipse
+                          fill="#FFF"
+                          cx="57.54"
+                          cy="57.475"
+                          rx="57.54"
+                          ry="57.475"
+                        />
+                        <path
+                          d="M114.59 64.987L68.636 19.084l-37.02 60.613 34.637 34.598c25.198-3.824 45.026-23.972 48.337-49.308z"
+                          fill="#FFF"
+                        />
+                        <path
+                          d="M83.058 46.114L37.104.211.085 60.824l34.637 34.598c25.197-3.824 45.025-23.972 48.336-49.308z"
+                          fill="url(#a)"
+                          transform="translate(31.532 18.873)"
+                        />
+                        <path
+                          d="M79.185 41.314h-2.246c-.521-6.21-4.074-11.467-9.266-14.292l-1.128-.563c-2.342-1.069-4.973-1.664-7.78-1.664-2.807 0-5.438.595-7.78 1.664l-.01-.016c-.387.172-.777.334-1.174.483l.056.096a17.836 17.836 0 0 0-3.686 2.666h-10.5c-3.196 0-5.812 2.616-5.812 5.813 0 .078.002.156.005.234-.011-.16-.011-.252-.011-.252v40.175c0 3.198 2.616 5.814 5.813 5.814h10.187l-2.502 5.33c-.878 1.885.498 4.044 2.577 4.044a2.843 2.843 0 0 0 2.578-1.643l3.618-7.731h13.118l3.67 7.626a2.84 2.84 0 0 0 2.558 1.606c2.093 0 3.468-2.188 2.56-4.074l-2.476-5.158h8.156l-.014 8.992c0 .16.13.29.29.29l2.46.013c2.877 0 5.231-2.354 5.231-5.23v-38.62c0-6.333-8.492-5.603-8.492-5.603zM36.04 41.314h4.55-4.549z"
+                          fill="#CCC"
+                        />
+                        <g>
+                          <path
+                            d="M49.693 27.832H33.82c-3.197 0-5.813 2.616-5.813 5.813 0 3.197 2.423 5.813 5.62 5.813H49.83l-.136-11.626z"
+                            fill="#073042"
+                          />
+                          <path
+                            d="M85.826 79.616H33.814c-3.197 0-5.813-2.616-5.813-5.814V33.627s-.017 5.831 6.195 5.831h43.137s8.493-.73 8.493 5.603v34.555z"
+                            fill="#4285F4"
+                          />
+                          <path
+                            d="M54.712 59.112L45.08 79.637h6.271l4.465-9.542c.82-1.74 3.291-1.747 4.12-.012l4.598 9.554h6.311l-9.91-20.65a5.232 5.232 0 0 0 2.049-4.148c0-2.445-1.684-4.5-3.953-5.076v-3.407a1.008 1.008 0 0 0-2.015 0v3.296c-2.548.355-4.518 2.543-4.518 5.187 0 1.763.877 3.322 2.214 4.273zm3.029-7.501a3.229 3.229 0 1 1 0 6.457 3.229 3.229 0 0 1 0-6.457z"
+                            fill="#3870B2"
+                          />
+                          <path
+                            fill="#FFF"
+                            d="M46.253 30.687h22.254v4.075H46.253z"
+                          />
+                          <path
+                            d="M65.278 34.284c-.834 0-1.513-.68-1.513-1.514 0-.835.679-1.514 1.513-1.514.835 0 1.514.68 1.514 1.514 0 .835-.679 1.514-1.514 1.514m-16.73 0c-.834 0-1.513-.68-1.513-1.514 0-.835.679-1.514 1.513-1.514.835 0 1.514.68 1.514 1.514 0 .835-.68 1.514-1.514 1.514m17.273-9.118l3.025-5.239a.63.63 0 0 0-1.09-.63l-3.063 5.306c-2.342-1.069-4.973-1.664-7.78-1.664-2.807 0-5.437.595-7.78 1.664l-3.063-5.305a.63.63 0 0 0-1.09.63l3.025 5.238c-5.194 2.825-8.747 8.084-9.267 14.297h36.35c-.52-6.213-4.073-11.472-9.267-14.297"
+                            fill="#3DDC84"
+                          />
+                          <path
+                            d="M80.595 50.617h-2.403a.29.29 0 0 0-.289.29l-.058 37.7c0 .16.13.29.289.29l2.46.014c2.878 0 5.232-2.354 5.232-5.23V45.38c0 2.877-2.354 5.236-5.231 5.236zM56.63 51.658a3.229 3.229 0 1 1 0 6.457 3.229 3.229 0 0 1 0-6.457zm1.29-1.93v-3.325a1.008 1.008 0 0 0-2.014 0v3.296c-2.549.355-4.519 2.543-4.519 5.187 0 1.763.877 3.322 2.215 4.273L41.499 84.946c-.878 1.885.498 4.044 2.578 4.044a2.843 2.843 0 0 0 2.578-1.643l8.05-17.205c.82-1.74 3.292-1.747 4.121-.012l8.234 17.112a2.84 2.84 0 0 0 2.558 1.606c2.094 0 3.468-2.188 2.56-4.074l-12.353-25.74a5.232 5.232 0 0 0 2.048-4.148c0-2.445-1.684-4.5-3.953-5.076"
+                            fill="#073042"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                    <p>Android Studio</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="flex items-center pl-1">
+                    <!--GitHub logo-->
+                    <i class="mr-1 text-xl fab fa-github dark:text-white"></i>
+                    <p>GitHub</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="flex items-center">
+                    <!--AWS logo-->
+                    <svg
+                      class="mr-1"
+                      version="1.1"
+                      width="25"
+                      viewBox="0 0 304 182"
+                      style="enable-background: new 0 0 304 182"
+                    >
+                      <style type="text/css">
+                        .st0 {
+                          fill: #252f3e;
+                        }
+                        .st1 {
+                          fill-rule: evenodd;
+                          clip-rule: evenodd;
+                          fill: #ff9900;
+                        }
+                      </style>
+                      <g>
+                        <path
+                          class="st0"
+                          d="M86.4,66.4c0,3.7,0.4,6.7,1.1,8.9c0.8,2.2,1.8,4.6,3.2,7.2c0.5,0.8,0.7,1.6,0.7,2.3c0,1-0.6,2-1.9,3l-6.3,4.2   c-0.9,0.6-1.8,0.9-2.6,0.9c-1,0-2-0.5-3-1.4C76.2,90,75,88.4,74,86.8c-1-1.7-2-3.6-3.1-5.9c-7.8,9.2-17.6,13.8-29.4,13.8   c-8.4,0-15.1-2.4-20-7.2c-4.9-4.8-7.4-11.2-7.4-19.2c0-8.5,3-15.4,9.1-20.6c6.1-5.2,14.2-7.8,24.5-7.8c3.4,0,6.9,0.3,10.6,0.8   c3.7,0.5,7.5,1.3,11.5,2.2v-7.3c0-7.6-1.6-12.9-4.7-16c-3.2-3.1-8.6-4.6-16.3-4.6c-3.5,0-7.1,0.4-10.8,1.3c-3.7,0.9-7.3,2-10.8,3.4   c-1.6,0.7-2.8,1.1-3.5,1.3c-0.7,0.2-1.2,0.3-1.6,0.3c-1.4,0-2.1-1-2.1-3.1v-4.9c0-1.6,0.2-2.8,0.7-3.5c0.5-0.7,1.4-1.4,2.8-2.1   c3.5-1.8,7.7-3.3,12.6-4.5c4.9-1.3,10.1-1.9,15.6-1.9c11.9,0,20.6,2.7,26.2,8.1c5.5,5.4,8.3,13.6,8.3,24.6V66.4z M45.8,81.6   c3.3,0,6.7-0.6,10.3-1.8c3.6-1.2,6.8-3.4,9.5-6.4c1.6-1.9,2.8-4,3.4-6.4c0.6-2.4,1-5.3,1-8.7v-4.2c-2.9-0.7-6-1.3-9.2-1.7   c-3.2-0.4-6.3-0.6-9.4-0.6c-6.7,0-11.6,1.3-14.9,4c-3.3,2.7-4.9,6.5-4.9,11.5c0,4.7,1.2,8.2,3.7,10.6   C37.7,80.4,41.2,81.6,45.8,81.6z M126.1,92.4c-1.8,0-3-0.3-3.8-1c-0.8-0.6-1.5-2-2.1-3.9L96.7,10.2c-0.6-2-0.9-3.3-0.9-4   c0-1.6,0.8-2.5,2.4-2.5h9.8c1.9,0,3.2,0.3,3.9,1c0.8,0.6,1.4,2,2,3.9l16.8,66.2l15.6-66.2c0.5-2,1.1-3.3,1.9-3.9c0.8-0.6,2.2-1,4-1   h8c1.9,0,3.2,0.3,4,1c0.8,0.6,1.5,2,1.9,3.9l15.8,67l17.3-67c0.6-2,1.3-3.3,2-3.9c0.8-0.6,2.1-1,3.9-1h9.3c1.6,0,2.5,0.8,2.5,2.5   c0,0.5-0.1,1-0.2,1.6c-0.1,0.6-0.3,1.4-0.7,2.5l-24.1,77.3c-0.6,2-1.3,3.3-2.1,3.9c-0.8,0.6-2.1,1-3.8,1h-8.6c-1.9,0-3.2-0.3-4-1   c-0.8-0.7-1.5-2-1.9-4L156,23l-15.4,64.4c-0.5,2-1.1,3.3-1.9,4c-0.8,0.7-2.2,1-4,1H126.1z M254.6,95.1c-5.2,0-10.4-0.6-15.4-1.8   c-5-1.2-8.9-2.5-11.5-4c-1.6-0.9-2.7-1.9-3.1-2.8c-0.4-0.9-0.6-1.9-0.6-2.8v-5.1c0-2.1,0.8-3.1,2.3-3.1c0.6,0,1.2,0.1,1.8,0.3   c0.6,0.2,1.5,0.6,2.5,1c3.4,1.5,7.1,2.7,11,3.5c4,0.8,7.9,1.2,11.9,1.2c6.3,0,11.2-1.1,14.6-3.3c3.4-2.2,5.2-5.4,5.2-9.5   c0-2.8-0.9-5.1-2.7-7c-1.8-1.9-5.2-3.6-10.1-5.2L246,52c-7.3-2.3-12.7-5.7-16-10.2c-3.3-4.4-5-9.3-5-14.5c0-4.2,0.9-7.9,2.7-11.1   c1.8-3.2,4.2-6,7.2-8.2c3-2.3,6.4-4,10.4-5.2c4-1.2,8.2-1.7,12.6-1.7c2.2,0,4.5,0.1,6.7,0.4c2.3,0.3,4.4,0.7,6.5,1.1   c2,0.5,3.9,1,5.7,1.6c1.8,0.6,3.2,1.2,4.2,1.8c1.4,0.8,2.4,1.6,3,2.5c0.6,0.8,0.9,1.9,0.9,3.3v4.7c0,2.1-0.8,3.2-2.3,3.2   c-0.8,0-2.1-0.4-3.8-1.2c-5.7-2.6-12.1-3.9-19.2-3.9c-5.7,0-10.2,0.9-13.3,2.8c-3.1,1.9-4.7,4.8-4.7,8.9c0,2.8,1,5.2,3,7.1   c2,1.9,5.7,3.8,11,5.5l14.2,4.5c7.2,2.3,12.4,5.5,15.5,9.6c3.1,4.1,4.6,8.8,4.6,14c0,4.3-0.9,8.2-2.6,11.6   c-1.8,3.4-4.2,6.4-7.3,8.8c-3.1,2.5-6.8,4.3-11.1,5.6C264.4,94.4,259.7,95.1,254.6,95.1z"
+                        />
+                        <g>
+                          <path
+                            class="st1"
+                            d="M273.5,143.7c-32.9,24.3-80.7,37.2-121.8,37.2c-57.6,0-109.5-21.3-148.7-56.7c-3.1-2.8-0.3-6.6,3.4-4.4    c42.4,24.6,94.7,39.5,148.8,39.5c36.5,0,76.6-7.6,113.5-23.2C274.2,133.6,278.9,139.7,273.5,143.7z"
+                          />
+                          <path
+                            class="st1"
+                            d="M287.2,128.1c-4.2-5.4-27.8-2.6-38.5-1.3c-3.2,0.4-3.7-2.4-0.8-4.5c18.8-13.2,49.7-9.4,53.3-5    c3.6,4.5-1,35.4-18.6,50.2c-2.7,2.3-5.3,1.1-4.1-1.9C282.5,155.7,291.4,133.4,287.2,128.1z"
+                          />
+                        </g>
+                      </g>
+                    </svg>
+                    <p>Amazon Web Services</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="flex items-center">
+                    <!--Firebase logo-->
+                    <img class="mr-1" src="/img/Firebase_Logo_Logomark.svg" />
+                    <p>Firebase</p>
+                  </div>
+                </li>
+                <li>
+                  <div class="flex items-center">
+                    <!--Microsoft Office logo-->
+                    <svg
+                      class="mr-1"
+                      viewBox="0 0 53.59 64.356"
+                      width="25"
+                      height="25"
+                    >
+                      <g transform="translate(-216.07358,-549.28882)">
+                        <g
+                          transform="matrix(1.8232952,0,0,1.8232952,-597.71681,-124.12247)"
+                        >
+                          <g transform="translate(0,-91.137241)">
+                            <g
+                              fill="#eb3c00"
+                              transform="matrix(0.74069815,0,0,0.74069815,98.5698,-8.2505871)"
+                            >
+                              <path
+                                d="m469.87,671.03,0-28.52,25.229-9.3238,13.711,4.3877,0,38.392-13.711,4.133-25.229-9.0691,25.229,3.0361,0-33.201-16.454,3.8392,0,22.487z"
+                              />
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+                    </svg>
+                    <p>Microsoft Office</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        
-    <!--'To Top' button scrolls back to top of page when pressed-->
-    <a href="#" class="to-top-button">
+      </div>
+
+      <!--'To Top' button scrolls back to top of page when pressed-->
+      <a href="#" class="to-top-button">
         <i class="to-top-button-icon fas fa-arrow-up"></i>
-    </a>    
+      </a>
     </section>
-    
+
     <!--Footer section containing copyright text-->
     <footer class="bg-brandBlue-500 slanted-reverse">
-        <div class="copyright-text"> 
-            <p>© Thomas Surette 2021</p>
-        </div>
+      <div class="copyright-text">
+        <p>© Thomas Surette 2022</p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>

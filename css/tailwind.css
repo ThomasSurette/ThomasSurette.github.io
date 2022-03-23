@@ -3,220 +3,220 @@
 @tailwind utilities;
 
 /* General Styles */
-html{
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
 }
-h1{
-    @apply text-7xl xs:text-8xl font-header;
+h1 {
+  @apply text-7xl xs:text-8xl font-header;
 }
-h2{
-    @apply text-5xl xs:text-6xl font-header;
+h2 {
+  @apply text-5xl xs:text-6xl font-header;
 }
-h3{
-    @apply text-3xl xs:text-4xl font-header dark:text-white;
+h3 {
+  @apply text-3xl xs:text-4xl font-header dark:text-white;
 }
-p{
-    @apply text-lg xs:text-xl font-sans dark:text-white;
+p {
+  @apply text-lg xs:text-xl font-sans dark:text-white;
 }
 
 /* Button Styles */
-.button{
-    @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200 text-white font-header;
+.button {
+  @apply w-max px-3 py-2 rounded-lg flex items-center transition-all cursor-pointer bg-brandRed-200 text-white font-header;
 }
-.button p{
-    @apply font-header text-white;
+.button p {
+  @apply font-header text-white;
 }
 
 /* Modal Styles */
-.modal-bg{
+.modal-bg {
   @apply fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-40;
 }
-.modal-body{
-    @apply flex-grow max-w-xs p-6 mx-0 bg-white dark:bg-gray-900 shadow-2xl md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl rounded-xl lg:mx-24;
+.modal-body {
+  @apply flex-grow max-w-xs p-6 mx-0 bg-white dark:bg-gray-900 shadow-2xl md:max-w-sm lg:max-w-md xl:max-w-lg 2xl:max-w-xl rounded-xl lg:mx-24;
 }
-.modal-header{
-    @apply flex justify-between;
+.modal-header {
+  @apply flex justify-between;
 }
-.form-label{
-    @apply block mb-2 text-lg font-header dark:text-white;
+.form-label {
+  @apply block mb-2 text-lg font-header dark:text-white;
 }
-.form-input{
-    @apply w-full px-3 py-2 leading-tight dark:bg-gray-800 text-gray-700 dark:text-gray-200 border dark:border-gray-900 rounded shadow appearance-none focus:outline-none;
+.form-input {
+  @apply w-full px-3 py-2 leading-tight dark:bg-gray-800 text-gray-700 dark:text-gray-200 border dark:border-gray-900 rounded shadow appearance-none focus:outline-none;
 }
 
 /* Nav Menu Styles */
-.nav-menu-wrapper{
-    @apply fixed z-20 transition-all duration-300 top-1/3 rounded-r-2xl;
+.nav-menu-wrapper {
+  @apply fixed z-20 transition-all duration-300 top-1/3 rounded-r-2xl;
 }
-.nav-menu-body{
-    @apply z-20 flex items-center w-52 h-64 bg-white dark:bg-gray-900 border-2 shadow-xl border-brandBlue-500 rounded-r-2xl;
+.nav-menu-body {
+  @apply z-20 flex items-center w-52 h-64 bg-white dark:bg-gray-900 border-2 shadow-xl border-brandBlue-500 rounded-r-2xl;
 }
-.section-list{
-    @apply px-4 py-4 space-y-3 text-2xl w-full;
+.section-list {
+  @apply px-4 py-4 space-y-3 text-2xl w-full;
 }
-.nav-menu-button{
-    @apply absolute z-30 justify-center hidden w-20 h-20 transition-all duration-300 md:flex bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-22;
+.nav-menu-button {
+  @apply absolute z-30 justify-center hidden w-20 h-20 transition-all duration-300 md:flex bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-22;
 }
-.nav-menu-button-sm{
-    @apply absolute z-30 justify-center md:hidden w-14 h-14 transition-all duration-300 flex bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-26;
+.nav-menu-button-sm {
+  @apply absolute z-30 justify-center md:hidden w-14 h-14 transition-all duration-300 flex bg-brandRed-200 hover:bg-brandRed-300 place-items-center top-26;
 }
-.button-open{
-    @apply rounded-full -right-10;
+.button-open {
+  @apply rounded-full -right-10;
 }
-.button-closed{
-    @apply rounded-r-full -right-16;
+.button-closed {
+  @apply rounded-r-full -right-16;
 }
-.button-sm-open{
-    @apply rounded-full -right-7;
+.button-sm-open {
+  @apply rounded-full -right-7;
 }
-.button-sm-closed{
-    @apply rounded-r-full -right-12;
+.button-sm-closed {
+  @apply rounded-r-full -right-12;
 }
-.button-arrow{
-    @apply z-40 text-4xl text-white;
+.button-arrow {
+  @apply z-40 text-4xl text-white;
 }
-.button-sm-arrow{
-    @apply z-40 text-3xl text-white;
+.button-sm-arrow {
+  @apply z-40 text-3xl text-white;
 }
-.section-item{
-    @apply text-brandBlue-500 hover:text-brandBlue-400 font-header;
+.section-item {
+  @apply text-brandBlue-500 hover:text-brandBlue-400 font-header;
 }
-.current-section-item{
-    @apply text-brandRed-200 hover:text-brandRed-300;
+.current-section-item {
+  @apply text-brandRed-200 hover:text-brandRed-300;
 }
 
 /* Header Styles */
-.slanted{
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 56%, 0 100%);
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+.slanted {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 56%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
 }
-.header-body{
-    @apply z-30 gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24;
+.header-body {
+  @apply z-30 gap-8 mx-auto md:flex md:items-center w-max py-36 xl:py-24;
 }
-.profile-img{
-    @apply w-56 h-56 mx-auto mb-2 rounded-full lg:w-64 lg:h-64 xl:mb-0;
+.profile-img {
+  @apply w-56 h-56 mx-auto mb-2 rounded-full lg:w-64 lg:h-64 xl:mb-0;
 }
-.title{
-    @apply hidden text-white xl:block;
+.title {
+  @apply hidden text-white xl:block;
 }
-.title-sm{
-    @apply text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden;
+.title-sm {
+  @apply text-6xl text-white sm:text-7xl lg:text-8xl xl:hidden;
 }
 
 /* Section Styles */
-.section-header{
-    @apply mb-4 text-brandBlue-500 w-max;
+.section-header {
+  @apply mb-4 text-brandBlue-500 w-max;
 }
-.section-type1{
-    @apply py-32 bg-white dark:bg-gray-900;
+.section-type1 {
+  @apply py-32 bg-white dark:bg-gray-900;
 }
-.section-type2{
-    @apply py-32 bg-gray-100 dark:bg-gray-800;
+.section-type2 {
+  @apply py-32 bg-gray-100 dark:bg-gray-800;
 }
 /* About Me Section Styles */
-.about-me-body{
-    @apply px-4 mx-auto 2xs:px-10 md:px-20 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex;
+.about-me-body {
+  @apply px-4 mx-auto 2xs:px-10 md:px-20 lg:px-32 2xl:px-64 3xl:px-80 4xl:px-96 5xl:mx-64 md:flex;
 }
-.about-me-paragraph{
-    @apply w-3/4 mx-auto mb-3 text-lg text-center xs:text-xl md:mx-0 md:text-left md:w-3/4 2xl:w-1/2;
+.about-me-paragraph {
+  @apply w-3/4 mx-auto mb-3 text-lg text-center xs:text-xl md:mx-0 md:text-left md:w-3/4 2xl:w-1/2;
 }
-.button-icon{
-    @apply mr-2 text-xl text-white;
+.button-icon {
+  @apply mr-2 text-xl text-white;
 }
 
 /* Portfolio Section Styles */
-.portfolio-body{
-    @apply container mx-auto 2xs:px-16 sm:px-32;
+.portfolio-body {
+  @apply container mx-auto 2xs:px-16 sm:px-32;
 }
-.portfolio-card-wrapper{
-    @apply py-4 mb-10 transition-all duration-500 transform lg:mb-0 hover:-translate-y-6;
+.portfolio-card-wrapper {
+  @apply py-4 mb-10 transition-all duration-500 transform lg:mb-0 hover:-translate-y-6;
 }
-.portfolio-card-body{
-    @apply container flex items-center justify-center max-w-sm mx-auto bg-white dark:bg-gray-900 rounded-md shadow-lg;
+.portfolio-card-body {
+  @apply container flex items-center justify-center max-w-sm mx-auto bg-white dark:bg-gray-900 rounded-md shadow-lg;
 }
-.portfolio-card-content{
-    @apply px-4 py-8 bg-white dark:bg-gray-900 rounded-b-md;
+.portfolio-card-content {
+  @apply px-4 py-8 bg-white dark:bg-gray-900 rounded-b-md;
 }
-.portfolio-card-header{
-    @apply block text-lg font-header dark:text-white;
+.portfolio-card-header {
+  @apply block text-lg font-header dark:text-white;
 }
-.portfolio-card-text{
-    @apply block text-gray-700 text-base dark:text-gray-200;
+.portfolio-card-text {
+  @apply block text-gray-700 text-base dark:text-gray-200;
 }
-.portfolio-card-img{
-    @apply w-full h-64 bg-cover rounded-t-md;
+.portfolio-card-img {
+  @apply w-full h-64 bg-cover rounded-t-md;
 }
 
 /* Experience Section Styles */
-.experience-body{
-    @apply container flex mx-auto 2xs:px-8 sm:px-16 xs:px-14 md:px-24 lg:px-32;
+.experience-body {
+  @apply container flex mx-auto 2xs:px-8 sm:px-16 xs:px-14 md:px-24 lg:px-32;
 }
-.experience-card-wrapper{
-    @apply flex items-center justify-center w-full rounded-b-lg shadow-xl xl:rounded-b-none xl:rounded-l-lg;
+.experience-card-wrapper {
+  @apply flex items-center justify-center w-full rounded-b-lg shadow-xl xl:rounded-b-none xl:rounded-l-lg;
 }
-.experience-card-img{
-    @apply hidden w-full bg-cover rounded-r-lg xl:block lg:bg-right xl:bg-center;
+.experience-card-img {
+  @apply hidden w-full bg-cover rounded-r-lg xl:block lg:bg-right xl:bg-center;
 }
-.experience-card-img-sm{
-    @apply w-full bg-center bg-cover rounded-t-lg h-52 sm:h-56 md:h-64 lg:h-80 xl:hidden;
+.experience-card-img-sm {
+  @apply w-full bg-center bg-cover rounded-t-lg h-52 sm:h-56 md:h-64 lg:h-80 xl:hidden;
 }
-.experience-card-content{
-    @apply px-4 py-6 bg-white dark:bg-gray-800 rounded-b-lg xl:rounded-b-none xl:rounded-l-lg;
+.experience-card-content {
+  @apply px-4 py-6 bg-white dark:bg-gray-800 rounded-b-lg xl:rounded-b-none xl:rounded-l-lg;
 }
-.experience-card-header{
-    @apply flex items-center justify-between w-full mb-1;
+.experience-card-header {
+  @apply flex items-center justify-between w-full mb-1;
 }
-.experience-card-date{
-    @apply block ml-4 2xs:ml-0 text-base xs:text-lg font-header;
+.experience-card-date {
+  @apply block ml-4 2xs:ml-0 text-base xs:text-lg font-header;
 }
-.experience-card-position{
-    @apply block mb-2 text-lg font-header;
+.experience-card-position {
+  @apply block mb-2 text-lg font-header;
 }
-.experience-card-item-list{
-    @apply space-y-4;
+.experience-card-item-list {
+  @apply space-y-4;
 }
-.experience-card-item{
-    @apply text-base xs:text-lg md:text-xl text-gray-700 dark:text-gray-200;
+.experience-card-item {
+  @apply text-base xs:text-lg md:text-xl text-gray-700 dark:text-gray-200;
 }
 
 /* Skills Section Styles */
-.skills-body{
-    @apply container mx-auto 2xs:px-12 xl:px-20;
+.skills-body {
+  @apply container mx-auto 2xs:px-12 xl:px-20;
 }
-.skills-header{
-    @apply mx-auto lg:mx-0 section-header xl:ml-14 2xl:ml-24 3xl:ml-40 4xl:ml-56 5xl:ml-96 justify-self-start;
+.skills-header {
+  @apply mx-auto lg:mx-0 section-header xl:ml-14 2xl:ml-24 3xl:ml-40 4xl:ml-56 5xl:ml-96 justify-self-start;
 }
-.skills-card-list{
-    @apply w-full gap-16 space-y-16 xl:gap-0 lg:space-y-0 lg:flex 5xl:px-64;
+.skills-card-list {
+  @apply w-full gap-16 space-y-16 xl:gap-0 lg:space-y-0 lg:flex 5xl:px-64;
 }
-.skills-language-card-wrapper{
-    @apply container items-start justify-center max-w-md py-6 mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl md:flex;
+.skills-language-card-wrapper {
+  @apply container items-start justify-center max-w-md py-6 mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl md:flex;
 }
-.skills-language-card-title{
-    @apply max-w-md mx-auto mb-3 text-center;
+.skills-language-card-title {
+  @apply max-w-md mx-auto mb-3 text-center;
 }
-.skills-language-card-body{
-    @apply flex justify-between px-3 2xs:px-6 xs:px-12 md:px-16 lg:gap-10 2xl:gap-32 4xl:gap-36;
+.skills-language-card-body {
+  @apply flex justify-between px-3 2xs:px-6 xs:px-12 md:px-16 lg:gap-10 2xl:gap-28 4xl:gap-36;
 }
-.skills-software-card-wrapper{
-    @apply container flex items-start justify-center max-w-md py-6 mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl;
+.skills-software-card-wrapper {
+  @apply container flex items-start justify-center max-w-md py-6 mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl;
 }
-.skills-software-card-title{
-    @apply mb-3 text-center;
+.skills-software-card-title {
+  @apply mb-3 text-center;
 }
-.skills-software-card-body{
-    @apply px-12 mx-auto space-y-2 md:px-16 w-max;
+.skills-software-card-body {
+  @apply px-12 mx-auto space-y-2 md:px-16 w-max;
 }
 
 /* 'To Top' Button Styles */
-.to-top-button{
-    @apply flex justify-center w-20 h-20 mx-auto mt-16 -mb-24 transition-all rounded-full animate-bounce bg-brandRed-200 hover:bg-brandRed-300 place-items-center;
+.to-top-button {
+  @apply flex justify-center w-20 h-20 mx-auto mt-16 -mb-24 transition-all rounded-full animate-bounce bg-brandRed-200 hover:bg-brandRed-300 place-items-center;
 }
-.to-top-button-icon{
-    @apply z-40 text-4xl text-white;
+.to-top-button-icon {
+  @apply z-40 text-4xl text-white;
 }
 
 /* Footer/Copyright Styles */
-.copyright-text{
-    @apply gap-8 pt-16 pb-8 ml-12 text-white md:flex md:items-center w-max;
+.copyright-text {
+  @apply gap-8 pt-16 pb-8 ml-12 text-white md:flex md:items-center w-max;
 }
