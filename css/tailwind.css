@@ -155,13 +155,13 @@ p {
   @apply flex items-center justify-center w-full rounded-b-lg shadow-xl xl:rounded-b-none xl:rounded-l-lg;
 }
 .experience-card-img {
-  @apply hidden w-full bg-cover rounded-r-lg xl:block lg:bg-right xl:bg-center;
+  @apply hidden bg-cover rounded-r-lg xl:block lg:bg-right xl:bg-center xl:w-1/2;
 }
 .experience-card-img-sm {
   @apply w-full bg-center bg-cover rounded-t-lg h-52 sm:h-56 md:h-64 lg:h-80 xl:hidden;
 }
 .experience-card-content {
-  @apply px-4 py-6 bg-white dark:bg-gray-800 rounded-b-lg xl:rounded-b-none xl:rounded-l-lg;
+  @apply px-4 py-6 xl:w-1/2 bg-white dark:bg-gray-800 rounded-b-lg xl:rounded-b-none xl:rounded-l-lg;
 }
 .experience-card-header {
   @apply flex items-center justify-between w-full mb-1;
@@ -198,14 +198,14 @@ p {
 .skills-language-card-body {
   @apply flex justify-between px-3 2xs:px-6 xs:px-12 md:px-16 lg:gap-10 2xl:gap-28 4xl:gap-36;
 }
+.skills-software-card-body {
+  @apply flex justify-between px-3 2xs:px-6 xs:px-12 lg:gap-10 2xl:gap-14 4xl:gap-24;
+}
 .skills-software-card-wrapper {
   @apply container flex items-start justify-center max-w-md py-6 mx-auto bg-white dark:bg-gray-900 rounded-lg shadow-lg 2xl:max-w-lg 4xl:max-w-xl;
 }
 .skills-software-card-title {
   @apply mb-3 text-center;
-}
-.skills-software-card-body {
-  @apply px-12 mx-auto space-y-2 md:px-16 w-max;
 }
 
 /* 'To Top' Button Styles */
